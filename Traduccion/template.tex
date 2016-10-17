@@ -15,7 +15,7 @@
 % your LaTeX will extract the file if required
 \begin{filecontents*}{example.eps}
 %!PS-Adobe-3.0 EPSF-3.0
-%%BoundingBox: 19 19 221 221
+n%%BoundingBox: 19 19 221 221
 %%CreationDate: Mon Sep 29 1997
 %%Creator: programmed by hand (JK)
 %%EndComments
@@ -47,7 +47,7 @@ grestore
 \usepackage{textcomp}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[spanish]{babel}
+\usepackage[english, spanish]{babel}
 \usepackage{csquotes}
 \usepackage{enumerate}
 \usepackage{enumitem}
@@ -88,37 +88,25 @@ grestore
 
 \DeclareUnicodeCharacter{2217}{*}
 
-%
 \begin{document}
 
-\title{Ordenamiento de colores RGB basado en m\'etricas asociadas a la imagen  %\thanks{Grants or other notes
-%about the article that should go on the front page should be
-%placed here. General acknowledgments should be placed at the end of the article.}
+%\title{Ordenamiento de colores RGB basado en m\'etricas asociadas a la imagen}
+\title{RBG ordering based on image metrics}
+\author{
+  Jos\'e Luis V\'azquez Noguera \and
+  Christian E. Schaerer \and
+  Jacques Facon	\and
+  Horacio Legal Ayala
 }
-%\subtitle{Do you have a subtitle?\\ If so, write it here}
 
-%\titlerunning{Short form of title}        % if too long for running head
-
-\author{Jos\'e Luis V\'azquez Noguera \and
-        Christian E. Schaerer \and
-				Jacques Facon	\and %etc.
-        Horacio Legal Ayala
-				}
-
-%\authorrunning{Short form of author list} % if too long for running head
-
-\institute{Jos\'e Luis V\'azquez Noguera  $\cdot$ Horacio Legal Ayala $\cdot$ Christian E. Schaerer \at  
-              Polytechnic Faculty, National University of Asuncion - San Lorenzo, Paraguay \\
-              %Tel.: +123-45-678910\\
-              %Fax: +123-45-678910\\
-              \email{\{jlvazquez,hlegal,cschaer\}@pol.una.py}           %  \\
-%             \emph{Present address:} of F. Author  %  if needed
-           \and
-           Jacques Facon \at
-              PPGIa - PUCPR-Pontifícia Universidade Catolica do Paraná - Curitiba - Pr, Brazil \\
-              %Tel.: +123-45-678910\\
-              %Fax: +123-45-678910\\
-              \email{facon@ppgia.pucpr.br}  
+\institute{
+  Jos\'e Luis V\'azquez Noguera  $\cdot$ Horacio Legal Ayala $\cdot$ Christian E. Schaerer \at  
+  Polytechnic Faculty, National University of Asuncion - San Lorenzo, Paraguay \\
+  \email{\{jlvazquez,hlegal,cschaer\}@pol.una.py}  
+  \and
+  Jacques Facon \at
+  PPGIa - PUCPR-Pontifícia Universidade Catolica do Paraná - Curitiba - Pr, Brazil \\
+  \email{facon@ppgia.pucpr.br}  
 }
 
 \date{Received: date / Revised: date}
@@ -130,47 +118,75 @@ El orden lexicogr\'afico y sus variantes son los m\'as utilizados en la literatu
 %La norma o la distancia a un color de referencia es tambi\'en bastante utilizado como estrategia de ordenamiento, pero en las im\'agenes a color RGB dos colores visuales distintos pueden tener la misma norma, o distancia a un color de referencia. Debido a que no existe un orden natural entre los colores RGB ser\'ia de utilidad encontrar una estrategia de ordenamiento que sea dependiente de la imagen y de la aplicaci\'on. 
 En este art\'iculo se propone un  ordenamiento de colores RGB, en el cu\'al se asigna una ponderaci\'on a cada componente de color (R,G o B) de acuerdo a m\'etricas aplicadas a cada componente. Con esto se busca que la prioridad de los componentes de color sean dictaminados por información extraida de la propia imagen y no sea definida de manera arbitraria. Las aplicaciones utilizadas para la validación de la propuesta: son el filtrado de im\'agenes, mejora de contraste y caracterización texturas para su posterior clasificación. Los resultados utilizando el ordenamiento propuesto  en las diferentes aplicaciones son mejores en la mayor\'ia de los casos en comparaci\'on a diferentes m\'etodos de ordenamiento del estado del arte. 
 %Las m\'etricas asociadas a cada componente con buenos resultados varian de acuerdo a la aplicaci\'on seleccionada.    
-
-
-
 \end{abstract}
 
-\section{Introducci\'on}
+\begin{abstract}
+  In color ordering literature, the lexicographical ordering and its variants are the most used methods and an usual problem is the ``a priori'' definition of the most important color component \textbf{(NE...)}
+  This paper proposes a new ordering criteria, which assign a weight to every component in accordance with the metrics applied to it, with this criteria we pursue to avoid arbitrary definitions and build the ordering based on image-based information. \textbf{... Obtener los terminos correctos de fuentes oficiales (filtrado de imagenes, mejora de constraste...)}
+\end{abstract}
+
+%\section{Introducci\'on}
+\section{Introduction}
 \label{intro}
 El procesamiento digital de im\'agenes a color tiene semejanza con la visi\'on humana \cite{roerdink2000watershed}, que es crom\'atica, y basa su importancia por el acrecentamiento de la informaci\'on que aporta al an\'alisis de las im\'agenes, en contrapartida con las im\'agenes en escala de grises que aportan menos informaci\'on al trabajar solo con intensidades o im\'agenes binarias que pueden tener solo dos valores posibles, blanco o negro. En sus inicios, los algoritmos de procesamiento digital de im\'agenes fueron desarrollados para im\'agenes binarias o im\'agenes en escala de grises. Durante bastante tiempo solo se trabajaba con estos dos tipos de im\'agenes debido a la limitaci\'on de la infraestructura computacional, ya que los elevados tiempos de c\'omputo de los algoritmos de procesamiento digital de im\'agenes obligaba a reducir la informaci\'on visual a solo un plano bidimensional \cite{ortiz2002procesamiento}.
 
+Digital image processing on color images resemble human vision \cite{roerdink2000watershed}, which is \textbf{NE...}, on the other hand grayscale images and binary images contribute less information because of their use of single dimentional intensities and binary values, white and black. At its inception, digital image processing algorithms where only develop for grayscale and binary images because of the limited computing power available at the time and their high cost, these conditions demands to reduce the visual information into a single plane.
+\textbf{ver citas en inglés...}
+
 Informaci\'on importante puede ser distinguida en im\'agenes en escala de grises, como los bordes que se dan en los lugares que existen cambios bruscos de niveles de intensidades. Por medio del c\'alculo del gradiente se puede extraer los bordes y de esa manera obtener los contornos de los objetos que lo separan del fondo. En ocasiones, los reflejos en las im\'agenes afectan la intensidad luminosa de los objetos produciendo errores en la detecci\'on de las fronteras o contornos de los mismos. Estos efectos de la iluminaci\'on, reflejos, y la perdida de informaci\'on crom\'atica, hacen que muchos algoritmos de procesamiento de im\'agenes en escala  de grises no sean tan eficientes \cite{ortiz2002procesamiento}. Bajo esta perspectiva, 	y con el avance actual de los recursos o infraestructuras computacionales, con procesadores destinados a algoritmos de procesamiento digital de im\'agenes, muchos algoritmos de im\'agenes en escala de grises se est\'an extendiendo a im\'agenes a color, aprovechando la mayor cantidad de informaci\'on que puede brindar de una escena capturada \cite{ortiz2002procesamiento}.
+
+Valuable information can be obtain from grayscale images, for example an object boundaries could been detected from sudden changes in intensities. By calculating the gradient \textbf{on every pixel (Added)} we could extract every object from the image, however unexpected reflections could produce errors on the boundaries detections. Reflections, lighting effects and the lack of chromatic information limit the efficiency of many grayscale algorithms \cite{ortiz2002procesamiento}. Considering these ideas and the new improvements on computational resources, as image processing specialized processors \textbf{review}, a lot of grayscale images are been generalized into color images \cite{ortiz2002procesamiento}.
   
 Los espacios de color son formalismos que permiten la definici\'on de colores, y establecen propiedades para su manipulaci\'on \cite{joblove1978color,meyer1980perceptual}.
 
-El espacio de color m\'as conocido y comunmente utilizado por los monitores es el RGB, que est\'a cimentado en el modelo triest\'imulo y s\'intesis aditiva de color \cite{busin2008color}. En el espacio de color RGB los colores son representados como vectores de 3 componentes, el rojo, el verde y el azul. La cantidad asociada a cada componente indica cu\'anto interviene dicho color primario para la mezcla y representaci\'on del color \cite{tkalcic2003colour}. En el espacio de color CMY los colores cyan, amarillo y magenta  representan la s\'intesis sustractiva de color \cite{rolleston1996color}.  Estos colores son conocidos como colores secundarios. El espacio de color CMYK est\'a representado por 4 componentes, donde el componente K (componente de tinta negra) representa el valor m\'aximo entre los 3 colores secundarios \cite{tkalcic2003colour}. Las impresoras utilizan este espacio de color \cite{rolleston1996color}. 
+Color spaces are formalisms \textbf{(alternative)} that allow the definition of color and their properties for proper manipulation \cite{joblove1978colo,meyer1980perceptual}.
+
+El espacio de color m\'as conocido y comunmente utilizado por los monitores es el RGB, que est\'a cimentado en el modelo triest\'imulo y s\'intesis aditiva de color \cite{busin2008color}. En el espacio de color RGB los colores son representados como vectores de 3 componentes, el rojo, el verde y el azul. La cantidad asociada a cada componente indica cu\'anto interviene dicho color primario para la mezcla y representaci\'on del color \cite{tkalcic2003colour}. En el espacio de color CMY los colores cyan, amarillo y magenta  representan la s\'intesis sustractiva de color \cite{rolleston1996color}.  Estos colores son conocidos como colores secundarios. El espacio de color CMYK est\'a representado por 4 componentes, donde el componente K (componente de tinta negra) representa el valor m\'aximo entre los 3 colores secundarios \cite{tkalcic2003colour}. Las impresoras utilizan este espacio de color \cite{rolleston1996color}.
+
+The most used color space on screens is the RGB color space, which it is based on the tristimulus model and aditive syntesis of color \textbf{review from cite}. In the RBG color space a color, where the colors used are red, green and blue, is defined as 3-tuples where the scalar value on every component measures its influence on the mix \cite{tkalcic2003colour}. In the CMY color space, cyan, magenta and yellow also known as secondary colors, represents the substractive syntesis of color \cite{rolleston1996color}. The CMYK color space, used in printers\cite{rolleston1996color}, extends the previous color space adding the K component which represents the maximum value between the 3 secondary values\cite{tkalcic2003colour} \textbf{NE}.
 
 A causa de que ciertos colores solo pueden representarse con un valor negativo de est\'imulo fue introducido el espacio de color XYZ, que es obtenido por una trasformaci\'on lineal del espacio de color RGB \cite{ortiz2002procesamiento}. El espacio de color XYZ se utiliza cuando la representaci\'on del color es independiente del hardware.
+
+The XYZ color space has been introduced because there are some colors that can only be represented by a negative value of stimuli \textbf{review} and it is a linear transformation over the RGB color space\cite{ortiz2002procesamiento}. This color space is used when the color representation is independent of the hardware.
 
 El espacio de color L*a*b* es un espacio tridimensional, en donde L* representa la luminosidad de negro a blanco, a* codifica la sensaci\'on rojo-verde, y b* codifica la sensaci\'on amarillo-azul \cite{leon2006color}. 
 Los espacios de color CIELAB y CIELUV representan el color de manera que sea uniformente lineal, es decir, un cambio de color debe producir el mismo cambio o importancia visual \cite{mahy1994evaluation}. Se utiliza para aplicaciones industriales, donde se busca medir el color de los objetos.  Por otra parte est\'an los espacios de color utilizados en la radifusi\'on de la se\~nal de televisi\'on, estos son el YIQ, y el YUV \cite{munson1995color}.
 
+The L*a*b* is a 3 component color space where the L* represents the luminosity from black to white, the a* measures from red to green and the b* from yellow to blue\cite{leon2006color} \textbf{review from cites}.
+
 Por \'ultimo podemos mencionar los espacios de color HSI, HLS, HSV y sus variantes que son los que m\'as se asemejan a la visi\'on humana, por tener en cuenta los atributos de percepci\'on de luminancia, saturaci\'on y matiz \cite{zamora2001comparative}.
 
+The color spaces HSI, HLS, HSV and their variants are the color spaces that resembles the human vision the most because they are based on luminosity, saturation and hue perseptions\cite{zamora2001comparativos}.
+
 %Los filtros de orden son operaciones de vecindad no lineal que se utilizan para diversas aplicaciones en im\'agenes en escala de grises \cite{pitas1992order}. 
-Muchas aplicaciones como la utilización de filtros para eliminaci\'on de ruido, estiramiento de contraste, detecci\'on de bordes y segmentaci\'onen imágenes de color necesitan de ordenamiento de colores  \cite{ortiz2002procesamiento}.  Debido a que las im\'agenes a color son representados por vectores \textit{multi}-dimensionales y que no existe un orden natural para los mismos, la extensi\'on de los filtros de orden para im\'agenes a color no es trivial. 
+Muchas aplicaciones como la utilización de filtros para eliminaci\'on de ruido, estiramiento de contraste, detecci\'on de bordes y segmentaci\'onen imágenes de color necesitan de ordenamiento de colores  \cite{ortiz2002procesamiento}.  Debido a que las im\'agenes a color son representados por vectores \textit{multi}-dimensionales y que no existe un orden natural para los mismos, la extensi\'on de los filtros de orden para im\'agenes a color no es trivial.
 
+A lot of aplications needs color ordering, as noise reduction, contrast enhancement, borders detection and segmentation of color images\textbf{review terminos}\cite{ortiz2002procesamiento}. Because of \textit{multi}-dimentional nature of color representation their is no natural order and \textbf{NE}.
 
-En este trabajo se establece una nuevo ordenamiento de colores RGB basada en m\'etricas asociadas a cada  componente de la imagen.  El ordenamiento propuesto es comparada con diferentes m\'etodos de orden del estado del arte en las aplicaciones de eliminaci\'on de diferentes ruidos, estiramiento de contraste y caracterización de texturas para poder clasificarlas. 
+En este trabajo se establece una nuevo ordenamiento de colores RGB basada en m\'etricas asociadas a cada  componente de la imagen.  El ordenamiento propuesto es comparada con diferentes m\'etodos de orden del estado del arte en las aplicaciones de eliminaci\'on de diferentes ruidos, estiramiento de contraste y caracterización de texturas para poder clasificarlas.
+
+This work presents a new ordering for the RBG color space based on the metrics associated to each component. The proposed ordering is compared with the state of art orderings on noise reduction, contrast enhancement and texture characterization. \textbf{IMP REVIEW}
 
 El resto del art\'iculo est\'a organizado de la siguiente manera. En la Secci\'on 2 se presenta el estado del arte. En la Secci\'on 3 se presenta los fundamentos de filtrado de imagen a color, donde se explican	los conceptos de filtrado de im\'agenes, ordenamiento y matem\'atica morfol\'ogica. En la Secci\'on 4 se presenta el  ordenamiento propuesto. En la Secci\'on 5 se pueden observar los resultados experimentales del ordenamiento propuesto en comparaci\'on con las del estado del arte en las aplicaciones de  eliminaci\'on de ruido, estiramiento de contraste y caracterización de texturas para su posterior clasificaci\'on. Por \'ultimo en la Secci\'on 6 se presentan las conclusiones junto a los trabajos futuros.
 
-\section{Estado del arte}
+The paper is organized as follows. The second section presents the current state of the art on the matter. The third section presents the fundamentas of color image filtering as main conceps of image filtering, ordering and mathematics morphology. The fourth section presents the proposed ordering. The fifth section presents the experimental results of the comparisons with the current state of the art on aplications as noise reduction, contrast enhancement and texture characterization. Finally, the sixth and last section presents our conclutions for future works.\textbf{review}.
+
+\section{State of the art \textbf{methods.??}}
 \label{Relacionados}
 
 La extensi\'on de los filtros de orden a im\'agenes a color requiere, por una parte seleccionar el espacio color en el que se procesa la imagen y por otra, establecer un orden en \'este espacio de color. Para establecer un ordenamiento se han trabajado en diferentes espacios de color, entre los que podemos citar, los espacios de color L*a*b*\cite{hanbury2001mathematical}, HLS \cite{hanbury2001mathematical2},  CIELAB \cite{hanbury2002mathematical3}, HSI \cite{tobar2007mathematical}, HSV \cite{lei2013vector} y el espacio de color RGB  \cite{zaharescu2003color, gao2013adaptive, wang2012edge}.
 
+\textbf{....}
 
 La matemática morfológica nació en 1964 de la colaboración de Georges Matheron y Jean Serra en la École des Mines de Paris, Francia \cite{serra1982image}. Actualmente, el ámbito y alcance de los procesamientos morfológicos es tan amplio como el propio procesamiento de imágenes. Se pueden encontrar aplicaciones tales como la segmentación, restauración, detección de bordes, aumento de contraste, análisis de texturas, compresión, entre otros \cite{ortiz2002procesamiento}. 
-La erosi\'on y la dilataci\'on son las operaciones b\'asicas de la matem\'atica morfol\'ogica, donde se busca establecer un ret\'iculo completo \cite{heijmans1990algebraic}. La erosi\'on es el m\'inimo y la dilataci\'on es el m\'aximo dentro de una ventana llamada elemento estructurante. A partir de estas dos operaciones b\'asicas se extiende toda la matem\'atica morfol\'ogica.  Para extender la matem\'atica morfol\'ogica a color es necesario establecer un orden, de manera a poder encontrar el m\'inimo y el m\'aximo dentro del elemento estructurante. 
+La erosi\'on y la dilataci\'on son las operaciones b\'asicas de la matem\'atica morfol\'ogica, donde se busca establecer un ret\'iculo completo \cite{heijmans1990algebraic}. La erosi\'on es el m\'inimo y la dilataci\'on es el m\'aximo dentro de una ventana llamada elemento estructurante. A partir de estas dos operaciones b\'asicas se extiende toda la matem\'atica morfol\'ogica.  Para extender la matem\'atica morfol\'ogica a color es necesario establecer un orden, de manera a poder encontrar el m\'inimo y el m\'aximo dentro del elemento estructurante.
 
+Mathematical morphology borns in 1964 from the colaboration of Georges Matheron and Jean Serra at École de Mines, Paris \cite{serra1982image} and currently ir reach is as broad as image processing itself. A few examples of aplications are image segmentation, restoration, border detections, contrast enhacement, texture analysis, compression, etc. \cite{ortiz2002procesamiento}.
+Erosion and dilation are the most basic operations where \textbf{NE reticulo?}\cite{heijmans1990algebraic}. Erosion is the minimum and dilation is the maximum of a window \textbf{review for better terminology} called structural element and from this two all other operations are builded. To generalize the mathematical morphology to color images is required an ordering between colors to be able to determine a minimum and a maximum inside the structural element.
 
 Varias publicaciones recientes han propuesto extensiones de matemática morfológica a imagenes de color \cite{ledoux2012limits, van2013group, velasco2012random, lezoray2009learning, velasco2010morphological, burgeth2013morphology, velasco2011supervised, hanbury2001morphological, angulo2010pseudo, aptoula2008alpha, kleefeld2015processing, vazquez2014color}. Espec\'ificamente para el espacio de color RGB el ordenamiento mediante el entrelazado de bits se ha mostrado eficiente para el filtrado de im\'agenes a color \cite{chanussot1997bit}. Para una revisión más detallada sobre métodos de morfología matemática a color, sugerimos ver el artículo de Aptoula y Lefevre \cite{aptoula2007comparative}.
+
+Recent publications presented generalizations of mathematical morphology \cite{ledoux2012limits, van2013group, velasco2012random, lezoray2009learning, velasco2010morphological, burgeth2013morphology, velasco2011supervised, hanbury2001morphological, angulo2010pseudo, aptoula2008alpha, kleefeld2015processing, vazquez2014color}. In RGB the interlace bit ordering \textbf{review...!!} has been proved to be efficient on color image filtering \cite{chanussot1997bit}. For a more in depth analysis on mathematical morphology methods, we suggest Aptoula and Lefevre \cite{apatoula2007comparative}.
 
 %El art\'iculo \cite{aptoula2007comparative} incluye m\'as de 70 referencias distintas de m\'etodos de morfolog\'ia matem\'atica a color, mostrando as\'i, aparte de una revisi\'on del estado del arte, que el \'area es reciente. Se han propuesto una gran cantidad de m\'etodos para realizar la extensi\'on de morfolog\'ia matem\'atica a color; entre los art\'iculos recientes podemos citar \cite{ledoux2012limits, van2013group, velasco2012random, lezoray2009learning, velasco2010morphological, burgeth2013morphology, velasco2011supervised, hanbury2001morphological, angulo2010pseudo, aptoula2008alpha, kleefeld2015processing, vazquez2014color}. 
 
@@ -179,13 +195,17 @@ De manera general, es decir para muchos espacios de color, el ordenamiento lexic
 
 Louverdis et. al. \cite{louverdis2002new} y  Vardavoulia et. al. \cite{vardavoulia2002vector} presentan un ordenamiento lexicográfico en el espacio de color HSV para el procesamiento de morfológico de imágenes a color, mientras que Louverdis et. al \cite{louverdis2002morphological} utiliza el mismo orden y espacio de color para presentar una nueva técnica de morfológica para el analisis de forma y tamaño de imágenes granulares. Angulo y Serra \cite{angulo2003morphological} discuten el uso del ordenamiento lexicográfico en los espacios de color RGB y HLS para la compresión imágenes a color JPEG. Ortiz et. al. \cite{ortiz2004gaussian}  utilizan el ordenamiento lexicográfico I→H→S $(Href=0º)$ para la eliminación de ruido gaussiano. 
 
+Louverdis et. al. \cite{louverdis2002new} and Vardavoulia et. al. \cite{vardavoulia2002vector} presents a lexicographic ordering in HSV, while Louverdis et. al. \cite{louverdis2002morphological} uses the same ordering and color space to develop a novel morphologic method for shape and size analisys on granular images. Angulo and Serra \cite{angulo2003morphological} discuss over lexicographic ordering on RGB and HLS for JPEG image compression. Ortiz et. al. \cite{ortiz2004morphological} uses the I→H→S $(Href=0º)$ lexicographical ordering for gaussian noise elimination.
 
 %Un ejemplo de ordenamiento lexicogr\'afico en el espacio de color HSV se puede encontrar en \cite{louverdis2002new}, mientras que \cite{louverdis2002morphological} y } utilizan el mismo orden, respectivamente, para el filtro de la mediana y el c\'alculo de granulometr\'ia en im\'agenes a color. Por supuesto, tambi\'en puede haber situaciones espec\'ificas donde la informaci\'on crom\'atica es m\'as significativa, por ejemplo, en \cite{ortiz2002colour} la matiz se compara por primera vez en la cascada lexicogr\'afica.  En \cite{ortiz2004gaussian} la eliminaci\'on de ruido se consigue por medio del ordenamiento lexicogr\'afico en el espacio HSI, utilizando la intensidad en la primera posici\'on en la cascada lexicogr\'afica. El espacio L*a*b* \cite{hanbury2002mathematical3} ha sido tambi\'en utilizado con un ordenamiento lexicogr\'afico. Por otra parte, un estudio a fondo del potencial de este orden en el espacio HLS se proporciona en \cite{hanbury2001mathematical2}, mientras que en \cite{angulo2003mathematical} el uso del ordenamiento lexicogr\'afico en el espacio HLS mejorado (IHLS) ha sido explorado.
 
 El ordenamiento lexicogr\'afico sufre de un serio inconveniente. M\'as precisamente, el resultado de la gran mayor\'ia de las comparaciones lexicogr\'aficas, se decide casi siempre en los primeros componentes del vector que se comparan, mientras que la contribuci\'on de las dimensiones restantes puede considerarse insignificante \cite{hanbury2002mathematical3}. 
 
+The lexicographical ordering suffers from a serious inconvinient. More precisely, the final result of most lexicographical ordering are highly biased towards the first components where the last components are virtually ignored \cite{hanbury2002mathematical3} \textbf{over reaction?}.
  
-Con el fin de mejorar la sintonizaci\'on del grado de influencia de cada componente del vector en el resultado de comparaci\'on fueron propuestos variaciones del ordenamiento lexicogr\'afico. Un grupo de variantes es basado en el uso de un componente adicional durante la comparaci\'on. 
+Con el fin de mejorar la sintonizaci\'on del grado de influencia de cada componente del vector en el resultado de comparaci\'on fueron propuestos variaciones del ordenamiento lexicogr\'afico. Un grupo de variantes es basado en el uso de un componente adicional durante la comparaci\'on.
+
+
 
 Angulo \cite{angulo2005morphological} y  Sartor et. al. \cite{sartor2001morphological} ubican en la primera posici\'on de la cascada lexicogr\'afica una medida de distancia a un vector de referencia. Comer et. al. \cite{comer1999morphological} emplean la norma euclidea como método de ordenación de pixeles, es decir el píxel de referencia es el color negro (0,0,0) en RGB. Dos colores RGB pueden ser pr\'acticamente iguales visualmente pero ser diferente en valor de norma, o distancia a un color de referencia, as\'i como dos colores distintos tener la misma norma, por lo que no es recomendable utilizar esta estrategia. En el espacio L*a*b existe una medida de distancia definida, respecto al origen $L=0$, $a=0$ y $b=0$ que es muy utilizada para evaluación de la calidad de la reproducción en color, o en técnicas de comprensión de imágenes a color \cite{tremeau1998analyse}.   
 
