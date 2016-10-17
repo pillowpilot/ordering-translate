@@ -1,0 +1,3 @@
+DLAB	ALEX	AMLEX	HLEX	ED	BM	LEX	MAXW9	MAXB	MEANW9	MEANB	MINW9	MINB	MO1W9	MO1B	MO2W9	MO2B	SMOW9	SMOB	VARW9	VARB
+magenta	brown	violet	purple	red	green	yellow	Apricot	Bittersweet	Blue	CadetBlue	JungleGreen	Salmon	Aquamarine	BrickRed	CarnationPink	Gray	Maroon	SeaGreen	olive	black
+*	square*	*	diamond*	*	diamond*	x	x	square*	*	diamond*	x	square*	*	diamond*	x	square*	*	diamond*	square*	square*

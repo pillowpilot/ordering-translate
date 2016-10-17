@@ -1,0 +1,391 @@
+\begin{thebibliography}{79}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{DOI~\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{DOI~\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem[{Angulo(2003)}]{angulo2003morphologie}
+Angulo J (2003) Morphologie math{\'e}matique et indexation d'images couleur:
+  application {\`a} la microscopie en biom{\'e}decine. PhD thesis, {\'E}cole
+  Nationale Sup{\'e}rieure des Mines de Paris
+
+\bibitem[{Angulo(2005{\natexlab{a}})}]{angulo2005morphological}
+Angulo J (2005{\natexlab{a}}) Morphological color processing based on
+  distances. application to color denoising and enhancement by centre and
+  contrast operators. In: Proc. of VIIP, pp 314--319
+
+\bibitem[{Angulo(2005{\natexlab{b}})}]{angulo2005unified}
+Angulo J (2005{\natexlab{b}}) Unified morphological color processing framework
+  in a lum/sat/hue representation. In: Mathematical Morphology: 40 Years On,
+  Springer, pp 387--396
+
+\bibitem[{Angulo(2010)}]{angulo2010pseudo}
+Angulo J (2010) Pseudo-morphological image diffusion using the counter-harmonic
+  paradigm. In: Advanced Concepts for Intelligent Vision Systems, Springer, pp
+  426--437
+
+\bibitem[{Angulo and Serra(2003{\natexlab{a}})}]{angulo2003mathematical}
+Angulo J, Serra J (2003{\natexlab{a}}) Mathematical morphology in color spaces
+  applied to the analysis of cartographic images. Proceedings of GEOPRO
+  3:59--66
+
+\bibitem[{Angulo and Serra(2003{\natexlab{b}})}]{angulo2003morphological}
+Angulo J, Serra J (2003{\natexlab{b}}) Morphological coding of color images by
+  vector connected filters. In: Signal Processing and Its Applications, 2003.
+  Proceedings. Seventh International Symposium on, IEEE, vol~1, pp 69--72
+
+\bibitem[{Aptoula and Lefevre(2007)}]{aptoula2007comparative}
+Aptoula E, Lefevre S (2007) A comparative study on multivariate mathematical
+  morphology. Pattern Recognition 40(11):2914--2929
+
+\bibitem[{Aptoula and Lef{\`e}vre(2007)}]{aptoula2007morphological}
+Aptoula E, Lef{\`e}vre S (2007) On morphological color texture
+  characterization. In: International Symposium on Mathematical Morphology
+  (ISMM), pp 153--164
+
+\bibitem[{Aptoula and Lefevre(2007)}]{aptoula2007pseudo}
+Aptoula E, Lefevre S (2007) Pseudo multivariate morphological operators based
+  on $\alpha$-trimmed lexicographical extrema. In: Image and Signal Processing
+  and Analysis, 2007. ISPA 2007. 5th International Symposium on, IEEE, pp
+  367--372
+
+\bibitem[{Aptoula and Lefevre(2008{\natexlab{a}})}]{aptoula2008alpha}
+Aptoula E, Lefevre S (2008{\natexlab{a}}) $\alpha$-trimmed lexicographical
+  extrema for pseudo-morphological image analysis. Journal of Visual
+  Communication and Image Representation 19(3):165--174
+
+\bibitem[{Aptoula and Lefevre(2008{\natexlab{b}})}]{aptoula2008lexicographical}
+Aptoula E, Lefevre S (2008{\natexlab{b}}) On lexicographical ordering in
+  multivariate mathematical morphology. Pattern Recognition Letters
+  29(2):109--118
+
+\bibitem[{Arbelaez et~al(2007)Arbelaez, Fowlkes, and
+  Martin}]{arbelaez2007berkeley}
+Arbelaez P, Fowlkes C, Martin D (2007) The berkeley segmentation dataset and
+  benchmark. see http://www eecs berkeley edu/Research/Projects/CS/vision/bsds
+
+\bibitem[{Astola et~al(1990)Astola, Haavisto, and Neuvo}]{astola1990vector}
+Astola J, Haavisto P, Neuvo Y (1990) Vector median filters. Proceedings of the
+  IEEE 78(4):678--689
+
+\bibitem[{Bai and Zhou(2010{\natexlab{a}})}]{bai2010analysis1}
+Bai X, Zhou F (2010{\natexlab{a}}) Analysis of different modified top-hat
+  transformations based on structuring element construction. Signal Processing
+  90(11):2999--3003
+
+\bibitem[{Bai and Zhou(2010{\natexlab{b}})}]{bai2010analysis}
+Bai X, Zhou F (2010{\natexlab{b}}) Analysis of new top-hat transformation and
+  the application for infrared dim small target detection. Pattern Recognition
+  43(6):2145--2156
+
+\bibitem[{Bai and Zhou(2010{\natexlab{c}})}]{bai2010infrared}
+Bai X, Zhou F (2010{\natexlab{c}}) Infrared small target enhancement and
+  detection based on modified top-hat transformations. Computers \& Electrical
+  Engineering 36(6):1193--1201
+
+\bibitem[{Barnett(1976)}]{barnett1976ordering}
+Barnett V (1976) The ordering of multivariate data. Journal of the Royal
+  Statistical Society Series A (General) pp 318--355
+
+\bibitem[{Benavent et~al(2012)Benavent, Dura, Vegara, and
+  Domingo}]{benavent2012mathematical}
+Benavent X, Dura E, Vegara F, Domingo J (2012) Mathematical morphology for
+  color images: An image-dependent approach. Mathematical Problems in
+  Engineering 2012
+
+\bibitem[{Bianconi et~al(2011)Bianconi, Harvey, Southam, and
+  Fern{\'a}ndez}]{bianconi2011theoretical}
+Bianconi F, Harvey R, Southam P, Fern{\'a}ndez A (2011) Theoretical and
+  experimental comparison of different approaches for color texture
+  classification. Journal of Electronic Imaging 20(4):043,006--043,006
+
+\bibitem[{Bouchet et~al(2016)Bouchet, Alonso, Pastore, Montes, and
+  D{\'\i}az}]{bouchet2016fuzzy}
+Bouchet A, Alonso P, Pastore JI, Montes S, D{\'\i}az I (2016) Fuzzy
+  mathematical morphology for color images defined by fuzzy preference
+  relations. Pattern Recognition
+
+\bibitem[{Burgeth and Kleefeld(2013)}]{burgeth2013morphology}
+Burgeth B, Kleefeld A (2013) Morphology for color images via loewner order for
+  matrix fields. In: Mathematical Morphology and Its Applications to Signal and
+  Image Processing, Springer, pp 243--254
+
+\bibitem[{Busin et~al(2008)Busin, Vandenbroucke, and Macaire}]{busin2008color}
+Busin L, Vandenbroucke N, Macaire L (2008) Color spaces and image segmentation.
+  Advances in imaging and electron physics 151(1):1
+
+\bibitem[{Chanussot and Lambert(1997)}]{chanussot1997bit}
+Chanussot J, Lambert P (1997) Bit mixing paradigm for multivalued morphological
+  filters. In: IEE conference publication, Institution of Electrical Engineers,
+  vol~2, pp 804--808
+
+\bibitem[{Chen et~al(2002)Chen, Wu, Rahmani-Torkaman, and
+  Hughes}]{chen2002pseudo}
+Chen T, Wu Q, Rahmani-Torkaman R, Hughes J (2002) A pseudo top-hat mathematical
+  morphological approach to edge detection in dark regions. Pattern Recognition
+  35(1):199--210
+
+\bibitem[{Davenport and Root(1958)}]{davenport1958random}
+Davenport WB, Root WL (1958) Random signals and noise. McGraw-Hill New York
+
+\bibitem[{Gao and Hu(2013)}]{gao2013adaptive}
+Gao CJZXH, Hu XY (2013) An adaptive lexicographical ordering of color
+  mathematical morphology. Journal of Computers 24(3)
+
+\bibitem[{Gonzales et~al(2004)Gonzales, Woods, and
+  Eddins}]{gonzales2004digital}
+Gonzales RC, Woods RE, Eddins SL (2004) Digital image processing using MATLAB.
+  Pearson Prentice Hall
+
+\bibitem[{van~de Gronde and Roerdink(2013)}]{van2013group}
+van~de Gronde JJ, Roerdink JB (2013) Group-invariant frames for colour
+  morphology. In: Mathematical Morphology and Its Applications to Signal and
+  Image Processing, Springer, pp 267--278
+
+\bibitem[{Hanbury and Serra(2001{\natexlab{a}})}]{hanbury2001mathematical2}
+Hanbury A, Serra J (2001{\natexlab{a}}) Mathematical morphology in the hls
+  colour space. In: BMVC, Citeseer, pp 1--10
+
+\bibitem[{Hanbury and Serra(2002)}]{hanbury2002mathematical3}
+Hanbury A, Serra J (2002) Mathematical morphology in the cielab space. Image
+  Analysis and Stereology 21(3):201--206
+
+\bibitem[{Hanbury et~al(2001)Hanbury, Serra et~al}]{hanbury2001mathematical}
+Hanbury A, Serra J, et~al (2001) Mathematical morphology in the l* a* b* colour
+  space. Perancis: Centre de Morphologie Math{\'e}matique Ecole des Mines de
+  Paris
+
+\bibitem[{Hanbury et~al(2005)Hanbury, Kandaswamy, and
+  Adjeroh}]{hanbury2005illumination}
+Hanbury A, Kandaswamy U, Adjeroh DA (2005) Illumination-invariant morphological
+  texture classification. In: Mathematical Morphology: 40 Years On, Springer,
+  pp 377--386
+
+\bibitem[{Hanbury and Serra(2001{\natexlab{b}})}]{hanbury2001morphological}
+Hanbury AG, Serra J (2001{\natexlab{b}}) Morphological operators on the unit
+  circle. Image Processing, IEEE Transactions on 10(12):1842--1850
+
+\bibitem[{Heijmans and Ronse(1990)}]{heijmans1990algebraic}
+Heijmans HJ, Ronse C (1990) The algebraic basis of mathematical morphology i.
+  dilations and erosions. Computer Vision, Graphics, and Image Processing
+  50(3):245--295
+
+\bibitem[{Joblove and Greenberg(1978)}]{joblove1978color}
+Joblove GH, Greenberg D (1978) Color spaces for computer graphics. In: ACM
+  siggraph computer graphics, ACM, vol~12, pp 20--25
+
+\bibitem[{Kleefeld and Burgeth(2015)}]{kleefeld2015processing}
+Kleefeld A, Burgeth B (2015) Processing multispectral images via mathematical
+  morphology. In: Visualization and Processing of Higher Order Descriptors for
+  Multi-Valued Data, Springer, pp 129--148
+
+\bibitem[{Ledoux et~al(2012)Ledoux, Richard, and
+  Capelle-Laize}]{ledoux2012limits}
+Ledoux A, Richard N, Capelle-Laize AS (2012) Limits and comparisons of
+  orderings using colour distances. Traitement du Signal 29(1-2):65--82
+
+\bibitem[{Lef{\`e}vre(2009)}]{lefevre2009beyond}
+Lef{\`e}vre S (2009) Beyond morphological size distribution. Journal of
+  Electronic Imaging 18(1):013,010--013,010
+
+\bibitem[{Lei et~al(2013)Lei, Wang, Fan, and Zhao}]{lei2013vector}
+Lei T, Wang Y, Fan Y, Zhao J (2013) Vector morphological operators in hsv color
+  space. Science China Information Sciences 56(1):1--12
+
+\bibitem[{Leon et~al(2006)Leon, Mery, Pedreschi, and Leon}]{leon2006color}
+Leon K, Mery D, Pedreschi F, Leon J (2006) Color measurement in l∗ a∗ b∗
+  units from rgb digital images. Food research international 39(10):1084--1091
+
+\bibitem[{Lezoray et~al(2009)Lezoray, Charrier, and
+  Elmoataz}]{lezoray2009learning}
+Lezoray O, Charrier C, Elmoataz A (2009) Learning complete lattices for
+  manifold mathematical morphology. In: International Symposium on Mathematical
+  Morphology, pp 1--4
+
+\bibitem[{Louverdis et~al(2002{\natexlab{a}})Louverdis, Andreadis, and
+  Tsalides}]{louverdis2002morphological}
+Louverdis G, Andreadis I, Tsalides P (2002{\natexlab{a}}) Morphological
+  granulometries for color images. In: Proc. 2nd Hellenic Conf. Artificial
+  Intelligence, Citeseer, pp 333--342
+
+\bibitem[{Louverdis et~al(2002{\natexlab{b}})Louverdis, Vardavoulia, Andreadis,
+  and Tsalides}]{louverdis2002new}
+Louverdis G, Vardavoulia MI, Andreadis I, Tsalides P (2002{\natexlab{b}}) A new
+  approach to morphological color image processing. Pattern recognition
+  35(8):1733--1741
+
+\bibitem[{Mahy et~al(1994)Mahy, Eycken, and Oosterlinck}]{mahy1994evaluation}
+Mahy M, Eycken L, Oosterlinck A (1994) Evaluation of uniform color spaces
+  developed after the adoption of cielab and cieluv. Color Research \&
+  Application 19(2):105--121
+
+\bibitem[{Maragos(1989)}]{maragos1989pattern}
+Maragos P (1989) Pattern spectrum and multiscale shape representation. IEEE
+  Transactions on pattern analysis and machine intelligence 11(7):701--716
+
+\bibitem[{Matheron(1975)}]{matheron1975random}
+Matheron G (1975) Random sets and integral geometry. John Wiley \& Sons
+
+\bibitem[{Meyer and Greenberg(1980)}]{meyer1980perceptual}
+Meyer GW, Greenberg DP (1980) Perceptual color spaces for computer graphics.
+  ACM SIGGRAPH Computer Graphics 14(3):254--261
+
+\bibitem[{Mukhopadhyay and Chanda(2000)}]{mukhopadhyay2000multiscale}
+Mukhopadhyay S, Chanda B (2000) A multiscale morphological approach to local
+  contrast enhancement. Signal Processing 80(4):685--696
+
+\bibitem[{Munson(1995)}]{munson1995color}
+Munson JB (1995) Color information storage and processing system. US Patent
+  5,465,104
+
+\bibitem[{Ojala et~al(2002)Ojala, Maenpaa, Pietikainen, Viertola, Kyllonen, and
+  Huovinen}]{ojala2002outex}
+Ojala T, Maenpaa T, Pietikainen M, Viertola J, Kyllonen J, Huovinen S (2002)
+  Outex-new framework for empirical evaluation of texture analysis algorithms.
+  In: Pattern Recognition, 2002. Proceedings. 16th International Conference on,
+  IEEE, vol~1, pp 701--706
+
+\bibitem[{Ortiz et~al(2002)Ortiz, Torres, De~Juan, and
+  Cuenca}]{ortiz2002colour}
+Ortiz F, Torres F, De~Juan E, Cuenca N (2002) Colour mathematical morphology
+  for neural image analysis. Real-Time Imaging 8(6):455--465
+
+\bibitem[{Ortiz et~al(2004)Ortiz, Torres, and Gil}]{ortiz2004gaussian}
+Ortiz F, Torres F, Gil P (2004) Gaussian noise elimination in colour images by
+  vector-connected filters. In: Pattern Recognition, 2004. ICPR 2004.
+  Proceedings of the 17th International Conference on, IEEE, vol~4, pp 807--810
+
+\bibitem[{Ortiz~Zamora(2002)}]{ortiz2002procesamiento}
+Ortiz~Zamora FG (2002) Procesamiento morfol{\'o}gico de im{\'a}genes en color:
+  aplicaci{\'o}n a la reconstrucci{\'o}n geod{\'e}sica
+
+\bibitem[{Palm(2004)}]{palm2004color}
+Palm C (2004) Color texture classification by integrative co-occurrence
+  matrices. Pattern recognition 37(5):965--976
+
+\bibitem[{Pitas and Venetsanopoulos(1992)}]{pitas1992order}
+Pitas I, Venetsanopoulos AN (1992) Order statistics in digital image
+  processing. Proceedings of the IEEE 80(12):1893--1921
+
+\bibitem[{Roerdink and Meijster(2000)}]{roerdink2000watershed}
+Roerdink JB, Meijster A (2000) The watershed transform: Definitions, algorithms
+  and parallelization strategies. Fundamenta informaticae 41(1, 2):187--228
+
+\bibitem[{Rolleston et~al(1996)Rolleston, Maltz, and
+  Stinehour}]{rolleston1996color}
+Rolleston RJ, Maltz MS, Stinehour JE (1996) Color printer calibration
+  architecture. US Patent 5,528,386
+
+\bibitem[{Sartor and Weeks(2001)}]{sartor2001morphological}
+Sartor LJ, Weeks AR (2001) Morphological operations on color images. Journal of
+  Electronic Imaging 10(2):548--559
+
+\bibitem[{Serra(1986)}]{serra1986introduction}
+Serra J (1986) Introduction to mathematical morphology. Computer vision,
+  graphics, and image processing 35(3):283--305
+
+\bibitem[{Serra(1993)}]{serra1993anamorphoses}
+Serra JC (1993) Anamorphoses and function lattices. In: SPIE's 1993
+  International Symposium on Optics, Imaging, and Instrumentation,
+  International Society for Optics and Photonics, pp 2--11
+
+\bibitem[{Soille(1997)}]{soille1997note}
+Soille P (1997) A note on morphological contrast enhancement. {\'E}cole des
+  Mines d’Al{\'e}s-EERIE, Tech Rep RT-PS-001
+
+\bibitem[{Soille(2013)}]{soille2013morphological}
+Soille P (2013) Morphological image analysis: principles and applications.
+  Springer Science \& Business Media
+
+\bibitem[{Stricker and Orengo(1995)}]{stricker1995similarity}
+Stricker MA, Orengo M (1995) Similarity of color images. In: IS\&T/SPIE's
+  Symposium on Electronic Imaging: Science \& Technology, International Society
+  for Optics and Photonics, pp 381--392
+
+\bibitem[{Susstrunk and Winkler(2003)}]{susstrunk2003color}
+Susstrunk SE, Winkler S (2003) Color image quality on the internet. In:
+  Electronic Imaging 2004, International Society for Optics and Photonics, pp
+  118--131
+
+\bibitem[{Tkalcic et~al(2003)Tkalcic, Tasic et~al}]{tkalcic2003colour}
+Tkalcic M, Tasic JF, et~al (2003) Colour spaces: perceptual, historical and
+  applicational background. In: Eurocon
+
+\bibitem[{Tobar et~al(2007)Tobar, Platero, Gonz{\'a}lez, and
+  Asensio}]{tobar2007mathematical}
+Tobar MC, Platero C, Gonz{\'a}lez PM, Asensio G (2007) Mathematical morphology
+  in the hsi colour space. In: Pattern Recognition and Image Analysis,
+  Springer, pp 467--474
+
+\bibitem[{Tuzlukov(2002)}]{tuzlukov2002signal}
+Tuzlukov V (2002) Signal processing noise, vol~8. CRC Press
+
+\bibitem[{Van Den~Broek and Van~Rikxoort(2005)}]{van2005parallel}
+Van Den~Broek EL, Van~Rikxoort EM (2005) Parallel-sequential texture analysis.
+  In: Pattern Recognition and Image Analysis, Springer, pp 532--541
+
+\bibitem[{Vardavoulia et~al(2002)Vardavoulia, Andreadis, and
+  Tsalides}]{vardavoulia2002vector}
+Vardavoulia M, Andreadis I, Tsalides P (2002) Vector ordering and morphological
+  operations for colour image processing: fundamentals and applications.
+  Pattern Analysis and Applications 5(3):271--287
+
+\bibitem[{Vazquez~Noguera et~al(2014)Vazquez~Noguera, Legal~Ayala, Schaerer,
+  and Facon}]{vazquez2014color}
+Vazquez~Noguera JL, Legal~Ayala H, Schaerer CE, Facon J (2014) A color
+  morphological ordering method based on additive and subtractive spaces. In:
+  Image Processing (ICIP), 2014 IEEE International Conference on, IEEE, pp
+  674--678
+
+\bibitem[{Velasco-Forero and Angulo(2010)}]{velasco2010morphological}
+Velasco-Forero S, Angulo J (2010) Morphological processing of hyperspectral
+  images using kriging-based supervised ordering. In: Image Processing (ICIP),
+  2010 17th IEEE International Conference on, IEEE, pp 1409--1412
+
+\bibitem[{Velasco-Forero and Angulo(2011)}]{velasco2011supervised}
+Velasco-Forero S, Angulo J (2011) Supervised ordering in: Application to
+  morphological processing of hyperspectral images. Image Processing, IEEE
+  Transactions on 20(11):3301--3308
+
+\bibitem[{Velasco-Forero and Angulo(2012)}]{velasco2012random}
+Velasco-Forero S, Angulo J (2012) Random projection depth for multivariate
+  mathematical morphology. Selected Topics in Signal Processing, IEEE Journal
+  of 6(7):753--763
+
+\bibitem[{de~Ves et~al(2006)de~Ves, Benavent, Ayala, and
+  Domingo}]{de2006selecting}
+de~Ves E, Benavent X, Ayala G, Domingo J (2006) Selecting the structuring
+  element for morphological texture classification. Pattern Analysis and
+  applications 9(1):48--57
+
+\bibitem[{Vincent(2000)}]{vincent2000granulometries}
+Vincent L (2000) Granulometries and opening trees. Fundam Inform 41(1-2):57--90
+
+\bibitem[{Wang and Yan(2012)}]{wang2012edge}
+Wang L, Yan L (2012) Edge detection of color image using vector morphological
+  operators. In: Computer Science and Network Technology (ICCSNT), 2012 2nd
+  International Conference on, IEEE, pp 2211--2215
+
+\bibitem[{Willmott and Matsuura(2005)}]{willmott2005advantages}
+Willmott CJ, Matsuura K (2005) Advantages of the mean absolute error (mae) over
+  the root mean square error (rmse) in assessing average model performance.
+  Climate research 30(1):79--82
+
+\bibitem[{Zaharescu et~al(2003)Zaharescu, Zamfir, and
+  Vertan}]{zaharescu2003color}
+Zaharescu E, Zamfir M, Vertan C (2003) Color morphology-like operators based on
+  color geometric shape characteristics. In: Signals, Circuits and Systems,
+  2003. SCS 2003. International Symposium on, IEEE, vol~1, pp 145--148
+
+\bibitem[{Zamora et~al(2001)Zamora, Torres-Medina, Lopez-Angulo, and
+  Mendez}]{zamora2001comparative}
+Zamora FGO, Torres-Medina F, Lopez-Angulo J, Mendez SP (2001) Comparative study
+  of vectorial morphological operations in different color spaces. In:
+  Intelligent Systems and Advanced Manufacturing, International Society for
+  Optics and Photonics, pp 259--268
+
+\end{thebibliography}

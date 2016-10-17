@@ -1,0 +1,14 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: template.aux
+The style file: spbasic.bst
+Database file #1: sample.bib
+Repeated entry---line 635 of file sample.bib
+ : @article{gao2013adaptive
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 819 of file sample.bib
+ : @article{roerdink2000watershed
+ :                               ,
+I'm skipping whatever remains of this entry
+Warning--can't use both volume and number fields in joblove1978color
+Warning--missing publisher in ortiz2002procesamiento
+(There were 2 error messages)
