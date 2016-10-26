@@ -189,7 +189,7 @@ Other types of arrangement seeking the extension of lexicographic ordering is to
 In order to avoid the most subjective user intervention, it would be of great importance that the arbitrary criteria of lexicographic order and its variants can be eliminated or reduced.
 
 
-Bouchet et. to the. \Cite{bouchet2016fuzzy} uses fuzzy logic so that the three color components have the same weighting in the sorting, although it is desirable that the priority of the components of the vector representing the image are audited self-image information, not being exactly the same in all cases. Benavent et. al. \cite{benavent2012mathematical} presents a sorting method that is dependent of the image and ordering the colors according to the probability density of the appearance of colors in the image.
+Bouchet et. to the. \cite{bouchet2016fuzzy} uses fuzzy logic so that the three color components have the same weighting in the sorting, although it is desirable that the priority of the components of the vector representing the image are audited self-image information, not being exactly the same in all cases. Benavent et. al. \cite{benavent2012mathematical} presents a sorting method that is dependent of the image and ordering the colors according to the probability density of the appearance of colors in the image.
 
 The main difference of this proposal, with those presented in the state of art, is the extraction of information for each component of RGB color in a specific domain image. This information is extracted by a vector of weights which are previously calculated by a function applied to each of the RGB components of the color.
 
@@ -198,12 +198,12 @@ The main difference of this proposal, with those presented in the state of art, 
 \section{Fundamentals of color image filtering}
 \label{Teo}
 
-This section presents the formal formulations of the theoretical concepts behind the extension order filters for color images, vector arrangement and morphological mathematics.
+This section presents the formal formulations of the theoretical concepts behind ordering filters and their extenssions for color images, vector arrangement and morphological mathematics.
 
 \subsection{RGB images}
 
-In general, an image is a function $f:\mathbb{Z}^2 \rightarrow \mathbb{Z}^n$. Ech pair $(u,v) \in \mathbb{Z}^2$ is a pixel, and $f(u,v) \in \mathbb Z^n $ is the color image in the pixel $(u,v)$. In particular, a RGB image (red, green and blue) with a color depth of k bits is, $f(u,v) = (R,G,B)$, where $R,G,B \in \{0,1,...,2^k-1\}$ is the intensity of the component and $f(u,v)$ is the color resulting from mixing these components in the pixel $(u,v)$. %Si el vector $\mathbb Z^3$ es una tripleta correspondiente a los componenetes rojo, verde y azul, la imagen $f$ es llamada imagen  RGB.
-The image $f$ can digitally presented as an array $M \times N \times 3$ , where each pixel $(u,v)$ has as its value a triplet $(R,G,B)$ \cite{gonzales2004digital}. An RGB image can be seen as a ``stack'' of three images in grayscale (see Figure \ref{fig:ImagenRGB}) that, when fed to the red, green and blue entries of the color monitor, produces a color image on the screen \cite{gonzales2004digital}.
+In general, an image is a function $f:\mathbb{Z}^2 \rightarrow \mathbb{Z}^n$. Each pair $(u,v) \in \mathbb{Z}^2$ is a pixel, and $f(u,v) \in \mathbb Z^n $ is the color image in the pixel $(u,v)$. In particular, a RGB image (red, green and blue) with a color depth of k bits is, $f(u,v) = (R,G,B)$, where $R,G,B \in \{0,1,...,2^k-1\}$ is the intensity of each component and $f(u,v)$ is the color resulting from mixing these components in the pixel $(u,v)$. %Si el vector $\mathbb Z^3$ es una tripleta correspondiente a los componenetes rojo, verde y azul, la imagen $f$ es llamada imagen  RGB.
+The image $f$ can be digitally presented as an array $M \times N \times 3$ , where each pixel $(u,v)$ has as its value a triplet $(R,G,B)$ \cite{gonzales2004digital}. An RGB image can be seen as a ``stack'' of three images in grayscale (see Figure \ref{fig:ImagenRGB}) that, when fed to the red, green and blue entries of the color monitor, produces a color image on the screen \cite{gonzales2004digital}.
 
 
 \begin{figure}[htbp]
@@ -256,7 +256,7 @@ The image $f$ can digitally presented as an array $M \times N \times 3$ , where 
 
 
 \subsection{Image filtering}
-Image filtering covering all techniques in the processing of images, that from an input image, another image is obtained in which is remove, emphasize or highlight some features of the input image. 
+Image filtering covers all techniques in image processing, that from an input image, another image is obtained in which are removed, emphasized or highlighted some features of the input image. 
 A filter $F$ of a digital image color $f$ can be expressed as:
 
 \begin{equation}
@@ -266,7 +266,7 @@ A filter $F$ of a digital image color $f$ can be expressed as:
 where $f(u,v)$ is a color of the input image, $g(u,v)$ is a color of the image output and $F$ is the filter defined over a window of the pixel $(u,v)$.
 
 
-Order filters are operations nonlinear neighborhood, where a function is applied to each pixel neighborhood. The idea is to move a window centered on the pixel, either a rectangle (usually a rectangle of odd sides) or other shape on an image given. By doing this, we create a new image whose pixels are the result of obtaining a value of the color under the mask presorted (Figure \ref{fig:Filt}). 
+Ordering filters are nonlinear neighborhood operations, where the function return value for each pixel is calculated from its neighborhood. The idea is to move a window centered on the pixel, either a rectangle (usually a rectangle of odd sides) or other shape on an given image.(Figure \ref{fig:Filt}). 
 
 
 \begin{figure}[htbp]
@@ -278,11 +278,11 @@ Order filters are operations nonlinear neighborhood, where a function is applied
 
 
 
-For example, a pixel of the new image can be a result of obtaining the median, minimum or maximum of the colors arranged in the window of the processed image.  
+For example, a pixel of the new image can be a result of obtaining the median, minimum or maximum of the colors ordered in the window of the processed image.  
 The combination of the window and the function is called filter. 
 
-\subsection{Sorting}
-The concept of order plays a important role to use a filter order, or to define the basic operations of mathematical morphology. For a thorough study of the theory of order the reader can see \cite {serra1993anamorphoses}.
+\subsection{Ordering}
+The concept of order plays a important role in the use of a ordering filter, or to define the basic operations of mathematical morphology. A detailed study of the theory of order can be found at \cite {serra1993anamorphoses}.
 
 %Una relaci\'on binaria $\leq$ en un dominio $D$ se llama:
 
@@ -296,23 +296,23 @@ The concept of order plays a important role to use a filter order, or to define 
   
 %La estructura en un espacio de color est\'a dada por un ret\'iculo completo. Un ret\'iculo completo ${\cal L}$ es un conjunto no vac\'io con orden parcial  ${\cal R} $ tal que cualquier subconjunto no vac\'io  ${\cal P}$ de  ${\cal L}$ tiene un \'infimo  y tiene un supremo. 
 
-According to the article  \cite{barnett1976ordering}, ordering vector arrangement techniques can be classified into the following groups:
+According to the article \cite{barnett1976ordering}, vector ordering techniques can be classified into the following groups:
 \begin{itemize}
-\item Marginal Sorting (M Sorting): The marginal arrangement compares each color component independently.
-\item Conditional Sorting (C Sorting ): The vectors are sorted by some marginal component selected sequentially according to different conditions. The lexicographic order is a well-known example of C Sorting  employing all available components of the given vectors.
-\item Partial Sorting (P Sorting): This ordering is based on the partition of the vectors in groups of equivalence such that  between groups there exist an order. In this case, "partial'' is an abuse of terminology, as there are total ordering that belong to this particular class. 
-\item Reduced Sorting (R Sorting): The vectors are first reduced to scalar values and then classified according to their naturally scalar order. For example, a R ordering in  $\mathbb{Z}^n$ could be first define a transformation $T:\mathbb{Z}^n\rightarrow \mathbb{R}$ and then sort the colors with respect to the scalar order of his projection in $\mathbb{Z}^n$ by $T$.
+\item Marginal Ordering (M Ordering): The marginal ordering compares each color component independently.
+\item Conditional Ordering (C Ordering): The vectors are sorted by some marginal component selected sequentially according to different conditions. The lexicographic ordering is a well-known example of C Sorting  employing all available components of the given vectors.
+\item Partial Ordering (P Ordering): This ordering is based on the partition of the vectors in groups of equivalence such that between groups there exist an order. In this case, ``partial'' is an abuse of terminology, as there are total ordering that belong to this particular class. 
+\item Reduced Ordering (R Ordering): The vectors are first reduced to scalar values and then classified according to their naturally scalar order. For example, a R sorting in  $\mathbb{Z}^n$ could be first define a transformation $T:\mathbb{Z}^n\rightarrow \mathbb{R}$ and then sort the colors with respect to the scalar order of his projection in $\mathbb{Z}^n$ by $T$.
 \end{itemize}
 
 In practice there are two general methods for processing color images: marginal and vectorial.
 
-The marginal processing consists in the separate processing of each component of the image. Despite its simplicity, the marginal processing has two disadvantages \cite{aptoula2007comparative}: 
+The marginal processing consists in the independent processing of each component of the image. Despite its simplicity, the marginal processing has two disadvantages \cite{aptoula2007comparative}: 
 \begin{itemize}
     \item The correlation between components is completely ignored.
     \item Creates false colors after processing.
 \end{itemize}
 
-The use of marginal processing is inadequate for images with highly correlated components (eg RGB color images) \cite{astola1990vector}. Therefore this work focuses on the vectorial processing will be explained below. 
+The use of marginal processing is inadequate for images with highly correlated components (eg RGB color images) \cite{astola1990vector}. Therefore this work focuses on the vectorial processing that will be explained below. 
 
 %\begin{figure}
 %	\centering
@@ -321,9 +321,8 @@ The use of marginal processing is inadequate for images with highly correlated c
 %	\label{fig:resultado}
 %\end{figure}
 
-The vector processing processes all available globally and simultaneously components.
-Since vectors (way representing a color) are considered as the new processing units, the correlation between the different components is no longer ignored. However, compared to its counterpart marginal, the most significant drawback of the approach vectorial is mainly the need to adapt existing algorithms in order to accommodate vectorial data \cite{aptoula2007comparative}. 
-
+Vectorial methods processes all available components, globally and simultaneously.
+Since vectors (way of representing a color) are considered as the new processing units, the correlation between the different components is no longer ignored. However, its most significant drawback is mainly the need to adapt existing algorithms in order to accommodate vectorial data \cite{aptoula2007comparative}.
 
 The vectorial processing can have two approaches:
  
@@ -332,14 +331,11 @@ The vectorial processing can have two approaches:
     \item Based on the order relationship 
 \end{itemize}
 
-The approach based on relationship preorder,  is the set of approaches that do not comply the antisymmetric property.  Thus different colors can eventually become equivalent. So to resolve existing ambiguities, additional action are necessary. The main method of sorting of this approach is based on the Reduced Sorting (R Sorting ), where colors are reduced to scalar values corresponding to his norm, or the distance to a some reference color. 
+The approach based on preorder relationship, is the set of approaches that do not satisfy the antisymmetric property.  Thus different colors can eventually become equivalent. So to solve existing ambiguities, additional actions are necessary. The main method of sorting of this approach is based on the Reduced Sorting (R Sorting), where colors are reduced to scalar values corresponding to their norm, or their distance to a some reference color. 
 
+The approach based on order relationship, in the same way can be partial or total. If the relationship is partial, there will be colors that can not be compared. 
 
-The approach based on order relationship, in the same way can be partial or total. If the relationship is partial, there will be colors that they can not be compared. 
-
-The total order relation has two main advantages. First, all colors are comparable, and second, there are no distinct colors that can be equivalent. Because of this, most works are based on approaches of total order relation. \cite{aptoula2007comparative}. In particular, the lexicographical order ( C Sorting ), along with its variants is among the most widely deployed options.  
- 
-
+The total order relation has two main advantages. First, all colors are comparable, and second, there are no distinct colors that can be equivalent. Because of this, most works are based on approaches of total order relationship. \cite{aptoula2007comparative}. In particular, the lexicographical order (C Sorting), along with its variants is among the most widely deployed options.  
 
 \subsection{Morphological mathematics}
 
