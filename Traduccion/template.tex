@@ -3,7 +3,7 @@
 % This is a template file for the LaTeX package SVJour2 for the
 % Springer journal "Biological Cybernetics"
 %
-%                                    Springer Heidelberg 2004/11/22
+%                                    Springer Heidelberg 2004/11/R22
 %
 % Copy it to a new file with a new name and use it as the basis
 % for your article
@@ -114,121 +114,96 @@ grestore
 \maketitle
 
 \begin{abstract}
-El orden lexicogr\'afico y sus variantes son los m\'as utilizados en la literatura para el ordenamiento de colores.  Un problema usual de este tipo de ordenamiento es el establececimiento a priori del componente de color m\'as importante y el resultado de las comparaciones lexicogr\'aficas casi siempre se deciden en los primeros componentes.  
-%La norma o la distancia a un color de referencia es tambi\'en bastante utilizado como estrategia de ordenamiento, pero en las im\'agenes a color RGB dos colores visuales distintos pueden tener la misma norma, o distancia a un color de referencia. Debido a que no existe un orden natural entre los colores RGB ser\'ia de utilidad encontrar una estrategia de ordenamiento que sea dependiente de la imagen y de la aplicaci\'on. 
-En este art\'iculo se propone un  ordenamiento de colores RGB, en el cu\'al se asigna una ponderaci\'on a cada componente de color (R,G o B) de acuerdo a m\'etricas aplicadas a cada componente. Con esto se busca que la prioridad de los componentes de color sean dictaminados por información extraida de la propia imagen y no sea definida de manera arbitraria. Las aplicaciones utilizadas para la validación de la propuesta: son el filtrado de im\'agenes, mejora de contraste y caracterización texturas para su posterior clasificación. Los resultados utilizando el ordenamiento propuesto  en las diferentes aplicaciones son mejores en la mayor\'ia de los casos en comparaci\'on a diferentes m\'etodos de ordenamiento del estado del arte. 
-%Las m\'etricas asociadas a cada componente con buenos resultados varian de acuerdo a la aplicaci\'on seleccionada.    
-\end{abstract}
-
-\begin{abstract}
   In color ordering literature, the lexicographical ordering and its variants are the most used methods and an usual problem is the ``a priori'' definition of the most important color component \textbf{(NE...)}
   This paper proposes a new ordering criteria, which assign a weight to every component in accordance with the metrics applied to it, with this criteria we pursue to avoid arbitrary definitions and build the ordering based on image-based information. \textbf{... Obtener los terminos correctos de fuentes oficiales (filtrado de imagenes, mejora de constraste...)}
+  Applications used for validation of the proposal are: image filtering, contrast improvement and textures characterization for later classification. The results using the proposed ordering in different applications are better in most cases compared to different ordering methods of the state of the art.
 \end{abstract}
 
 %\section{Introducci\'on}
 \section{Introduction}
 \label{intro}
-El procesamiento digital de im\'agenes a color tiene semejanza con la visi\'on humana \cite{roerdink2000watershed}, que es crom\'atica, y basa su importancia por el acrecentamiento de la informaci\'on que aporta al an\'alisis de las im\'agenes, en contrapartida con las im\'agenes en escala de grises que aportan menos informaci\'on al trabajar solo con intensidades o im\'agenes binarias que pueden tener solo dos valores posibles, blanco o negro. En sus inicios, los algoritmos de procesamiento digital de im\'agenes fueron desarrollados para im\'agenes binarias o im\'agenes en escala de grises. Durante bastante tiempo solo se trabajaba con estos dos tipos de im\'agenes debido a la limitaci\'on de la infraestructura computacional, ya que los elevados tiempos de c\'omputo de los algoritmos de procesamiento digital de im\'agenes obligaba a reducir la informaci\'on visual a solo un plano bidimensional \cite{ortiz2002procesamiento}.
 
 Digital image processing on color images resemble human vision \cite{roerdink2000watershed}, which is \textbf{NE...}, on the other hand grayscale images and binary images contribute less information because of their use of single dimentional intensities and binary values, white and black. At its inception, digital image processing algorithms where only develop for grayscale and binary images because of the limited computing power available at the time and their high cost, these conditions demands to reduce the visual information into a single plane.
 \textbf{ver citas en inglés...}
 
-Informaci\'on importante puede ser distinguida en im\'agenes en escala de grises, como los bordes que se dan en los lugares que existen cambios bruscos de niveles de intensidades. Por medio del c\'alculo del gradiente se puede extraer los bordes y de esa manera obtener los contornos de los objetos que lo separan del fondo. En ocasiones, los reflejos en las im\'agenes afectan la intensidad luminosa de los objetos produciendo errores en la detecci\'on de las fronteras o contornos de los mismos. Estos efectos de la iluminaci\'on, reflejos, y la perdida de informaci\'on crom\'atica, hacen que muchos algoritmos de procesamiento de im\'agenes en escala  de grises no sean tan eficientes \cite{ortiz2002procesamiento}. Bajo esta perspectiva, 	y con el avance actual de los recursos o infraestructuras computacionales, con procesadores destinados a algoritmos de procesamiento digital de im\'agenes, muchos algoritmos de im\'agenes en escala de grises se est\'an extendiendo a im\'agenes a color, aprovechando la mayor cantidad de informaci\'on que puede brindar de una escena capturada \cite{ortiz2002procesamiento}.
 
 Valuable information can be obtain from grayscale images, for example an object boundaries could been detected from sudden changes in intensities. By calculating the gradient \textbf{on every pixel (Added)} we could extract every object from the image, however unexpected reflections could produce errors on the boundaries detections. Reflections, lighting effects and the lack of chromatic information limit the efficiency of many grayscale algorithms \cite{ortiz2002procesamiento}. Considering these ideas and the new improvements on computational resources, as image processing specialized processors \textbf{review}, a lot of grayscale images are been generalized into color images \cite{ortiz2002procesamiento}.
   
-Los espacios de color son formalismos que permiten la definici\'on de colores, y establecen propiedades para su manipulaci\'on \cite{joblove1978color,meyer1980perceptual}.
 
 Color spaces are formalisms \textbf{(alternative)} that allow the definition of color and their properties for proper manipulation \cite{joblove1978colo,meyer1980perceptual}.
 
-El espacio de color m\'as conocido y comunmente utilizado por los monitores es el RGB, que est\'a cimentado en el modelo triest\'imulo y s\'intesis aditiva de color \cite{busin2008color}. En el espacio de color RGB los colores son representados como vectores de 3 componentes, el rojo, el verde y el azul. La cantidad asociada a cada componente indica cu\'anto interviene dicho color primario para la mezcla y representaci\'on del color \cite{tkalcic2003colour}. En el espacio de color CMY los colores cyan, amarillo y magenta  representan la s\'intesis sustractiva de color \cite{rolleston1996color}.  Estos colores son conocidos como colores secundarios. El espacio de color CMYK est\'a representado por 4 componentes, donde el componente K (componente de tinta negra) representa el valor m\'aximo entre los 3 colores secundarios \cite{tkalcic2003colour}. Las impresoras utilizan este espacio de color \cite{rolleston1996color}.
 
 The most used color space on screens is the RGB color space, which it is based on the tristimulus model and aditive syntesis of color \textbf{review from cite}. In the RBG color space a color, where the colors used are red, green and blue, is defined as 3-tuples where the scalar value on every component measures its influence on the mix \cite{tkalcic2003colour}. In the CMY color space, cyan, magenta and yellow also known as secondary colors, represents the substractive syntesis of color \cite{rolleston1996color}. The CMYK color space, used in printers\cite{rolleston1996color}, extends the previous color space adding the K component which represents the maximum value between the 3 secondary values\cite{tkalcic2003colour} \textbf{NE}.
 
-A causa de que ciertos colores solo pueden representarse con un valor negativo de est\'imulo fue introducido el espacio de color XYZ, que es obtenido por una trasformaci\'on lineal del espacio de color RGB \cite{ortiz2002procesamiento}. El espacio de color XYZ se utiliza cuando la representaci\'on del color es independiente del hardware.
 
 The XYZ color space has been introduced because there are some colors that can only be represented by a negative value of stimuli \textbf{review} and it is a linear transformation over the RGB color space\cite{ortiz2002procesamiento}. This color space is used when the color representation is independent of the hardware.
 
-El espacio de color L*a*b* es un espacio tridimensional, en donde L* representa la luminosidad de negro a blanco, a* codifica la sensaci\'on rojo-verde, y b* codifica la sensaci\'on amarillo-azul \cite{leon2006color}. 
-Los espacios de color CIELAB y CIELUV representan el color de manera que sea uniformente lineal, es decir, un cambio de color debe producir el mismo cambio o importancia visual \cite{mahy1994evaluation}. Se utiliza para aplicaciones industriales, donde se busca medir el color de los objetos.  Por otra parte est\'an los espacios de color utilizados en la radifusi\'on de la se\~nal de televisi\'on, estos son el YIQ, y el YUV \cite{munson1995color}.
 
 The L*a*b* is a 3 component color space where the L* represents the luminosity from black to white, the a* measures from red to green and the b* from yellow to blue\cite{leon2006color} \textbf{review from cites}.
 
-Por \'ultimo podemos mencionar los espacios de color HSI, HLS, HSV y sus variantes que son los que m\'as se asemejan a la visi\'on humana, por tener en cuenta los atributos de percepci\'on de luminancia, saturaci\'on y matiz \cite{zamora2001comparative}.
 
 The color spaces HSI, HLS, HSV and their variants are the color spaces that resembles the human vision the most because they are based on luminosity, saturation and hue perseptions\cite{zamora2001comparativos}.
 
-%Los filtros de orden son operaciones de vecindad no lineal que se utilizan para diversas aplicaciones en im\'agenes en escala de grises \cite{pitas1992order}. 
-Muchas aplicaciones como la utilización de filtros para eliminaci\'on de ruido, estiramiento de contraste, detecci\'on de bordes y segmentaci\'onen imágenes de color necesitan de ordenamiento de colores  \cite{ortiz2002procesamiento}.  Debido a que las im\'agenes a color son representados por vectores \textit{multi}-dimensionales y que no existe un orden natural para los mismos, la extensi\'on de los filtros de orden para im\'agenes a color no es trivial.
 
 A lot of aplications needs color ordering, as noise reduction, contrast enhancement, borders detection and segmentation of color images\textbf{review terminos}\cite{ortiz2002procesamiento}. Because of \textit{multi}-dimentional nature of color representation their is no natural order and \textbf{NE}.
 
-En este trabajo se establece una nuevo ordenamiento de colores RGB basada en m\'etricas asociadas a cada  componente de la imagen.  El ordenamiento propuesto es comparada con diferentes m\'etodos de orden del estado del arte en las aplicaciones de eliminaci\'on de diferentes ruidos, estiramiento de contraste y caracterización de texturas para poder clasificarlas.
 
 This work presents a new ordering for the RBG color space based on the metrics associated to each component. The proposed ordering is compared with the state of art orderings on noise reduction, contrast enhancement and texture characterization. \textbf{IMP REVIEW}
 
-El resto del art\'iculo est\'a organizado de la siguiente manera. En la Secci\'on 2 se presenta el estado del arte. En la Secci\'on 3 se presenta los fundamentos de filtrado de imagen a color, donde se explican	los conceptos de filtrado de im\'agenes, ordenamiento y matem\'atica morfol\'ogica. En la Secci\'on 4 se presenta el  ordenamiento propuesto. En la Secci\'on 5 se pueden observar los resultados experimentales del ordenamiento propuesto en comparaci\'on con las del estado del arte en las aplicaciones de  eliminaci\'on de ruido, estiramiento de contraste y caracterización de texturas para su posterior clasificaci\'on. Por \'ultimo en la Secci\'on 6 se presentan las conclusiones junto a los trabajos futuros.
 
 The paper is organized as follows. The second section presents the current state of the art on the matter. The third section presents the fundamentas of color image filtering as main conceps of image filtering, ordering and mathematics morphology. The fourth section presents the proposed ordering. The fifth section presents the experimental results of the comparisons with the current state of the art on aplications as noise reduction, contrast enhancement and texture characterization. Finally, the sixth and last section presents our conclutions for future works.\textbf{review}.
 
 \section{State of the art \textbf{methods.??}}
 \label{Relacionados}
 
-La extensi\'on de los filtros de orden a im\'agenes a color requiere, por una parte seleccionar el espacio color en el que se procesa la imagen y por otra, establecer un orden en \'este espacio de color. Para establecer un ordenamiento se han trabajado en diferentes espacios de color, entre los que podemos citar, los espacios de color L*a*b*\cite{hanbury2001mathematical}, HLS \cite{hanbury2001mathematical2},  CIELAB \cite{hanbury2002mathematical3}, HSI \cite{tobar2007mathematical}, HSV \cite{lei2013vector} y el espacio de color RGB  \cite{zaharescu2003color, gao2013adaptive, wang2012edge}.
+The extension of the filter order to color images requires on the one hand select the color space in which the image is processed and in the other establish an order in this color space. To establish an arrangement they have worked in different color spaces, among which we can mention, L*a*b* color spaces \cite{hanbury2001mathematical}, HLS \cite{hanbury2001mathematical2},  CIELAB \cite{hanbury2002mathematical3}, HSI \cite{tobar2007mathematical}, HSV \cite{lei2013vector} and the RGB color space  \cite{zaharescu2003color, gao2013adaptive, wang2012edge}.
 
 \textbf{....}
 
-La matemática morfológica nació en 1964 de la colaboración de Georges Matheron y Jean Serra en la École des Mines de Paris, Francia \cite{serra1982image}. Actualmente, el ámbito y alcance de los procesamientos morfológicos es tan amplio como el propio procesamiento de imágenes. Se pueden encontrar aplicaciones tales como la segmentación, restauración, detección de bordes, aumento de contraste, análisis de texturas, compresión, entre otros \cite{ortiz2002procesamiento}. 
-La erosi\'on y la dilataci\'on son las operaciones b\'asicas de la matem\'atica morfol\'ogica, donde se busca establecer un ret\'iculo completo \cite{heijmans1990algebraic}. La erosi\'on es el m\'inimo y la dilataci\'on es el m\'aximo dentro de una ventana llamada elemento estructurante. A partir de estas dos operaciones b\'asicas se extiende toda la matem\'atica morfol\'ogica.  Para extender la matem\'atica morfol\'ogica a color es necesario establecer un orden, de manera a poder encontrar el m\'inimo y el m\'aximo dentro del elemento estructurante.
 
 Mathematical morphology borns in 1964 from the colaboration of Georges Matheron and Jean Serra at École de Mines, Paris \cite{serra1982image} and currently ir reach is as broad as image processing itself. A few examples of aplications are image segmentation, restoration, border detections, contrast enhacement, texture analysis, compression, etc. \cite{ortiz2002procesamiento}.
 Erosion and dilation are the most basic operations where \textbf{NE reticulo?}\cite{heijmans1990algebraic}. Erosion is the minimum and dilation is the maximum of a window \textbf{review for better terminology} called structural element and from this two all other operations are builded. To generalize the mathematical morphology to color images is required an ordering between colors to be able to determine a minimum and a maximum inside the structural element.
 
-Varias publicaciones recientes han propuesto extensiones de matemática morfológica a imagenes de color \cite{ledoux2012limits, van2013group, velasco2012random, lezoray2009learning, velasco2010morphological, burgeth2013morphology, velasco2011supervised, hanbury2001morphological, angulo2010pseudo, aptoula2008alpha, kleefeld2015processing, vazquez2014color}. Espec\'ificamente para el espacio de color RGB el ordenamiento mediante el entrelazado de bits se ha mostrado eficiente para el filtrado de im\'agenes a color \cite{chanussot1997bit}. Para una revisión más detallada sobre métodos de morfología matemática a color, sugerimos ver el artículo de Aptoula y Lefevre \cite{aptoula2007comparative}.
 
 Recent publications presented generalizations of mathematical morphology \cite{ledoux2012limits, van2013group, velasco2012random, lezoray2009learning, velasco2010morphological, burgeth2013morphology, velasco2011supervised, hanbury2001morphological, angulo2010pseudo, aptoula2008alpha, kleefeld2015processing, vazquez2014color}. In RGB the interlace bit ordering \textbf{review...!!} has been proved to be efficient on color image filtering \cite{chanussot1997bit}. For a more in depth analysis on mathematical morphology methods, we suggest Aptoula and Lefevre \cite{apatoula2007comparative}.
 
 %El art\'iculo \cite{aptoula2007comparative} incluye m\'as de 70 referencias distintas de m\'etodos de morfolog\'ia matem\'atica a color, mostrando as\'i, aparte de una revisi\'on del estado del arte, que el \'area es reciente. Se han propuesto una gran cantidad de m\'etodos para realizar la extensi\'on de morfolog\'ia matem\'atica a color; entre los art\'iculos recientes podemos citar \cite{ledoux2012limits, van2013group, velasco2012random, lezoray2009learning, velasco2010morphological, burgeth2013morphology, velasco2011supervised, hanbury2001morphological, angulo2010pseudo, aptoula2008alpha, kleefeld2015processing, vazquez2014color}. 
 
 
-De manera general, es decir para muchos espacios de color, el ordenamiento lexicogr\'afico es  uno de los m\'as utilizados en la literatura \cite{aptoula2007comparative, aptoula2008lexicographical}, ya que posee propiedades te\'oricas deseables y permite personalizar f\'acilmente la manera que se van a comparar los componentes de la imagen. 
+Generally, that is for many color spaces, the lexicographical arrangement is one of the most used in the literature \cite{aptoula2007comparative, aptoula2008lexicographical}, since it has desired theoretical properties and can easily customize the way you are going to compare the components of the image. 
 
-Louverdis et. al. \cite{louverdis2002new} y  Vardavoulia et. al. \cite{vardavoulia2002vector} presentan un ordenamiento lexicográfico en el espacio de color HSV para el procesamiento de morfológico de imágenes a color, mientras que Louverdis et. al \cite{louverdis2002morphological} utiliza el mismo orden y espacio de color para presentar una nueva técnica de morfológica para el analisis de forma y tamaño de imágenes granulares. Angulo y Serra \cite{angulo2003morphological} discuten el uso del ordenamiento lexicográfico en los espacios de color RGB y HLS para la compresión imágenes a color JPEG. Ortiz et. al. \cite{ortiz2004gaussian}  utilizan el ordenamiento lexicográfico I→H→S $(Href=0º)$ para la eliminación de ruido gaussiano. 
 
 Louverdis et. al. \cite{louverdis2002new} and Vardavoulia et. al. \cite{vardavoulia2002vector} presents a lexicographic ordering in HSV, while Louverdis et. al. \cite{louverdis2002morphological} uses the same ordering and color space to develop a novel morphologic method for shape and size analisys on granular images. Angulo and Serra \cite{angulo2003morphological} discuss over lexicographic ordering on RGB and HLS for JPEG image compression. Ortiz et. al. \cite{ortiz2004morphological} uses the I→H→S $(Href=0º)$ lexicographical ordering for gaussian noise elimination.
 
 %Un ejemplo de ordenamiento lexicogr\'afico en el espacio de color HSV se puede encontrar en \cite{louverdis2002new}, mientras que \cite{louverdis2002morphological} y } utilizan el mismo orden, respectivamente, para el filtro de la mediana y el c\'alculo de granulometr\'ia en im\'agenes a color. Por supuesto, tambi\'en puede haber situaciones espec\'ificas donde la informaci\'on crom\'atica es m\'as significativa, por ejemplo, en \cite{ortiz2002colour} la matiz se compara por primera vez en la cascada lexicogr\'afica.  En \cite{ortiz2004gaussian} la eliminaci\'on de ruido se consigue por medio del ordenamiento lexicogr\'afico en el espacio HSI, utilizando la intensidad en la primera posici\'on en la cascada lexicogr\'afica. El espacio L*a*b* \cite{hanbury2002mathematical3} ha sido tambi\'en utilizado con un ordenamiento lexicogr\'afico. Por otra parte, un estudio a fondo del potencial de este orden en el espacio HLS se proporciona en \cite{hanbury2001mathematical2}, mientras que en \cite{angulo2003mathematical} el uso del ordenamiento lexicogr\'afico en el espacio HLS mejorado (IHLS) ha sido explorado.
 
-El ordenamiento lexicogr\'afico sufre de un serio inconveniente. M\'as precisamente, el resultado de la gran mayor\'ia de las comparaciones lexicogr\'aficas, se decide casi siempre en los primeros componentes del vector que se comparan, mientras que la contribuci\'on de las dimensiones restantes puede considerarse insignificante \cite{hanbury2002mathematical3}. 
 
 The lexicographical ordering suffers from a serious inconvinient. More precisely, the final result of most lexicographical ordering are highly biased towards the first components where the last components are virtually ignored \cite{hanbury2002mathematical3} \textbf{over reaction?}.
  
-Con el fin de mejorar la sintonizaci\'on del grado de influencia de cada componente del vector en el resultado de comparaci\'on fueron propuestos variaciones del ordenamiento lexicogr\'afico. Un grupo de variantes es basado en el uso de un componente adicional durante la comparaci\'on.
+In order to improve the tuning degree of influence of each component of the vector in the comparison result they were proposed variations lexicographic ordering. A group of variants is based on the use of an additional component for comparison.
+
+
+Angulo \cite{angulo2005morphological} and  Sartor et. al. \cite{sartor2001morphological} located in the first position of the lexicographical cascade a distance measurement to a reference vector. Comer et. al. \cite{comer1999morphological} used a Euclidean norm as a method of sorting pixels, i.e. the reference pixel color is the black (0,0,0) in RGB.Two RGB colors can be visually practically identical but differ in value standard, or distance to a reference color, as well as two different colors have the same norm so it is not recommended to use this strategy. In the L*a*b space there is a defined distance measure, about the origin $L=0$, $a=0$ and $b=0$ which it is widely used for the evaluation of the quality of reproduction in color, or in techniques of understanding of color images. \cite{tremeau1998analyse}.   
+
+Other types of arrangement seeking the extension of lexicographic ordering is to use a parameter $\alpha$  defined by the user so as to modify the degree of influence of the first componente \cite{ortiz2002procesamiento,angulo2005unified}. Even with the changes in the lexicographic ordering, the criteria for choosing which component will have higher priority in the comparison, and the value $\alpha$ are usually arbitrary. Gao et. al. \cite{gao2013adaptive} tries to solve this problem by presenting an approach of adaptive lexicographic ordering. 
+In order to avoid the most subjective user intervention, it would be of great importance that the arbitrary criteria of lexicographic order and its variants can be eliminated or reduced.
+
+
+Bouchet et. to the. \Cite{bouchet2016fuzzy} uses fuzzy logic so that the three color components have the same weighting in the sorting, although it is desirable that the priority of the components of the vector representing the image are audited self-image information, not being exactly the same in all cases. Benavent et. al. \cite{benavent2012mathematical} presents a sorting method that is dependent of the image and ordering the colors according to the probability density of the appearance of colors in the image.
+
+The main difference of this proposal, with those presented in the state of art, is the extraction of information for each component of RGB color in a specific domain image. This information is extracted by a vector of weights which are previously calculated by a function applied to each of the RGB components of the color.
 
 
 
-Angulo \cite{angulo2005morphological} y  Sartor et. al. \cite{sartor2001morphological} ubican en la primera posici\'on de la cascada lexicogr\'afica una medida de distancia a un vector de referencia. Comer et. al. \cite{comer1999morphological} emplean la norma euclidea como método de ordenación de pixeles, es decir el píxel de referencia es el color negro (0,0,0) en RGB. Dos colores RGB pueden ser pr\'acticamente iguales visualmente pero ser diferente en valor de norma, o distancia a un color de referencia, as\'i como dos colores distintos tener la misma norma, por lo que no es recomendable utilizar esta estrategia. En el espacio L*a*b existe una medida de distancia definida, respecto al origen $L=0$, $a=0$ y $b=0$ que es muy utilizada para evaluación de la calidad de la reproducción en color, o en técnicas de comprensión de imágenes a color \cite{tremeau1998analyse}.   
-
-Otros tipos de ordenamiento que buscan la extensi\'on del ordenamiento lexicogr\'afico consiste en utilizar un par\'ametro $\alpha$ definido por el usuario de manera a modificar el grado de influencia del primer componente \cite{ortiz2002procesamiento,angulo2005unified}.  A\'un con las variaciones del ordenamiento lexicogr\'afico, los criterios de la elecci\'on de cu\'al componente tendr\'a mayor prioridad en la comparaci\'on, y del valor $\alpha$ son en su mayoria arbitrarios. Gao et. al. \cite{gao2013adaptive} trata de solucionar este problema presentando  un enfoque de ordenamiento lexicogr\'afico adaptativo. 
-Con el objetivo de evitar al m\'aximo la intervenci\'on subjetiva del usuario, ser\'ia de gran
-importancia que los criterios arbitrarios del orden lexicogr\'afico y sus variantes puedan ser eliminados o disminuidos.
-
-
-Bouchet et. al. \cite{bouchet2016fuzzy} utiliza l\'ogica difusa de manera que los 3 componentes de color tengan la misma ponderaci\'on en el ordenamiento, aunque es deseable que la prioridad de los componentes del vector que representa la imagen esten dictaminados por informaci\'on propia de la imagen, no siendo exactamente igual en todos los casos. Benavent et. al. \cite{benavent2012mathematical} presenta un m\'etodo de ordenamiento que es dependiente de la imagen y que ordena los colores de acuerdo a la densidad de probabilidad de la aparici\'on de colores de la imagen. 
-
-La diferencia principal de esta propuesta, con los presentados en el estado del arte, radica en la extracci\'on de informaci\'on de cada componente del color RGB en un dominio espec\'ifico de la imagen. Esta informaci\'on se extrae por medio de un vector de pesos, que son calculados previamente por una funci\'on aplicada a cada uno de los componentes del color RGB. 
-
-
-
-\section{Fundamentos de filtrado de imagen a color}
+\section{Fundamentals of color image filtering}
 \label{Teo}
 
-En esta sección se presentan las formulaciones formales de los conceptos teóricos detrás de la extensión de los filtros de orden para imágenes a color, ordenamiento vectorial y la matemática morfológica. 
+This section presents the formal formulations of the theoretical concepts behind the extension order filters for color images, vector arrangement and morphological mathematics.
 
-\subsection{Im\'agenes RGB}
+\subsection{RGB images}
 
-En general, una imagen es una funci\'on $f:\mathbb{Z}^2 \rightarrow \mathbb{Z}^n$.  Cada par $(u,v) \in \mathbb{Z}^2$ es un pixel, y $f(u,v) \in \mathbb Z^n $ es el color de la imagen en el pixel $(u,v)$. En particular, una imagen RGB (rojo, verde y azul, por sus siglas en inglés) con una profundidad de color de k bits es, $f(u,v) = (R,G,B)$, donde $R,G,B \in \{0,1,...,2^k-1\}$ es la intensidad del componente y $f(u,v)$ es el color resultante de mezclar estos componentes en el pixel $(u,v)$. %Si el vector $\mathbb Z^3$ es una tripleta correspondiente a los componenetes rojo, verde y azul, la imagen $f$ es llamada imagen  RGB.
-La imagen $f$ puede representarse de manera digital como un arreglo $M \times N \times 3$ , donde cada pixel $(u,v)$ tiene como valor una tripleta $(R,G,B)$ \cite{gonzales2004digital}. Una imagen RGB puede ser vista como una ``pila'' de tres im\'agenes en escala de grises (ver Figura \ref{fig:ImagenRGB}) que, cuando se alimenta a las entradas de color rojo, verde y azul del monitor de color, produce una imagen de color en la pantalla \cite{gonzales2004digital}.
+In general, an image is a function $f:\mathbb{Z}^2 \rightarrow \mathbb{Z}^n$. Ech pair $(u,v) \in \mathbb{Z}^2$ is a pixel, and $f(u,v) \in \mathbb Z^n $ is the color image in the pixel $(u,v)$. In particular, a RGB image (red, green and blue) with a color depth of k bits is, $f(u,v) = (R,G,B)$, where $R,G,B \in \{0,1,...,2^k-1\}$ is the intensity of the component and $f(u,v)$ is the color resulting from mixing these components in the pixel $(u,v)$. %Si el vector $\mathbb Z^3$ es una tripleta correspondiente a los componenetes rojo, verde y azul, la imagen $f$ es llamada imagen  RGB.
+The image $f$ can digitally presented as an array $M \times N \times 3$ , where each pixel $(u,v)$ has as its value a triplet $(R,G,B)$ \cite{gonzales2004digital}. An RGB image can be seen as a ``stack'' of three images in grayscale (see Figure \ref{fig:ImagenRGB}) that, when fed to the red, green and blue entries of the color monitor, produces a color image on the screen \cite{gonzales2004digital}.
 
 
 \begin{figure}[htbp]
@@ -280,34 +255,34 @@ La imagen $f$ puede representarse de manera digital como un arreglo $M \times N 
 
 
 
-\subsection{Filtrado  de im\'agenes}
-El filtrado de im\'agenes abarca todas las t\'ecnicas dentro del procesamiento de im\'agenes, que a partir de una imagen de entrada, se obtenga otra imagen donde se elimine, se enfatice o resalte algunas caracter\'isticas de la imagen de entrada. 
-Un filtro $F$ de una imagen digital a color $f$ se puede expresar como:
+\subsection{Image filtering}
+Image filtering covering all techniques in the processing of images, that from an input image, another image is obtained in which is remove, emphasize or highlight some features of the input image. 
+A filter $F$ of a digital image color $f$ can be expressed as:
 
 \begin{equation}
 \label{Filtrado} 
       g(u,v) = F\{f(u,v)\}
 \end{equation}
-donde $f(u,v)$ es un color de la imagen de entrada, $g(u,v)$ es un color de la imagen de salida y $F$ es el filtro definido sobre una ventana del pixel $(u,v)$.
+where $f(u,v)$ is a color of the input image, $g(u,v)$ is a color of the image output and $F$ is the filter defined over a window of the pixel $(u,v)$.
 
 
-Los filtros de orden son operaciones de vecindad no lineal, donde una funci\'on es aplicada al vecindario de cada pixel. La idea es mover una ventana centrada en el pixel, ya sea un rectangulo (usualmente un rectangulo con lados impares) o otra forma sobre una imagen dada. Al hacer esto, creamos una nueva imagen cuyo p\'ixeles son el resultado de obtener un valor de los los colores bajo la m\'ascara previamente ordenados (Figura \ref{fig:Filt}). 
+Order filters are operations nonlinear neighborhood, where a function is applied to each pixel neighborhood. The idea is to move a window centered on the pixel, either a rectangle (usually a rectangle of odd sides) or other shape on an image given. By doing this, we create a new image whose pixels are the result of obtaining a value of the color under the mask presorted (Figure \ref{fig:Filt}). 
 
 
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[scale=0.5]{fig/Filt.jpg}
-	\caption{Filtrado de la imagen digital.}
+	\caption{Digital image filtering.}
 	\label{fig:Filt}
 \end{figure}
 
 
 
-Por ejemplo un pixel de la nueva imagen puede ser resultado de obtener la mediana, el m\'inimo o m\'aximo de los colores ordenados en la ventana de la imagen procesada.  
-La combinaci\'on de la ventana y la funci\'on es llamada filtro. 
+For example, a pixel of the new image can be a result of obtaining the median, minimum or maximum of the colors arranged in the window of the processed image.  
+The combination of the window and the function is called filter. 
 
-\subsection{Ordenamiento}
-El concepto de orden juega un rol fundamental para utilizar un filtro de orden, o poder definir las operaciones b\'asicas de la matem\'atica morfol\'ogica. Para un estudio profundo de la teor\'ia de orden el lector puede ver \cite{serra1993anamorphoses}.
+\subsection{Sorting}
+The concept of order plays a important role to use a filter order, or to define the basic operations of mathematical morphology. For a thorough study of the theory of order the reader can see \cite {serra1993anamorphoses}.
 
 %Una relaci\'on binaria $\leq$ en un dominio $D$ se llama:
 
@@ -321,23 +296,23 @@ El concepto de orden juega un rol fundamental para utilizar un filtro de orden, 
   
 %La estructura en un espacio de color est\'a dada por un ret\'iculo completo. Un ret\'iculo completo ${\cal L}$ es un conjunto no vac\'io con orden parcial  ${\cal R} $ tal que cualquier subconjunto no vac\'io  ${\cal P}$ de  ${\cal L}$ tiene un \'infimo  y tiene un supremo. 
 
-De acuerdo con el art\'iculo \cite{barnett1976ordering} las t\'ecnicas de ordenamiento vectorial se pueden clasificar en los siguientes grupos:
+According to the article  \cite{barnett1976ordering}, ordering vector arrangement techniques can be classified into the following groups:
 \begin{itemize}
-\item Ordenamiento marginal (Ordenamiento M): El ordenamiento marginal compara cada componente del color de manera independiente.
-\item Ordenamiento condicional (Ordenamiento C): Los vectores son ordenados por medio de algun componente marginal, seleccionado secuencialmente de acuerdo con diferentes condiciones. El orden lexicogr\'afico es un ejemplo bastante conocido de Ordenamiento C que emplea todos los componentes disponibles de los vectores dados.
-\item Ordenamiento Parcial (Ordenamiento P): Este ordenamiento est\'a basado en la partici\'on de los vectores en grupos de equivalencia, tal que entre los grupos existe un orden. En este caso, ``parcial'' es un abuso de terminolog\'ia, ya que hay ordenamientos totales que pertenecen a esta clase en particular. 
-\item Ordenamiento Reducido (Ordenamiento R): Los vectores se reducen primeramente a valores escalares y luego clasificados de acuerdo a su orden escalar natural. Por ejemplo, un ordenamiento R en $\mathbb{Z}^n$ podr\'ia consistir en definir primero una transformaci\'on $T:\mathbb{Z}^n\rightarrow \mathbb{R}$ y luego ordenar los colores con respecto al orden escalar de su proyecci\'on en $\mathbb{Z}^n$ por $T$.
+\item Marginal Sorting (M Sorting): The marginal arrangement compares each color component independently.
+\item Conditional Sorting (C Sorting ): The vectors are sorted by some marginal component selected sequentially according to different conditions. The lexicographic order is a well-known example of C Sorting  employing all available components of the given vectors.
+\item Partial Sorting (P Sorting): This ordering is based on the partition of the vectors in groups of equivalence such that  between groups there exist an order. In this case, "partial'' is an abuse of terminology, as there are total ordering that belong to this particular class. 
+\item Reduced Sorting (R Sorting): The vectors are first reduced to scalar values and then classified according to their naturally scalar order. For example, a R ordering in  $\mathbb{Z}^n$ could be first define a transformation $T:\mathbb{Z}^n\rightarrow \mathbb{R}$ and then sort the colors with respect to the scalar order of his projection in $\mathbb{Z}^n$ by $T$.
 \end{itemize}
 
-En la pr\'actica hay dos m\'etodos generales de procesamiento para im\'agenes a color: marginal y vectorial.
+In practice there are two general methods for processing color images: marginal and vectorial.
 
-El procesamiento marginal consiste en el procesamiento por separado de cada componente de la imagen. A pesar de su sencillez, el procesamiento marginal tiene dos desventajas \cite{aptoula2007comparative}: 
+The marginal processing consists in the separate processing of each component of the image. Despite its simplicity, the marginal processing has two disadvantages \cite{aptoula2007comparative}: 
 \begin{itemize}
-    \item La correlaci\'on entre los componentes es totalmente ignorado.
-    \item Crea falsos colores despu\'es de su procesamiento.
+    \item The correlation between components is completely ignored.
+    \item Creates false colors after processing.
 \end{itemize}
 
-La utilizaci\'on del procesamiento marginal es inadecuado para im\'agenes con componentes altamente correlacionados (por ejemplo, im\'agenes de color RGB) \cite{astola1990vector}. Por tal motivo este trabajo se concentrar\'a en el procesamiento vectorial que se explicar\'a a continuaci\'on. 
+The use of marginal processing is inadequate for images with highly correlated components (eg RGB color images) \cite{astola1990vector}. Therefore this work focuses on the vectorial processing will be explained below. 
 
 %\begin{figure}
 %	\centering
@@ -346,31 +321,31 @@ La utilizaci\'on del procesamiento marginal es inadecuado para im\'agenes con co
 %	\label{fig:resultado}
 %\end{figure}
 
-El procesamiento vectorial procesa todos los componentes disponibles globalmente y de forma simult\'anea.
-Dado que los vectores (forma en que se representa un color) son considerados como los nuevas unidades de procesamiento, la correlaci\'on entre los diferentes componentes ya no es ignorada. Sin embargo, en comparaci\'on con su contraparte marginal, el inconveniente m\'as importante del enfoque vectorial es principalmente la necesidad de adaptar los algoritmos existentes con el fin de acomodar a datos vectoriales \cite{aptoula2007comparative}. 
+The vector processing processes all available globally and simultaneously components.
+Since vectors (way representing a color) are considered as the new processing units, the correlation between the different components is no longer ignored. However, compared to its counterpart marginal, the most significant drawback of the approach vectorial is mainly the need to adapt existing algorithms in order to accommodate vectorial data \cite{aptoula2007comparative}. 
 
 
-El procesamiento vectorial puede tener dos enfoques:
+The vectorial processing can have two approaches:
  
 \begin{itemize}
-    \item El enfoque basado en relaci\'on de pre-orden.
-    \item El enfoque basado en relaci\'on de orden.
+    \item Based on the preorder relationship .
+    \item Based on the order relationship 
 \end{itemize}
 
-El enfoque basado en relaci\'on de pre-orden, es el conjunto de enfoques que no cumplen la propiedad antisim\'etrica.  As\'i colores distintos eventualmente pueden llegar a ser equivalentes. De manera a resolver las ambiguedades existentes, es necesario medidas adicionales. El m\'etodo principal de ordenamiento de este enfoque est\'a basado en el Ordenamiento Reducido (Ordenamiento R), donde los colores son reducidos a valores escalares correspondientes a su norma, o distancia a alg\'un color de referencia. 
+The approach based on relationship preorder,  is the set of approaches that do not comply the antisymmetric property.  Thus different colors can eventually become equivalent. So to resolve existing ambiguities, additional action are necessary. The main method of sorting of this approach is based on the Reduced Sorting (R Sorting ), where colors are reduced to scalar values corresponding to his norm, or the distance to a some reference color. 
 
 
-El enfoque basado en relaci\'on de orden, a su vez puede ser parcial o total. Si la relaci\'on es parcial, existir\'an colores que no podr\'an ser comparados. 
+The approach based on order relationship, in the same way can be partial or total. If the relationship is partial, there will be colors that they can not be compared. 
 
-La relaci\'on de orden total presenta dos principales ventajas. Primero, todos los colores son comparables, y segundo, no existen colores distintos que pueden ser equivalentes. Debido a esto, la mayor\'ia de los trabajos est\'an basados en enfoques de relaci\'on de orden total \cite{aptoula2007comparative}. En particular, el orden lexicogr\'afico (Ordenamiento C), junto con sus variantes se encuentra entre las opciones m\'as implementadas.  
+The total order relation has two main advantages. First, all colors are comparable, and second, there are no distinct colors that can be equivalent. Because of this, most works are based on approaches of total order relation. \cite{aptoula2007comparative}. In particular, the lexicographical order ( C Sorting ), along with its variants is among the most widely deployed options.  
  
 
 
-\subsection{Matem\'atica morfol\'ogica}
+\subsection{Morphological mathematics}
 
-Las operaciones de matemática morfológica están basadas en dos operadores básicos: erosión y dilatación. Ambos operadores son filtros que se pueden definir a partir del m\'inimo y el m\'aximo dentro de una ventana llamada elemento estructurante \cite{serra1986introduction}. A partir de la erosi\'on y la dilataci\'on se puede extender toda la matem\'atica morfol\'ogica. Los operadores morfol\'ogicos deben de cumplir ciertas propiedades de manera teórica, como ser anti-extensivo o extensivo, idempotentes, homot\'opicos y crecientes \cite{serra1986introduction}.
+Mathematical morphological operations are based on two basic operators: dilatation and erosion. Both operators are filters that can be defined from the minimum and maximum within a window called structuring element \cite{serra1986introduction}. From erosion and dilation can extend all the morphological mathematics. Morphological operators must comply certain theoretically properties, such as anti-extensive or extensive, idempotent, homotopic and growing \cite{serra1986introduction}.
 
-Dada una imagen digital $f$ y una ventana $B$, llamada elemento estructurante. La erosi\'on ($\varepsilon$) y la dilataci\'on ($\delta$) de la imagen $f$ por $B$ puede expresarse como:
+Given a digital image $f$ and $B$ window, called structuring element. The erosion ($\varepsilon$) and the dilation ($\delta$) of the image $f$ by $B$ can be expressed as:
 
 \begin{equation}
 \varepsilon(f,B)(u,v)  = \min_{(s,t) \in B} \{f(u-s,v-t) + B(s,t) \}
@@ -380,7 +355,7 @@ Dada una imagen digital $f$ y una ventana $B$, llamada elemento estructurante. L
 \delta(f,B)(u,v)  =  \max_{(s,t) \in B} \{f(u+s,v+t) - B(s,t) \}
 \end{equation}
 
-Denotamos $\delta(f,B)$ y $\varepsilon(f,B)$ como la dilataci\'on y la erosi\'on respectivamente para todos los pixeles $(u,v)$ de la imagen $f$. La combinación de la erosión y dilatación produce otros operadores como la apertura y el cierre. La apertura suaviza las regiones brillantes de la imagen. El cierre suaviza las zonas oscuras de la imagen. La apertura $\circ$ y el cierre $\bullet$ de $f$ por $B$ son definidas basadas en dilataci\'on y erosi\'on como sigue:
+We called $\delta(f,B)$ and $\varepsilon(f,B)$ as dilation and erosion respectively for all pixels $(u,v)$ of the image $f$. The combination of erosion and dilation produces other operators such as opening and closing. The opening softens the bright regions of the image. The closure softens the dark areas of the image. The opening $\circ$ and the closing $\bullet$ of $f$ by $B$ are defined based on dilation and erosion as follows:
 
 \begin{equation}
 f\circ B = \delta(\varepsilon(f,B),B),
@@ -390,8 +365,8 @@ f\circ B = \delta(\varepsilon(f,B),B),
 f\bullet B = \varepsilon(\delta(f,B),B).
 \end{equation}
 
-Basado en la apertura y el cierre, se define la transformada top-hat. La transformada top-hat clara ($WTH$) podría extraer regiones brillantes de la imagen y la transformada top-hat oscura ( $BTH$ )
-podría extraer zonas oscuras. Las transformadas $WTH$ y $BTH$ son definidas para una imagen $f$ como sigue:
+Based on the opening and closing is defined the top-hat transform. The clear top-hat transform ($WTH$) could extract bright regions of the image and the dark top-hat transform ( $BTH$ )
+could extract dark areas . The transformed $WTH$ and $BTH$ are defined for an image $f$ as follows:
 
 \begin{equation}
 WTH(f) = f - f\circ B,
@@ -401,97 +376,100 @@ WTH(f) = f - f\circ B,
 BTH(f) = f\bullet B - f. 
 \end{equation}
 
-La extensi\'on de la matem\'atica morfol\'ogica imágenes a color es todav\'ia un problema abierto \cite{aptoula2007pseudo}, principalmente por el incoveniente de que no existe un orden natural entre los vectores, y que los colores pueden representarse de diversas formas (formando distintos espacios de color). Al no exister un orden natural entre los colores, no es sencillo definir los operadores básicos de erosión y dilatación.  
+The extent of the mathematical morphological color images is still an open problem \cite{aptoula2007pseudo}, mainly by the drawback that not exist a natural order between vectors, and that colors can be represented in different ways (forming different color spaces). In the absence of a natural order between colors it is not easy to define the basic operators of erosion and dilation.  
 
-En la siguiente secci\'on se presenta una estrategia de ordenamiento de colores RGB, teniendo en cuenta m\'etricas extraidas de cada componente de color, de manera a establecer ponderaciones de los componentes a partir de informaci\'on propia de la imagen.
+The following section presented  an ordering strategy of RGB colors, given metric extracted from each color component, so as to establish weights to components from own image information.
 
 
 
- \section{Ordenamiento propuesto}
+ \section{Proposed Sorting}
 
-A partir de la imagen RGB se define la función histograma, la cual corresponde a la distribución de frecuencia de los valores que puede tomar una imagen $f$, ya sea en un plano o en 3 dimensiones (R, G, B).  El histograma del j-ésimo componente de la imagen a color $f$ (R, G o B) es una funci\'on discreta $h_{f_j}^{D}$ definida como:% $h:\{0,1,\dots,t_{max}\}\times \{C_1,C_2,\dots,C_n\}\rightarrow \mathbb N$ definida como:
+A histogram function is defined from the RGB image, which corresponds to the frequency distribution of the values that can take a picture $f$, either in a plane or in three dimensions (R, G, B). The histogram of the j-th component of the color image $f$ (R, G o B) is a discrete function $h_{f_j}^{D}$ defined as:% $h:\{0,1,\dots,t_{max}\}\times \{C_1,C_2,\dots,C_n\}\rightarrow \mathbb N$ definida como:
 
 \begin{equation}
 \label{histograma}
    h_{f_j}^{D}(i) = n_i,
 \end{equation} 
-donde ${i}$ representa el $i-esimo$ nivel de intensidad en el rango $\{0,1,...,2^k-1\}$ del componente $j$, y $n_i$ es el n\'umero de pixeles en la imagen $f$ cuyo nivel de intensidad es $i$ en el componente $j$ dentro del dominio $D$ (subconjunto de pixeles $(u,v)$ dentro de la imagen $f$).
+where ${i}$ represents the $i-esimo$ intensity level in the range $\{0,1,...,2^k-1\}$ 
+of the component $j$, and $n_i$ is the number of pixels in the image $f$ whose intensity level is $i$ in the component $j$ 
+within the domain $D$ (subset of pixels $(u,v)$ inside the image $f$).
 
-La probabilidad de aparici\'on $p_{f_j}^{D}(i)$ de cada nivel de intensidad $i$ en el componente $j$ de la imagen $f$ dentro del dominio $D$ es definida como:
+The probability of occurrence $p_{f_j}^{D}(i)$ of each level of intensity $i$ in the component $j$ of the image $f$ in the domain $D$ is defined as:
 \begin{equation}
 \label{probabilidad}
    p_{f_j}^{D}(i) = \frac{h_{f_j}^{D}(i)}{n},
 \end{equation} Donde $n = n_0 + n_1 + ... + n_{255}$, es decir la cantidad total de pixeles de la imagen $f$ dentro del dominio $D$. 
 
-De manera a evitar darle la mayor prioridad a un componente del vector que representa el color, se ubica un nuevo valor en la primera posici\'on de la cascada lexicogr\'afica correspondiente a una transformaci\'on obtenida a partir de m\'etricas asociadas a cada componente $(R,G,B)$.
-Los colores RGB son reducidos a un valor escalar. Para tal efecto, se define primero una transformaci\'on $T:\mathbb{Z}^3 \rightarrow \mathbb{R}$ y luego se ordena los colores con respecto al orden escalar de su proyecci\'on en $\mathbb{Z}^3$ por $T$.
-La reducci\'on de un color $
-C=(C_1,C_2,C_3)$ se consigue por medio del producto interno del color $C$ con un vector de pesos $w=(w_1,w_2,w_3) $, es decir:
+So to avoid giving the highest priority to a component of the vector representing the color, a new value $(R,G,B)$ in the first position of the corresponding lexicographical cascade transformation obtained from metric associated to each component is placed.
+RGB colors are reduced to a scalar value. For this purpose, is first defined a transformation $T:\mathbb{Z}^3 \rightarrow \mathbb{R}$ and then ordered te colors with respect to the order of his scalar projection in $\mathbb{Z}^3$ by $T$.
+A $
+C=(C_1,C_2,C_3)$ color reduction is achieved through of the color inner product $C$ with a $w=(w_1,w_2,w_3) $ weights vector, that is to say:
 
 \begin{equation}
 \label{Transformacion}
 T(C)= \sum_{l=1}^3(w_l \times C_l)
 \end{equation}  
-donde $l$ es el \'indice del componente del color $C$ y $w_l \in \mathbb{R}$. 
+wheree $l$ is the color component index $C$ and $w_l \in \mathbb{R}$. 
 
-Dos colores, $C=(C_1,C_2,C_3)$ y $C'=(C_1^{'},C_2^{'},C_3^{'})$, con $C\neq C'$, pueden tener la misma transformaci\'on, es decir $T(C) = T(C')$.  Por lo tanto, la transformaci\'on se utiliza como primer componente del orden lexicogr\'afico:
+Two colors, $C=(C_1,C_2,C_3)$ and $C'=(C_1^{'},C_2^{'},C_3^{'})$, with $C\neq C'$, may have the same transformation, that is to say $T(C) = T(C')$.  Therefore, the transformation is used as the first component of the lexicographical order:
 
 \begin{equation}
 \label{Mio} 
  C\leq C'\Leftrightarrow [T(C),C_1,C_2,C_3] \leq_L [T(C'),C_1^{'},C_2^{'},C_3^{'}]
-\end{equation} donde $\leq_L$ indica la relación $\leq$ según el orden lexicográfico.	
+\end{equation} wheree $\leq_L$ shows the relationship $\leq$ according to the lexicographical order.	
 
-Oportunamente, despu\'es de la transformaci\'on se podr\'ia variar el orden de prioridad de los componentes de color.
-Los valores del vector $w$ son obtenidos de aplicar una funci\'on $\phi \in \mathbb{R}$ sobre el histograma de cada componente en un dominio $D$ de la imagen $f$, es decir $w_1 = \phi(h_{f_1}^D)$, $w_2 = \phi(h_{f_2}^D)$, $w_3 = \phi(h_{f_3}^D)$, con $f_1$ = componente $R$, $f_2$ = componente $G$ y $f_3$ =  componente $B$.
+Opportunely, could vary the order of priority of the color components after the transformation.
+Vector values of $w$ are obtained by applying a function $\phi \in \mathbb{R}$ on the histogram of each component in a domain $D$ of the image $f$, that is to say $w_1 = \phi(h_{f_1}^D)$, $w_2 = \phi(h_{f_2}^D)$, $w_3 = \phi(h_{f_3}^D)$, with $f_1$ = component $R$, $f_2$ = component $G$ y $f_3$ =  component $B$.
 
-La funci\'on $\phi$ puede ser obtenida a tr\'aves de aplicarle cualquier m\'etrica (por ejemplo estad\'istica) al histograma de cada componente  $(R,G,B)$, de manera de darle mayor peso a aquel componente cuya m\'etrica tenga mayor valor en un dominio $D$ espec\'ifico (puede ser toda la imagen o parte de la misma). 
+The function $\phi$ can be obtained from applying any metric (statistical, for example) to the histogram of each component $(R,G,B)$, so as to give greater weight to that component whose metric has greater value in a specific domain $D$ (can be the entire image or part of it). 
 
- \section{Resultados experimentales}
+ \section{Experimental results}
 
-En esta secci\'on se llevar\'a a cabo una serie de pruebas comparativas, con el fin de medir los rendimientos relativos de diferentes m\'etodos de ordenamiento del estado del arte junto al  ordenamiento propuesto, en tres aplicaciones de procesamiento de im\'agenes. Las aplicaciones seleccionadas fueron la eliminaci\'on de ruido, estiramiento de contraste y caracterización texturas para su posterior clasificación.
-M\'as precisamente los m\'etodos de ordenamiento que participaron de las diferentes pruebas fueron:
-el ordenamiento lexicogr\'afico cl\'asico, el ordenamiento $\alpha$-lexicogr\'afico \cite{zamora2001comparative}, el ordenamiento $\alpha$-modulo lexicogr\'afico \cite{angulo2003morphological}, ordenamiento lexicogr\'afico I→H→S, $(Href=0º)$ \cite{ortiz2004gaussian}, la distancia euclidiana al color $(0,0,0)$ en el espacio de color L*a*b* y RGB \cite{ortiz2002procesamiento}, y el entrelazado de bits \cite{chanussot1997bit}. 
-Todas las im\'agenes utilizadas en las diferentes pruebas fueron de $8$ bits. 
+This section will hold a series of comparative tests, in order to measure the relative performance of different ordering methods of the state of the art together with the proposed ordering, in three image processing applications. The selected applications were noise removal, contrast stretching and characterization textures for subsequent classification.
+More precisely, the ordering methods involving in the tests were:
+the classic lexicographical ordering, the ordering $\alpha$-lexicographical \cite{zamora2001comparative}, the ordering $\alpha$-module lexicographical \cite{angulo2003morphological}, I→H→S lexicographical ordering, $(Href=0º)$ \cite{ortiz2004gaussian}, the euclidean distance to color $(0,0,0)$ in the color space L*a*b* and RGB \cite{ortiz2002procesamiento}, 
+and the bit interlaced \cite{chanussot1997bit}. 
+All images used on different tests were of $8$ bits. 
 
-La funci\'on $\phi$ aplicada al histograma de cada componente $j$ de la imagen $f$ en todas las pruebas son:
+The function $\phi$ applied to the histogram of each component $j$ of the image $f$ in all tests are:
 
 \begin{itemize}
-    \item Promedio ($Me$): Es la sumatoria de todos los niveles de intensidades $i$ que aparecen en el dominio $D$ sobre la cantidad total $n$ de pixeles que se encuentran en $D$:
+    \item Average ($Me$): Is the sum of all intensity levels $i$ listed in the domain $D$ divided the total amount $n$ of pixels that are in $D$:
 		
 \begin{equation}
 \label{promedio}
    Me(h_{f_j}^D) = \sum_{i=0}^{255}\frac{i\times h_{f_j}^D(i)}{n},
 \end{equation}		
-Donde $n = n_0 + n_1 + ... + n_{255}$.
+Where $n = n_0 + n_1 + ... + n_{255}$.
 
-    \item M\'inimo($Min$): es el menor nivel de intensidad $i$ en el dominio $D$:
+    \item Minimum ($Min$): is the lowest level of intensity $i$ in the domain $D$:
 \begin{equation}
 \label{minimo}
 	Min(h_{f_j}^D) = \min\{i|h_{f_j}^D(i)>0\}
 \end{equation}		
-		\item M\'aximo($Max$): es el mayor nivel de intensidad $i$ en el dominio $D$:
+		\item Maximum($Max$): is the highest level of intensity $i$ in the domain $D$:
 \begin{equation}
 \label{maximo}
    Max(h_{f_j}^D) = \max\{i|h_{f_j}^D(i)>0\}
 \end{equation}		
- 		\item Moda Minimo ($minM_o$): es el menor nivel de intensidad $i$ que aparece m\'as veces en el dominio $D$, es decir el menor nivel de intensidad $i$ que tiene mayor $p_{f_j}^{D}(i)$:
+ 		\item Moda Minimum ($minM_o$): is the lowest level of intensity $i$ that appears more times in the domain $D$, that is the lowest level of intensity $i$ which has greater $p_{f_j}^{D}(i)$:
 \begin{equation}
 \label{ModaMinimo}
    minM_o(h_{f_j}^D) = \min\{i|h_{f_j}^D(i) \geq h_{f_j}^D(i'), \forall i\neq i'\}
 \end{equation}		
-\item Moda M\'aximo ($maxM_o$): es el mayor nivel de intensidad $i$ que aparece m\'as veces en el dominio $D$, es decir el mayor nivel de intensidad $i$ que tiene mayor $p_{f_j}^{D}(i)$:
+\item Moda Maximum ($maxM_o$): is the highest level of intensity $i$ that appears more times in the domain $D$, that is the highest level of intensity $i$ which has greater $p_{f_j}^{D}(i)$:
 \begin{equation}
 \label{ModaMinimo}
    maxM_o(h_{f_j}^D) = \max\{i|h_{f_j}^D(i) \geq h_{f_j}^D(i'), \forall i\neq i'\}
 \end{equation}				
     
 		
-		\item Varianza ($Var$): es la varianza de los niveles de intensidad $i$ en el dominio $D$:
+		\item Variance ($Var$): is the variance of intensity levels $i$ in the domain $D$:
   \begin{equation}
 \label{varianza}
    Var(h_{f_j}^D) = \sum_{i=0}^{255}\frac{h_{f_j}^D(i)\times(i - Me(h_{f_j}^D))^2}{n}
 \end{equation}		
-		\item Suavidad($R$): Medida de suavidad relativa de la intensidad en el dominio $D$:
+		\item Smoothness($R$): Measure of relative softness intensity in the domain $D$:
  \begin{equation}
 \label{Suavidad}
    R(h_{f_j}^D) = 1-\frac{1}{1+Var(h_{f_j}^D)}
@@ -501,35 +479,32 @@ Donde $n = n_0 + n_1 + ... + n_{255}$.
 \end{itemize}
 
 
-Un par\'ametro a ser definido es el dominio a ser tenido en cuenta para el c\'alculo
-de los pesos $w_l$. Las distribuciones de dominio que fueron empleadas para las diferentes aplicaciones son explicadas a continuaci\'on.
+A parameter to be defined is the domain to be considered for the calculation of the weights $w_l$. Domain distributions were used for different applications are discussed below.
 
-\subsection{Vecindario como Dominio}
+\subsection{Neighborhood as Domain}
 
 
-El dominio $D$ donde se aplica la funci\'on $\phi$ aplicada al histograma de cada componente $h_{f_j}^D$ es la propia ventana $B$ (llamado elemento estructurante para matem\'atica morfol\'ologica) donde se hace la operaci\'on del filtro no lineal. En la Figura \ref{fig:Ventana B} se puede observar un dominio $D$ correspondiente a un vecindario $B$ de tama\~no 3 $\times$ 3 centrado en el pixel $(u,v)$.
+The domain $D$ where the function $\phi$  is applied  (applied to the histogram of each component $h_{f_j}^D$) is the window itself $B$ (called structuring element for morphological mathematics) where the operation of the nonlinear filter is applied. In the figure \ref{fig:Ventana B} can see a domain $D$ corresponding to a neighborhood $B$ of 3 $\times$ 3 size centered in the $(u,v)$ pixel .
 
 \begin{figure}
 	\centering
 		\includegraphics[width=0.3\textwidth]{fig/VentanaB.jpg}
-	\caption{Vecindario $B$ de tama\~no 3 $\times$ 3 centrado en el pixel $(u,v)$ }
+	\caption{$B$ Neighborhood of size 3 $\times$ 3 centered in the pixel $(u,v)$ }
 	\label{fig:Ventana B}
 \end{figure}
 
-\subsection{Divisi\'on de la imagen en sub-regiones}
+\subsection{Division of the image into subregions}
 
-La imagen $f$ se divide en sub-regiones $W_1,W_2,\dots W_{x}$, de manera a obtener informaci\'on local de  la imagen. 
-
-Sea $B$ una ventana o  elemento estructurante, el dominio $D$ correspondiente a la ventana $B$ centrada en $(u,v)$ es el conjunto de sub-regiones $W_{\{1,2,...,x\}}$, que tocan alg\'un pixel de $B$.
+The image $f$ is divided into subregions $W_1,W_2,\dots W_{x}$, so as to obtain local information from the image.
+Let $B$ a window or structuring element, the domain $D$ corresponding to the window $B$ centered on $(u,v)$ is the set of subregions $W_{\{1,2,...,x\}}$,that touch some pixel of $B$.
 %\begin{equation}
 %\label{ventana}
 %  \forall i, W_i \subseteq D_{(u,v)}\rightarrow \exists  \in D_{(u,v)}:x \in W_i
 %\end{equation}   
 
-En la Figura \ref{fig:Sub-region} la imagen se divide en 4 sub-regiones: $W_1$, $W_2$, $W_3$, $W_4$.  La regi\'on delimitada por la ventana $B$ se encuentra sombreada. Como puede verse, el dominio
-$D$ sobre el cual se calcular\'an los pesos $w_l$ para $B$ ser\'a la zona correspondiente a la
-sub-region $W_1$.
-
+In the figure \ref{fig:Sub-region} the image is divided into 4 subregions: $W_1$, $W_2$, $W_3$, $W_4$.  The region delimited by the window $B$ is shaded. As you can see, the domain
+$D$ on which $w_l$ weights are calculated for $B$ will be the area corresponding to the $W_1$ sub-region .
+ 
 %\begin{figure}
 %	\centering
 %		\includegraphics{fig/ventanas.png}
@@ -538,14 +513,13 @@ sub-region $W_1$.
 %\end{figure}
 
 
-Cabe destacar que la ventana del filtro no tiene por qu\'e ser de igual
-tama\~no que las sub-regiones, como en este caso. En la Figura \ref{fig:Sub-regiones} se puede observar como el dominio $D$ de donde se calcular\'an los pesos pertenece a la uni\'on de las sub-regiones $W_1$ y $W_2$, ya que la ventana $B$ toca ambas. Esto se realiza para evitar que en el momento de la comparaci\'on dos colores  iguales puedan tener distintos valores, afectados por los pesos que vengan de dos sub-regiones distintas.  
+Note that the filter window does not have to to be of equalsized to sub-regions, as in this case. In the Figure \ref{fig:Sub-regiones} can be seen as the domain $D$ of which shall be calculated weights belong to the union of the sub-regions $W_1$ and $W_2$, as the window $B$ touches both. This is done to avoid that when comparing two identical colors may have different values, affected by the weights that come from two different subregions.  
 
 
 \begin{figure}
 	\centering
 		\includegraphics[width=0.3\textwidth]{fig/Sub-region.jpg}
-	\caption{Dominio cuando la ventana toca una sub-regi\'on}
+	\caption{Domain when the window touches one subregion}
 	\label{fig:Sub-region}
 \end{figure}
 
@@ -555,65 +529,67 @@ tama\~no que las sub-regiones, como en este caso. En la Figura \ref{fig:Sub-regi
 \begin{figure}
 	\centering
 		\includegraphics[width=0.3\textwidth]{fig/Sub-regiones.jpg}
-	\caption{Dominio cuando la ventana toca m\'as de una sub-regi\'on.}
+	\caption{Domain when the window touches more than one subregion.}
 	\label{fig:Sub-regiones}
-\end{figure} En el caso que el usuario solo seleccione tener una sub-regi\'on, es decir no dividir la imagen $f$, los pesos ser\'an calculados teniendo en cuenta toda la imagen $f$ como dominio $D$. 
-
-En nuestros pruebas, las im\'agenes de entradas de tama\~no $M \times N$ pixeles, son divididas en sub-regiones $W_{\{1,2,...,x\}}$ de $\left\lfloor\frac{M}{M'}\right\rfloor$ filas y $\left\lfloor\frac{N}{N'}\right\rfloor$ columnas, donde $\left\lfloor.\right\rfloor$ denota la funci\'on piso. De esta forma, tenemos una nueva matriz de $M'$ filas y $N'$ columnas, cuyo elemento es una sub-region $W_l$.
+\end{figure} In the case the user choose to have only one sub-region , that is not divide the image $f$, the weights will be calculated considering the whole picture $f$ as domain $D$.
 
 
+In our tests, the input images of size $M \times N$ pixels, are divided into  $W_{\{1,2,...,x\}}$ subregions of $\left\lfloor\frac{M}{M'}\right\rfloor$ rows and $\left\lfloor\frac{N}{N'}\right\rfloor$ columns, where $\left\lfloor.\right\rfloor$ denotes the floor function. Thus, we have a new matrix of $M'$ rows y $N'$ columns, whose element is a subregion $W_l$.
 
-\subsection{Aplicaci\'on 1: Eliminaci\'on de ruido}
-Ruido es un t\'ermino utilizado para denominar a las modificaciones indeseadas que puede sufrir una se\~nal de cualquier naturaleza durante su captura, almacenamiento, transmisi\'on, procesamiento o conversi\'on \cite{tuzlukov2002signal}.
 
-El ruido en im\'agenes es un producto indeseable que agrega informaci\'on err\'onea y ajena a las mismas. El ruido se presenta en las im\'agenes digitales en forma de variaciones aleatorias en el brillo o informaci\'on de color. 
-Varios modelos matem\'aticos han sido desarrollados de modo a simular la generaci\'on de los distintos 
-tipos de ruido existentes. 
-\subsubsection{Ruidos Utilizados} 
 
-Dadas una imagen de entrada $f$, la imagen $f'$ resultante de contaminar a $f$ con cierto tipo de ruido y un vector $z = (z_1, z_2, z_3)$ en el que cada elemento $z_l$  corresponde a una variable aleatoria; se define a los principales modelos de ruido como sigue:
+\subsection{Application 1: Noise Removal}
+Noise is a term used to refer to unwanted changes that may suffer a signal of any kind of nature during his capture, storage, transmission, processing or conversion \cite{tuzlukov2002signal}.
+
+Noise in images is an undesirable product that adds misinformation. Noise occurs in digital images in the form of random variations in brightness or color information. 
+Several mathematical models have been developed to simulate the generation of different types of existing noise. 
+
+\subsubsection{Used noises} 
+
+Given an input image $f$, the image $f'$ resulting from contaminating $f$ with some kind of noise and a vector $z = (z_1, z_2, z_3)$ in each element $z_l$  
+corresponds to random variable; is defined the main noise models as follows:
 
 \begin{itemize}
 	
-\item{Ruido gaussiano:}
-es un ruido estadístico aditivo con función de densidad de probabilidad gaussiana \cite{davenport1958random}. El ruido gaussiano se expresa de la siguiente forma:
+\item{Gaussian noise:}
+It is an additive  statistical noise with a gaussian density function probability  \cite{davenport1958random}. Gaussian noise is expressed as follows:
 \begin{equation}
 \label{eq:gaussian_noise}
 f'(x, y) = f(x, y) + z
 \end{equation}
-donde cada componente $z_l$ es una variable aleatoria con distribución normal, promedio $\mu$, varianza $\sigma^2$ y representa al valor de ruido agregado.
+where each component $z_l$ is a random variable with normal distribution, $\mu$ average, $\sigma^2$ variance and it represents the value of noise added.
 
-\item{Ruido speckle:}
-es un ruido multiplicativo con función de densidad de probabilidad uniforme, definido como sigue: 
+\item{Speckle noise:}
+is a multiplicative noise with a uniform density function of probability, defined as follows: 
 
 \begin{equation}
 \label{eq:speckle}
 f'(x, y) = f(x, y) + z \ast f(x, y)  
 \end{equation}
-donde el operador $\ast$ simboliza el producto Hadamard o elemento a elemento. Cada elemento $z_l$ es una variable aleatoria uniformemente distribuida con promedio $\mu$ y varianza $\sigma^2$.
+where the operator $\ast$ symbolizes the Hadamard product or element by element. Each item $z_l$ is a random variable uniformly distributed with average $\mu$ and variance $\sigma^2$.
 
-\item{Ruido sal y pimienta:}
-este ruido, a diferencia de los ruidos gaussiano y speckle, no es aditivo ni multiplicativo con respecto a los valores de la imagen original. En las imágenes afectadas con ruido sal y pimienta los valores originales son reemplazados por valores brillantes (sal) o valores oscuros (pimienta), que corresponden a impulsos dentro de la señal. 
+\item{Salt and pepper noise:}
+this noise, unlike the Gaussian and Speckle noise, is not additive and multiplicative respect to the values of the original image. In the images affected with salt and pepper noise original values are replaced by bright values (salt) or dark values (pepper), that correspond to pulses inside to the signal. 
 
-Los píxeles sal poseen el mínimo valor posible (cero) y los valores de los píxeles pimienta el máximo valor posible ($2^k - 1$, donde $k$ es la cantidad de bits utilizados para representar la intensidad de cada componente de color). El ruido sal y pimienta no afecta a todos los píxeles dentro de una imagen, como sucede con los ruidos gaussiano y speckle. La cantidad de píxeles de una imagen que son afectados por el ruido sal y pimienta depende del parámetro de probabilidad de ruido $p$, el cual se encuentra en el intervalo $[0, 1]$.
+The salt pixels have the minimum possible value (zero)  and the pixel values pepper the maximum value possible ($2^k - 1$, where $k$ is the number of bits used to represent the intensity of each color component). The salt and pepper noise does not affect all pixels within an image, as with Gaussian and Speckle noises. The number of pixels in an image that are affected by salt and pepper noise parameter depends on the probability of noise $p$, which it is in the range $[0, 1]$.
 
-El ruido sal y pimienta se modela de la siguiente forma:
+The salt and pepper noise is modeled as follows:
 \begin{equation}
 \label{eq:salt_and_pepper}
 f'(x, y)=\left\{ \begin{array}{cl}
-s & \text{, con probabilidad } p/2 \\
-r & \text{, con probabilidad } p/2 \\
-f(x, y) & \text{, con probabilidad } 1 - p \\
+s & \text{, with a probability } p/2 \\
+r & \text{, with a probability } p/2 \\
+f(x, y) & \text{, with a probability } 1 - p \\
 \end{array}\right.
 \end{equation}
-donde:\\ $s = (0, 0, 0)$ representa al ruido sal,\\ $r = (2^k - 1, 2^k - 1, 2^k - 1 )$ representa al ruido pimienta.
+where:\\ $s = (0, 0, 0)$ represents the salt noise,\\ $r = (2^k - 1, 2^k - 1, 2^k - 1 )$ represents the pepper noise.
 
 
 \end{itemize}
 
 
 
-En la Figura \ref{fig:ruido}(a) se puede observar una imagen que es contaminada con ruido gaussiano ( \ref{fig:ruido}(b)), ruido speckle (\ref{fig:ruido}(c)), con ruido sal y pimienta (\ref{fig:ruido}(d)). 
+In the Figure \ref{fig:ruido}(a) can see an image that is contaminated with Gaussian noise ( \ref{fig:ruido}(b)), speckle noise (\ref{fig:ruido}(c)), with salt and pepper noise (\ref{fig:ruido}(d)). 
 
 %\begin{figure}[htbp]
 %\centering
@@ -636,7 +612,7 @@ En la Figura \ref{fig:ruido}(a) se puede observar una imagen que es contaminada 
 		\begin{subfigure}[b]{0.4\textwidth}
 			\centering
 			\includegraphics[width=0.95\textwidth]{fig/img_gaussian_noise.jpg}
-			\caption{Imagen con ruido gaussiano ($\mu = 0; \sigma^2 = 0.05$)}
+			\caption{Image with gaussian noise ($\mu = 0; \sigma^2 = 0.05$)}
 			\label{fig:con_ruido_gaussiano}
 		\end{subfigure}
 	}\\
@@ -644,17 +620,17 @@ En la Figura \ref{fig:ruido}(a) se puede observar una imagen que es contaminada 
 		\begin{subfigure}[b]{0.4\textwidth}
 			\centering
 			\includegraphics[width=0.95\textwidth]{fig/img_speckle_noise.jpg}
-			\caption{Imagen con ruido speckle ($\mu = 0; \sigma^2 = 0.05$)}
+			\caption{Image with speckle noise ($\mu = 0; \sigma^2 = 0.05$)}
 			\label{fig:con_ruido_speckle}
 		\end{subfigure}
 			\begin{subfigure}[b]{0.4\textwidth}
 				\centering
 				\includegraphics[width=0.95\textwidth]{fig/img_salt_and_pepper_noise.jpg}
-				\caption{Imagen con ruido sal y pimienta ($p = 0.05$)}
+				\caption{Image with salt and pepper noise ($p = 0.05$)}
 				\label{fig:con_ruido_sal_y_pimienta}
 			\end{subfigure}
 	}\\
-	\caption{Imagen con diferentes tipos de ruidos.} \label{fig:ruido}
+	\caption{Image with different kinds of noises.} \label{fig:ruido}
 \end{figure*}
 
 
@@ -671,13 +647,13 @@ En la Figura \ref{fig:ruido}(a) se puede observar una imagen que es contaminada 
 
 %El valor de la varianza $\sigma^2$ para los ruidos gaussiano y speckle, as\'i como el valor de probabilidad $p$ de ocurriencia de un ruido sal o pimienta fue variando  de manera a observar como se comporta el filtro a medida que se va aumentando la cantidad de ruido.
 
-De manera a evaluar el filtro con los diferentes tipos de ordenamiento, se propone utilizar una m\'etrica utilizada en estad\'istica para medir que tan cerca est\'an los pron\'osticos o predicciones de los resultados reales \cite{willmott2005advantages}.
+So to evaluate the filter with the different types of ordering, is proposed to use a statistical metric used to measure how close they are forecasts or predictions of real results \cite{willmott2005advantages}.
 
-Dadas una imagen $f$ y su imagen filtrada $g$ de dimensiones $M \times N$ , el error absoluto promedio de la imagen filtrada est\'a dado por:
+Given an image $f$ and $g$ filtered image of $M \times N$ dimensions, the average absolute error of the filtered image is given by:
 \begin{equation}
 \label{MAE}
 MAE(f,g) = \frac{1}{3\times M\times N}\sum_{j=1}^3 d_j
-\end{equation} donde: 
+\end{equation} where: 
 
 
 \begin{equation}
@@ -692,49 +668,50 @@ d_j = \sum_{\substack{u\in \{1, ..., M\}\\ v \in \{1, ..., N\}}} |[f(u,v)]_{j} -
 %\end{equation}
 
 %\include{anexos/graficos}
-\subsubsection{Resultados}
+\subsubsection{Results}
 
-A continuaci\'on se listan los c\'odigos utilizados para abreviar los nombres de los métodos de ordenamiento que fueron objeto de experimentación:
+Below are listed the codes used to abbreviate the names of the sorting methods that were the subject of experimentation:
 
 
 \begin{itemize}
-	\item ED: Se utiliza la Distancia Euclidiana  RGB como m\'etodo de ordenamiento de los colores \cite{ortiz2002procesamiento}.
-	\item BM: Se utiliza el Entrelazado de Bits RGB como m\'etodo de ordenamiento de los colores \cite{chanussot1997bit}.
-	\item LEX: Se utiliza el ordenamiento lexicogr\'afico RGB para ordenar los colores .
-	\item ALEX: Se utiliza el ordenamiento $\alpha$-lexicogr\'afico RGB \cite{zamora2001comparative} para ordenar los colores.
-	\item AMLEX: Se utiliza el  $\alpha$-modulo lexicogr\'afico RGB \cite{angulo2003morphological} para ordenar los colores.
-	\item HLEX, se utiliza el ordenamiento Lexicográfico I→H→S para ordenar los colores.
-	\item DLAB, se utiliza la Distancia en L*a*b* como m\'etodo de ordenamiento \cite{ortiz2002procesamiento}.
-	\item MIN: se utiliza la ecuaci\'on \ref{Transformacion} para agregar esta transformaci\'on como primer componente de la cascada lexicogr\'afica RGB, donde:\\ 
+	\item ED: RGB Euclidean distance is used as a method of sorting colors \cite{ortiz2002procesamiento}.
+	\item BM: RGB bit interleaving method is used as a ordering of colors \cite{chanussot1997bit}.
+	\item LEX: RGB lexicographical ordering is used to sort the colors .
+	\item ALEX: The RGB  $\alpha$ -lexicographic ordering is used 
+	\cite{zamora2001comparative} for ordering colors.
+	\item AMLEX: The RGB lexicographical $\alpha$-Module is used \cite{angulo2003morphological} for ordering colors.
+	\item HLEX,  I→H→S lexicographical ordering is used to sort colors.
+	\item DLAB, distance in L* a*b* is used as sorting method \cite{ortiz2002procesamiento}.
+	\item MIN: the \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade , where:\\ 
 $w = (Min(h_{f_1}^D), Min(h_{f_2}^D),Min(h_{f_3}^D))$.
-	\item MAX: se utiliza la ecuaci\'on \ref{Transformacion} para agregar esta transformaci\'on como primer componente de la cascada lexicogr\'afica RGB, donde:\\ 
+	\item MAX: the \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade, where:\\ 
 $w = (Max(h_{f_1}^D), Max(h_{f_2}^D),Max(h_{f_3}^D))$.
-	\item MO1: se utiliza la ecuaci\'on \ref{Transformacion} para agregar esta transformaci\'on como primer componente de la cascada lexicogr\'afica RGB, donde:\\ 
+	\item MO1: the \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade, where:\\ 
 $w = (minM_o(h_{f_1}^D), minM_o(h_{f_2}^D), minM_o(h_{f_3}^D))$.
-	\item MO2: se utiliza la ecuaci\'on \ref{Transformacion} para agregar esta transformaci\'on como primer componente de la cascada lexicogr\'afica RGB, donde:\\ 
+	\item MO2: the \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade, where:\\ 
 $w = (maxM_o(h_{f_1}^D), maxM_o(h_{f_2}^D), maxM_o(h_{f_3}^D))$.
-	\item SMO: se utiliza la ecuaci\'on \ref{Transformacion} para agregar esta transformaci\'on como primer componente de la cascada lexicogr\'afica RGB, donde:\\ 
+	\item SMO: the \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade, where:\\ 
 $w = (R(h_{f_1}^D), R(h_{f_2}^D), R(h_{f_3}^D))$.
-	\item MEAN: se utiliza la ecuaci\'on \ref{Transformacion} para agregar esta transformaci\'on como primer componente de la cascada lexicogr\'afica RGB, donde:\\ 
+	\item MEAN: the \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade, where:\\ 
 $w = (Me(h_{f_1}^D), Me(h_{f_2}^D), Me(h_{f_3}^D))$.
-	\item VAR: se utiliza la ecuaci\'on \ref{Transformacion} para agregar esta transformaci\'on como primer componente de la cascada lexicogr\'afica RGB, donde:\\ 
+	\item VAR: the \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade, where:\\ 
 $w = (Var(h_{f_1}^D), Var(h_{f_2}^D), Var(h_{f_3}^D))$.
 \end{itemize}
 
-El filtro utilizado para eliminar los diferentes tipos de ruido fue la mediana. Este filtro consiste en ordenar los colores dentro de la ventana del filtro, y seleccionar el valor del medio para remplazar en la imagen de salida. De manera a evitar tener un falso color, el tama\~no de la ventana del filtro suele ser impar (en nuestras pruebas de $3\times 3$). Las pruebas fueron realizadas con 100 im\'agenes diferentes (im\'agenes de prueba de \cite{arbelaez2007berkeley}), contaminándolas con los ruidos: gaussiano, speckle, sal y pimienta. En el caso de los ruidos gaussiano y speckle se mantuvo el parámetro $\mu = 0$ y se varió el parámetro $\sigma^2$ entre $0.005$ y $0.165$, con incrementos de $0.02$. En el caso del ruido sal y pimienta, el parámetro de probabibilidad $p$ se varió con los mismos valores del parámetro $\sigma^2$ de los ruidos gaussiano y speckle.
+The filter used to eliminate different types of noise was the median. This filter consists to sort the colors within the filter window, and selecting the middle value to replace in the output image. So to avoid having a false color, the size of the filter window is usually odd ($3\times 3$ in our tests). The tests were made with 100 different images ( \cite{arbelaez2007berkeley} test images), polluted with noise: gaussiano, speckle, salt and pepper. In the case of Gaussian and Speckle noise, the parameter $\mu$ is set to $0$ and the $\sigma^2$ parameter was varied between $0.005$ and $0.165$, with $0.02$ increases. In the case of salt and pepper noise, the probability parameter $p$ was varied with the same values of the parameter $\sigma^2$ of Gaussian and  Speckle noise.
 
-La Figura \ref{fig:imagen_ejemplo_ruido_gaussiano} corresponde a la imagen original de la Figura \ref{fig:ruido} con $\sigma^2 = 0.105$ y $\mu = 0$. El resultado de aplicar los filtros de orden propuestos y el resto de los filtros evaluados sobre la imagen contaminada puede verse en la Figura \ref{fig:imagenes_resultado}.
+The Figure \ref{fig:imagen_ejemplo_ruido_gaussiano} corresponds to the original image of Figure \ref{fig:ruido} with $\sigma^2 = 0.105$ and $\mu = 0$. The result of applying the proposed order filters and other filters  evaluated on the contaminated image shown in the Figure \ref{fig:imagenes_resultado}.
 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.38\textwidth]{fig/img_ruido_gaussian_83_0_105}
-	\caption{Ruido gaussiano ($\mu = 0; \sigma^2 = 0.105$)}
+	\caption{Gaussian noise ($\mu = 0; \sigma^2 = 0.105$)}
 	\label{fig:imagen_ejemplo_ruido_gaussiano}
 \end{figure}
 
 
-Cabe resaltar que las imágenes filtradas con el orden propuesto y con los diferentes pesos son mejores visualmente a los del estado del arte, pero son perceptualmente muy parecidas entre si, la diferencia entre ellas se evidencia en los resultados numéricos expuestos más adelante en esta sección.
+Should be noted that filtered images with the proposed order and with different weights are better visually to the state of the art, but they are perceptually very similar to each other, the difference between them is evident in the numerical results presented later in this section.
 
 \begin{figure*}
 	\makebox[\linewidth][c]{%
@@ -838,13 +815,13 @@ Cabe resaltar que las imágenes filtradas con el orden propuesto y con los difer
 			\phantomcaption
 		\end{subfigure}
 	}\\
-	\caption{Resultados de aplicar los distintos filtros evaluados sobre la imagen de la Figura \ref{fig:imagen_ejemplo_ruido_gaussiano}. La imagen fue dividida en sub-regiones de 5 x 5.}	
+	\caption{Results of applying different filters evaluated on the image in Figure \ref{fig:imagen_ejemplo_ruido_gaussiano}. The image was divided into 5 x 5 subregions .}	
 	\label{fig:imagenes_resultado}
 \end{figure*}
 
-Por cada ruido y métrica se presenta una tabla de resultados y un gráfico de curvas de tendencia de cada filtro con respecto a la variación del parámetro de ruido ($\sigma^2$ para ruido gaussiano y speckle, y $p$ para ruido sal y pimienta). Cada punto representa al promedio de métrica obtenido por ese filtro para un cierto valor de parámetro de ruido $(\sigma^2,\,MAE)$ o $(p,\,MAE)$. La curva correspondiente a un filtro se obtiene uniendo a cada par de puntos sucesivos de dicho filtro con la línea (recta) que pasa por ambos puntos. Esto se hace de forma  a poder visualizar la tendencia como una función continua. Las tablas de resultados ordenan a los filtros según la suma total de todos los puntos en el gráfico de curvas. Los filtros que aparecen en los primeros lugares de las tablas son aquellos que poseen los menores valores de la sumatoria total de MAE obtenida por cada filtro. En algunos casos, los filtros del estado del arte se comportan mejor para menores valores de parámetro de ruido pero se ven superados por los filtros propuestos para mayores valores de parámetro de ruido. 
+For every noise and measuring a results table and graph trend curve of each filter with respect to the variation of noise parameter ($\sigma^2$ to Gaussian and speckle noise, and $p$ for salt and pepper noise). Each point represents the average of metric obtained by the filter to a noise parameter value $(\sigma^2\, MAE)$ or $(p,\,MAE)$. The corresponding curve of a filter is obtained by joining each pair of successive points of the filter with the line  (straight) passing through both points. This is done so as to be able to view the trend as a continuous function. The results tables order the filters as the total sum of all points on the graph curves. The filters shown in the top of the tables are those with the lowest values of the total sum of MAE obtained by each filter. In some cases, the state of the art filters perform better for less noise parameter values but are overcome by the filters proposed for higher noise parameter values. 
 
- Los resultados de esta sección diferencian a los filtros de orden de cada peso de acuerdo a su configuración de dominio. Como referencia, a los códigos de los filtros propuestos se les agrega el sufijo "WX", donde X es un número que representa la cantidad de sub-regiones en que fue dividida la imagen, con M'= $\sqrt{X}$ y N'= $\sqrt{X}$. Cuando el vecindario (marcado por la ventana del filtro) es el dominio, se utiliza el sufijo "B".
+ The results of this section differ the order filters of each weight according to his domain settings. For reference, are added the suffix "WX" to the proposed filters codes, where X is a number representing the number of sub-regions in which the image was divided, with M'= $\sqrt{X}$ and N'= $\sqrt{X}$. When the neighborhood (marked by the filter window) is the domain, suffix "B" is used.
 
 %Para poder seleccionar varias columnas de una vez
 \pgfplotstableset{
@@ -925,7 +902,7 @@ input colnames to=p
 
 \begin{table}[htbp]
 	\centering
-	\caption{Ruido sal y pimienta. Sumatoria de MAE por $p$}
+	\caption{Salt and pepper noise. Summation of MAE by $p$}
 	\pgfkeys{/pgf/number format/precision=4}
 	\pgfplotstabletypeset[
 	col sep=tab,
@@ -1066,7 +1043,7 @@ input colnames to=p
 	\spy on (spypoint) in node [fill=white] at (spyviewer);
 	\end{axis}
 	\end{tikzpicture}
-	\caption{Ruido sal y pimienta. MAE por $p$}
+	\caption{Salt and pepper noise. MAE by $p$}
 	\label{fig:salt_and_pepper_mae}
 \end{figure*}
 
@@ -1106,7 +1083,7 @@ input colnames to=p
 	\spy on (spypoint) in node [fill=white] at (spyviewer);
 	\end{axis}
 	\end{tikzpicture}
-	\caption{Ruido speckle. MAE por $\sigma^2$}
+	\caption{Speckle noise. MAE by $\sigma^2$}
 	\label{fig:speckle_mae}
 \end{figure*}
 
@@ -1477,11 +1454,11 @@ input colnames to=p
 %\end{table*}
 \normalsize
 
-En la Figura \ref{fig:gaussian_mae} se observan las curvas de tendencia de los filtros aplicados sobre imágenes contaminadas con ruido gaussiano. Como puede observarse, para el ruido gaussiano, el mejor filtro resultó la propuesta utilizando SMO, MAX, VAR y MEAN para el cálculo de vector de pesos. El Cuadro \ref{tabla:gaussian_mae} contiene  la suma total de los puntos en la curva de tendencia por método de ordenamiento.
+In the Figure \ref{fig:gaussian_mae} the trend curves of the filters applied to images contaminated with gaussian noise are observed . As can be seen, for gaussian noise, the best filter was the proposed using SMO, MAX, VAR and MEAN for calculating weight vector. Table \ref{tabla:gaussian_mae}  contains the total sum of the points on the trend curve  by sorting method.
 
-La Figura \ref{fig:salt_and_pepper_mae} muestra las curvas de tendencia de los filtros aplicados sobre imágenes contaminadas con ruido sal y pimienta. En este caso el filtro que obtuvo el menor promedio general y cuya curva se ubicó debajo de todas las demás fue ED. Los filtros MAX, SMO, VAR y MEAN obtuvieron mejor rendimiento después de ED. En el Cuadro \ref{tabla:salt_and_pepper_mae} contiene  la suma total de los puntos en la curva de tendencia por método de ordenamiento.
+Figure \ref{fig:salt_and_pepper_mae} shows the trend curves of the filters applied to images contaminated with salt and pepper noise. In this case the filter to obtained the lowest overall average and whose curve is placed below all others was ED. The MAX, SMO, VAR and MEAN filters showed better performances after ED. Table \ref{tabla:salt_and_pepper_mae} contains the total sum of the points on the curve trend by sorting method.
 
-En la Figura \ref{fig:speckle_mae} se encuentran las curvas de tendencia de los filtros aplicados sobre imágenes contaminadas con ruido speckle. Los filtros SMO, MAX y VAR obtuvieron los mejores resultados. El filtro SMOW9 obtuvo los mejores resultados para todos los puntos de la curva. El filtro ED resultó el mejor filtro del estado del arte. El Cuadro \ref{tabla:speckle_mae} contiene  la suma total de los puntos en la curva de tendencia por método de ordenamiento ordenados de manera ascendente.
+In the Figure \ref{fig:speckle_mae} there are the trend curves of the filters applied to images contaminated with speckle noise .The SMO, MAX and VAR filters obtained the best results. The filter SW9 obtained the best results for all points of the curve. The ED filter resulted the best of the state of the art. Table \ref{tabla:speckle_mae} contains the total sum of the points in the trend curve by sorting method in ascending sort.
 
 %Desde la Figura \ref{fig:gaussian_cds} en adelante se ilustran los resultados para la métrica CDS. La Figura \ref{fig:gaussian_cds} muestra los resultados para el ruido gaussiano en la mencionada métrica. Los mejores filtros resultaron ser nuevamente los propuestos (SMO, MAX, VAR, MEAN) excepto MO1, MO2 y MIN que fueron superados por el mejor filtro del estado del arte, ED. En el zoom se hace visible la diferencia entre los filtros propuestos y el filtro ED. El Cuadro \ref{tabla:gaussian_cds} proporciona los valores numéricos a partir de los cuales se formaron las gráficas mencionadas; en el mismo puede observarse que el filtro SMOW9 obtuvo los mejores resultados hasta el punto $0.105$, desde el punto $0.125$ en adelante MAXW9 obtuvo los mejores resultados.
 %
@@ -1489,7 +1466,7 @@ En la Figura \ref{fig:speckle_mae} se encuentran las curvas de tendencia de los 
 %
 %Por último, la Figura \ref{fig:speckle_cds} posee los valores de la métrica CDS para filtros aplicados sobre imágenes contaminadas con el ruido speckle. El Cuadro \ref{tabla:speckle_cds} posee los resultados numéricos de dichos gráficos de curvas. En este caso se puede observar nuevamente un solapamiento de las curvas correspondientes a los filtros propuestos (MAX, SMO, VAR, MEAN), pero a una distancia evidente de las curvas correspondientes al estado del arte, de entre las cuales el mejor fue ED. El filtro SMOW9 obtuvo los mejores resultados en todos los puntos de $\sigma^2$.
 
-Las dos siguientes aplicaciones utilizan matemática morfológica. Los operadores no son puramente morfológicos, ya que no se puede garantizar sus propiedades teóricas, como la idempotencia para la apertura y el cierre. En la Figura \ref{fig:ContraEjemplo} se puede observar un contra-ejemplo, donde el operador apertura no es idempotente ($f\circ B \neq (f\circ B) \circ B$). A la imagen sintética en la Figura \ref{fig:ContraEjemplo}(a) se le aplica una apertura con un elemento estructurante 3 x 3, donde el dominio $D$ de la imagen es el propio vecindario del elemento estructurante, y la función aplicada a cada componente de color es el promedio dentro de $D$, dando como resultado la imagen en la Figura \ref{fig:ContraEjemplo}(b). A la imagen de la Figura \ref{fig:ContraEjemplo}(b) se le aplica de nuevo el operador apertura con el mismo elemento estructurante y donde el dominio $D$ es también el propio vecindario del elemento estructurante, dando como resultado la imagen en la Figura  \ref{fig:ContraEjemplo}(c). La imagen resultante no es igual a la anterior, esto se puede visualizar en la imagen \ref{fig:ContraEjemplo}(c), que es el resultado de realizar la diferencia entre ambas imágenes. De esta manera se demuestra que el operador apertura no es idempotente, sucediendo lo mismo para el operador cierre.
+The following two applications use morphological mathematical. Operators are not purely morphological, since it can not guarantee its theoretical properties, as idempotency for opening and closing. In the Figure \ref{fig:ContraEjemplo} you can see a counter-example, where the opening operator is not  idempotent ($f\circ B \neq (f\circ B) \circ B$). To the synthetic image of the Figure \ref{fig:ContraEjemplo}(a) is applied an opening with 3 x 3 structural element, where the domain $D$ of the image is the neighborhood of the structuring element itself, and the function applied to each color component is the average inside $D$, resulting image of the Figure \ref{fig:ContraEjemplo}(b). To image of the Figure  \ref{fig:ContraEjemplo}(b) is applied again the operator of opening with the same structuring element and where the domain $D$ is also the neighborhood of the structuring element itself, resulting the image of the Figure \ref{fig:ContraEjemplo}(c). The resulting image is not equal to the previous one, this can be visualized on the image \ref{fig:ContraEjemplo}(c), which is the result of performing the difference between the two images. Thus it is demonstrated that the opening operator is not idempotent , the same occurs for the closing operator.
 
 
 \begin{figure*}
@@ -1497,71 +1474,71 @@ Las dos siguientes aplicaciones utilizan matemática morfológica. Los operadore
 		\begin{subfigure}[b]{0.25\textwidth}
 			\centering
 			\includegraphics[width=0.95\linewidth]{fig/ImgCortes.png}
-			\caption{Imagen sintética}
+			\caption{Synthetic image}
 			\label{fig:ImaSin}
 		\end{subfigure}
 		\begin{subfigure}[b]{0.25\textwidth}
 			\centering
 			\includegraphics[width=0.95\linewidth]{fig/Apertura1.png}
-			\caption{Apertura de la imagen (a)}
+			\caption{Aperture of the image (a)}
 			\label{fig:Apert1}
 		\end{subfigure}
 		\begin{subfigure}[b]{0.25\textwidth}
 			\centering
 			\includegraphics[width=0.95\linewidth]{fig/Apertura2.png}
-			\caption{Apertura de la imagen (b)}
+			\caption{Aperture of the image (b)}
 			\label{fig:Apert2}
 		\end{subfigure}
 		\begin{subfigure}[b]{0.25\textwidth}
 			\centering
 			\includegraphics[width=0.95\linewidth]{fig/DiferenciaApertura.png}
-			\caption{Diferencia entre (b) y (c)}
+			\caption{Difference between (b) and (c)}
 			\label{fig:Apert1}
 		\end{subfigure}
 	}\\
-	\caption{Un contra-ejemplo que demuestra que la apertura no es idempotente con el ordenamiento propuesto.}	
+	\caption{A counter-example shows that openness is not idempotent with the ordering proposed.}	
 	\label{fig:ContraEjemplo}
 \end{figure*}
 
-Esto se debe que un color puede ser mayor o menor a otro color en un dominio $D$, pero no serlo en otro dominio, debido a que la información extraida en forma de pesos (resultado de aplicarle una función) puede ser distinta. Incluso en el mismo dominio pero en la siguiente iteración (producto de aplicarle de nuevo el mismo operador) pueden varian los pesos, ya que también la información extraida varia de una iteración a otra. En la literatura estos operadores son llamados pseudo-operadores \cite{hanbury2001morphological,aptoula2007pseudo,aptoula2008alpha,angulo2010pseudo,chen2002pseudo}. 
+This is because a color can be more or less than other color in a domain $D$, but not in another domain, because the extracted information in the form of weights (result of applying a function) may be different. Even in the same domain but in the next iteration (product of reapplying the same operator) they can vary the weights, since the extracted information also varies from one iteration to another. In the literature these operators are called pseudo-operators \cite{hanbury2001morphological,aptoula2007pseudo,aptoula2008alpha,angulo2010pseudo,chen2002pseudo}. 
 
-La transformada top-hat es ampliamente utilizada en diferentes aplicaciones \cite{soille2013morphological,mukhopadhyay2000multiscale,soille1997note,bai2010analysis,bai2010infrared,bai2010analysis1}. Como mencionamos anteriormente la transformada top-hat blanca extrae las regiones brillantes de la imagen y la transformada top-hat extrae las zonas oscuras de la imagen
+Top-hat transform is widely used in different applications \cite{soille2013morphological,mukhopadhyay2000multiscale,soille1997note,bai2010analysis,bai2010infrared,bai2010analysis1}. As we mentioned earlier white top-hat transform extracts the bright  regions of the image and  top-hat transform the dark areas of the image.
 
-\subsection{Aplicación 2: Mejoramiento de contraste}
- Una idea b\'asica de mejoramiento de contraste  de la imagen $f$ es a\~nadir las regiones brillantes de la imagen $f$ y sustraer las regiones oscuras de la imagen $f$ como sigue \cite{soille2013morphological}:
+\subsection{Application 2: Contrast improving}
+ A basic idea of improving contrast of image $f$ is to add the bright regions of the image $f$  and subtract the dark regions of the image $f$  as follows \cite{soille2013morphological}:
 \begin{equation}
 \label{contraste}
-Contraste(f) = f + WTH(f) - BTH(f) 
+Contrast(f) = f + WTH(f) - BTH(f) 
 \end{equation}
 
 
-La efectividad de la aplicación del mejoramiento del contraste se determina utilizando el método denominado Color Enhancement Factor (CEF) que cuantifica el nivel de mejora del contraste de una imagen cómo se menciona en \cite{susstrunk2003color}. Este método aplicado a la imagen $f$ esta basado en la media y la desviación estandar de dos ejes de una sencilla representación de color contrario con $\gamma = f_1 - f_2$ y $\beta = \frac{1}{2}(f_1 + f_2) - f_3$.
-La ecuación \ref{eq:cef} representa el nivel de mejora del contraste de la imagen $f$ de la siguiente forma:
+The effectiveness of the application of contrast improvement it is determined using the method called Color Enhancement Factor (CEF) which quantifies the level of contrast enhancement of an image as mentioned in \cite{susstrunk2003color}. This method applied to the image $f$ is based on the average and standard deviation of two axes of a simple contrary color representation with $\gamma = f_1 - f_2$ y $\beta = \frac{1}{2}(f_1 + f_2) - f_3$.
+The equation \ref{eq:cef} represents the level of contrast enhancement of the image $f$ as follows:
 
 \begin{equation}
 CM(f)=\sqrt{\sigma_{\gamma}^{2} + \sigma_{\beta}^{2}} + \sqrt{\mu_{\gamma}^{2} + \mu_{\beta}^{2}}
 \label{eq:cef}
-\end{equation} Donde $\sigma_{\gamma}$ y $\sigma_{\beta}$ corresponden a la desviación estándar  de $\gamma$ y $\beta$ respectivamente. De manera similar, $\mu_{\gamma}$ y $\mu_{\beta}$ corresponde a la media respectivamente.
+\end{equation} Where $\sigma_{\gamma}$ and $\sigma_{\beta}$ correspond to the standard deviation of $\gamma$ and $\beta$ respectively. Similarly, $\mu_{\gamma}$ and $\mu_{\beta}$ corresponds to the respectively mean.
 
-Entonces el CEF se calcula por medio de la razón entre la imagen $f'$ y la imagen original $f$:
+Then, the CEF is calculated by the ratio of the $f'$ image and $f$ original image:
 
 \begin{equation}
 CEF = \frac{CM(f^{'})}{CM(f)}
 \label{cef}
 \end{equation}
 
-Donde $CM(f^{'})$ es el valor obtenido de la imagen contrastada $f'$ producto de aplicar la ecuación \ref{eq:cef} y $CM(f)$ representa el resultado de aplicar la ecuación \ref{eq:cef} a la imagen original $f$. Si el resultado es $> 1$ entonces la métrica de la ecuación \ref{cef} indica una mejora en el contraste, de lo contrario, la métrica indica que no hay una mejora del contraste.
+Where $CM(f^{'})$ is the value obtained from the contrasted image $f'$ product of applying the equation \ref{eq:cef} and $CM(f)$ represents the result of applying the equation \ref{eq:cef} to the original image $f$. If the result is $> 1$ then the metric of the equation \ref{cef} indicates an improvement in the contrast, otherwise, metric indicates no contrast enhancement.
 
 
 
-\subsubsection{Resultados}
- Las pruebas fueron realizadas con 100 im\'agenes de prueba de \cite{arbelaez2007berkeley} y se utilizaron las mismas abreviaciones que en el experimento anterior para diferenciar los métodos de ordenamiento con diferente descomposición de dominio. 
-En el Cuadro \ref{tab:EXP_N1} se puede ver los resultados de las distintas iteraciones (iter) del algoritmo de mejora de contraste (aplicar varias veces la ecuación \ref{contraste} a la misma imagen).  
-Se observa que SMOB tiene mejores resultados en todas la iteraciones, le sigue la Varianza VARB y luego siguen los demas métodos. La mejora utilizando SMOB a medida que crece la cantidad de iteraciones es aproximademente del 3\% y la diferencia con el segundo y el tercero del 0,30\% y 2,25\% en promedio en cada una de la iteraciones.
-Se puede constatar que a medida que se aumenta la cantidad de iteraciones  tambien mejora más el contraste según la métrica mencionanda, siendo también importante el dominio y el método de ordenamiento utilizado.
+\subsubsection{Results}
+The tests were made with 100 test images of \cite{arbelaez2007berkeley} and were used the same abbreviations as in the previous experiment to differentiate the sorting methods with different domain decomposition. 
+In the \ref{tab:EXP_N1}  can see the results of the various iterations (iter) of contrast enhancement algorithm (applied several times the equation \ref{contraste} to the same image).  
+Is observed that SMOB has better results in all the iterations, followed by the variance VARB and then follow the other methods. The improvement using SMOB as it grows the amount  of iterations is approximately 3\% and the difference with the second and third is of 0.30\% and 2.25\% on average in each of the iterations.
+It can be seen that as the number of iterations increases also improves the contrast according to the mentioned metric , being also important the domain and sorting method used.
 
 \begin{table}
-\caption{ Mejora de Contraste}
+\caption{Contrast improvement}
 \label{tab:EXP_N1}
 \begin{tabular}{ccccccccc}
 \hline METODO& iter1&iter2&iter3&iter4\\
@@ -1592,7 +1569,7 @@ Se puede constatar que a medida que se aumenta la cantidad de iteraciones  tambi
 \end{tabular}
 \end{table}
 
-En la Figura \ref{fig:mejora} se puede ver un ejemplo de mejora de contraste de una imagen, a la cual se le aplicó 4 iteraciones de la ecuación \ref{contraste} con el método de ordenamiento propuesto utilizando SMO para el cálculo de los pesos. La imagen resultante claramente es mucho más contrastada que la imagen original. 
+In the Figure \ref{fig:mejora} can see an example of improving contrast of an image, to which was applied four iterations of equation \ref{contraste} with the proposed sorting method using SMO for calculating weights.The resulting image is clearly much more contrasted than the original image. 
  
 %\begin{figure}
 %    \centering
@@ -1607,7 +1584,7 @@ En la Figura \ref{fig:mejora} se puede ver un ejemplo de mejora de contraste de 
 		\begin{subfigure}[b]{0.5\textwidth}
 			\centering
 			\includegraphics[width=0.8\textwidth]{fig/Imagen3.jpg}
-			\caption{Imagen original}
+			\caption{Original image}
 			\label{fig:imagen_original_3}
 		\end{subfigure}
 	}\\
@@ -1615,76 +1592,77 @@ En la Figura \ref{fig:mejora} se puede ver un ejemplo de mejora de contraste de 
 		\begin{subfigure}[b]{0.5\textwidth}
 			\centering
 			\includegraphics[width=0.8\textwidth]{fig/Resultado3_3_4.jpg}
-			\caption{Imagen Mejorada}
+			\caption{Improved image}
 			\label{fig:imagen_mejorada_3}
 		\end{subfigure}
 	}\\
-	\caption{(a) Imagen con mejora de contraste aplicando 4 veces la ecuación \ref{contraste} con el método de ordenamiento propuesto}
+	\caption{(a) Image contrast improvement applying 4 times the equation \ref{contraste} with the proposed sorting method}
   \label{fig:mejora}
 \end{figure}
 
 
-\subsection{Aplicación 3: Clasificación de texturas}
+\subsection{Application 3: Classification of textures}
 
- El problema de caracterización y clasificación de textura consta de dos pasos. En una primera instancia, se calculan características de una imagen que permitan describir numéricamente sus propiedades de textura por medio de un vector de características o descriptor. Posteriormente es asignada una clase de textura de acuerdo criterios de similaridad entre los descriptores \cite{hanbury2005illumination}.
+ The problem of texture characterization and classification consists of two steps. In the first instance, image characteristics that allow numerically describe their textural properties using a feature vector or descriptor are calculated. Later it is assigned a class of texture according criteria of similarity between descriptors \cite{hanbury2005illumination}.
 
-La granulometría y la covarianza morfológica son las principales herramientas morfológicas de caracterización de textura, ambas utilizan distribuciones de intensidad para describir las propiedades de las texturas \cite{lefevre2009beyond}.
+The granulometry and morphological covariance are the main morphological tools of texture characterization, both used intensity distributions to describe the properties of the textures \cite{lefevre2009beyond}.
 
 %Los descriptores de textura morfológicos tienen la capacidad de describir efectivamente la regularidad y la direccionalidad por medio de la granulometría y la covarianza morfológica  \cite{hanbury2005illumination}. 
 
-La manera en que la información de color y textura es incorporada al descriptor es estudiada en \cite{palm2004color,van2005parallel}. En este trabajo las herramientas morfológicas utilizan el enfoque integrativo donde la información de color y textura son procesadas conjuntamente.
+The way the color and texture information is incorporated into the descriptor is studied in \cite{palm2004color,van2005parallel}. In this work the morphological tools use the integrative approach where color and texture information are processed together.
 
-La granulometría fue propuesta en \cite{matheron1975random} y es aplicado en la extracción de características y la estimación de tamaño \cite{vincent2000granulometries,soille2013morphological}. Consiste en una familia de aperturas $f \,\circ \, \lambda B $ de $n+1$ elementos incluyendo la imagen de entrada. Está parametrizada por el tamaño $\lambda$ creciente del elemento estructurante ($0 \leq \lambda \leq n $). Los valores son recolectados por una medida de evaluación que usualmente es el volumen ($\mathrm{Vol}$):
+The granulometry  was proposed in \cite{matheron1975random}  and is applied in feature extraction and estimation of size \cite{vincent2000granulometries,soille2013morphological}. Consists of a  $f \,\circ \, \lambda B $ openings family of $n+1$ elements including the input image. It is parameterized by the growing  $\lambda$ size of the structural element  ($0 \leq \lambda \leq n $). The values are collected by an evaluation measure that is usually the volume ($\mathrm{Vol}$):
 
 \begin{equation}
 G^{n}_{j}(f,\lambda)= \mathrm{Vol}([f\circ \lambda B ]_{j}) \; / \; \mathrm{Vol}(f_{j})
 \end{equation}
 
-Donde $j$ es el j-ésimo componente de la imagen a color $f$ y el volumen está definido como:
+Where $j$ is the j-th component of the color image $f$ and the volume is defined as:
 \begin{equation}
 \mathrm{Vol}(f_j) = \sum_{\substack{u\in \{1, ..., M\}\\ v \in \{1, ..., N\}}}[f(u,v)]_{j} 
 \end{equation}
 
-La covarianza morfológica propuesta en \cite{matheron1975random,maragos1989pattern} denotada por $K$ de una imagen $f$, está definida como el volumen de la imagen $f$, luego de aplicarse la erosión $\varepsilon$ a partir de un par de pixeles $(u,v)$ y  $(u',v')$ separados por un vector $\vec{v}$ denotado por $P_{2,\vec{v}}$.\\
-En la práctica $K $ es calculado aplicando la erosión $\varepsilon$ a la imagen original $f$ con el elemento estructurante $P_{2,\vec{v}}$ variando orientaciones y longitudes de $\vec{v}$, donde $n$ es el número de variaciones de $\vec{v}$. Su versión normalizada está dada por :
+The morphological covariance proposal at \cite{matheron1975random,maragos1989pattern} denoted by  $K$ of $f$ image, is defined as the volume of the image $f$, after applying $\varepsilon$  erosion from a pair of pixels $(u,v)$ and  $(u',v')$ separated by a vector $\vec{v}$ denoted by  $P_{2,\vec{v}}$.\\
+In practice $K $ is calculated by applying $\varepsilon$ erosion  to the original image $f$ with the structuring element $P_{2,\vec{v}}$ varying orientations and lengths of $\vec{v}$, where $n$ is the number of variations of $\vec{v}$. Its normalized version is given by:
 \begin{equation}
 K^{n}_{j}(f,P_{2,\vec{v}})  = \mathrm{Vol}([\varepsilon(f,P_{2,\vec{v}})]_{j}) / \mathrm{Vol}(f_{j})
 \end{equation}
-Permite obtener una distribución de orientación y distancia de una imagen de textura \cite{aptoula2007morphological}.
+Allows to obtain a distribution of orientation and distance from a texture image \cite{aptoula2007morphological}.
 
-El método de ordenamiento utilizado para dar soporte a las herramientas morfológicas de caracterización de textura, inciden en los porcentajes de clasificación. Esto es debido a que las distribuciones de intensidad utilizadas como descritores de textura, varían de acuerdo a las imágenes intermedias. Estas imágenes intermedias son resultado de la aplicación de un filtro morfológico.
+The sorting method used to support the morphological characterization tools of texture, affects the percentages of classification. This is because the intensity distributions used as texture descriptors, vary according to the intermediate images. These intermediate images are the result of applying a morphological filter.
 
 %--------------------------------------------------------
-\subsubsection{Resultados}
+\subsubsection{Results}
 \label{sec:resultadosexperi}
-Las pruebas fueron realizadas con la base de datos OutexTC13 compuesta por 1360 imágenes de dimensiones 128 $\times $ 128 píxeles, con 68 clases de texturas de superficies (Figura \ref{fig:outex13}) con 20 muestras de cada clase, donde el 50\% de cada clase es el conjunto de entrenamiento. Totalizan 680 imágenes de entrenamiento y prueba respectivamente \cite{ojala2002outex}.  
-El clasificador utilizado fue el k-nn (k-nearest neighbors) utilizando distancia euclídea con k=1. 
+The tests were made with OutexTC13 data base consisting of 1360 images of size  128 $\times $ 128 pixels, with 68 kinds of surface textures (Figura \ref{fig:outex13} with 20 samples of each class, where the 50\% of each class is the training set. Totaling 680 training and test images respectively \cite{ojala2002outex}.  
+The classifier used was k-nn (k-nearest neighbors) using Euclidean distance with k = 1. 
 
 \begin{figure}
 	\centering
 		\includegraphics[scale=0.25]{fig/outex13.png}
-	\caption{Muestras de textura OutexTC13}
+	\caption{Texture samples OutexTC13}
 	\label{fig:outex13}
 \end{figure}
 
-La finalidad del experimento fue obtener los porcentajes de clasificación utilizando los métodos de ordenación expuestos.
-Se evaluaron varios parámetros estadísticos en la estrategia de orden propuesta en este trabajo.
+The purpose of the experiment was the classification percentages obtained using the sorting methods exposed.
+Several statistical parameters were evaluated in the order strategy proposed in this work.
 %---configuracion de la granulometria
-En las pruebas de granulometría se han utilizado elementos estructurantes de forma cuadrada de tamaño $\lambda$ y de lado $2\lambda+1$ píxeles, variando $\lambda$  de 1 a 15. Para cada elemento de la serie se calculan 15 valores para cada canal que posteriormente se concatenan. La elección del incremento simple de $\lambda$, está basado en que los incrementos menores proveen mejores resultados de clasificación \cite{de2006selecting}. 
-Con respecto a la configuración de los parámetros de la propuesta, cada muestra de textura fue dividida en $2\times2$ sub-regiones y denotado por el sufijo W4. Esta división permite que cada muestra de textura sea dividida en partes iguales y perceptualmente similares. Se denota con el sufijo B cuando el dominio de la imagen es el propio elemento estructurante. 
+In granulometry tests they have been used structural elements of square shape of size  $\lambda$ and $2\lambda+1$ side pixels, varying $\lambda$ from 1 to 15. For each element of the series, 15 values for each channel are calculated which are then concatenated. The choice of simple increase of $\lambda$, is based on the smallest increases provide better classification results \cite{de2006selecting}. 
+With respect to the configuration of the parameters of the proposal, each texture sample was divided in $2\times2$  subregions and  denoted by the suffix W4. This division allows each texture sample is divided equally and perceptually similar. Is denoted by the suffix B when the image domain is the structuring element itself. 
 
 %---configuracion de la covarianza morfologica
-La covarianza morfológica requiere la variación de la dirección y la distancia entre el par de puntos que componen el elemento estructurante. Las direcciones utilizadas fueron $0^{\circ}$, $45^{\circ}$, $90^{\circ}$,  $135^{\circ}$, en la práctica sólo estas direcciones son de importancia y perceptiblemente reconocibles \cite{hanbury2005illumination}. Las distancias de separación utilizadas para cada dirección fueron desde 1 a 20 píxeles. Utilizando estas 4 direcciones y las 20 distancias se han generado 80 valores para cada canal, finalmente estos valores son concatenados para obtener el vector de características de la muestra de textura. 
+Morphological covariance requires varying the direction and distance between the pair of points that composing the structural elemen. The addresses used were $0^{\circ}$, $45^{\circ}$, $90^{\circ}$,  $135^{\circ}$, in practice only these addresses are important and significantly recognizable \cite{hanbury2005illumination}. The separation distances were used for each direction were from 1 a 20 píxeles. Using these 4 directions and 20 distances have generated 80 values for each channel, finally these values are concatenated to obtain the feature vector of the texture sample. 
  
 \begin{table}
-\caption{ Resultados de clasificación por Métodos de Ordenamiento}
+\caption{Classification results by Ordering Methods}
 \label{tab:experiment1_t1}
 
 \begin{tabular}{@{}lrr@{}}
 \toprule
-&\multicolumn{2}{c}{ \% Clasificados correctamente }\\
+&\multicolumn{2}{c}{ \% 
+Correctly classified }\\
 \cline{2-3}
-\textbf{Ordenación } & \textbf{Covarianza} &\textbf{Granulometría } \\ 
+\textbf{Sort } & \textbf{Covariance} &\textbf{Granulometry } \\ 
 \cmidrule{1-3}
 %Marginal  & 85,78 & 88,68 \\ \hline
 BM & 79,56 & 77,79 \\ \hline
@@ -1735,18 +1713,19 @@ VARB & 83,09 &  82,21  \\ \hline
 \label{exper_ordenaciones}
 \end{table}
 %-  - - - - - - - - - - - - - -
-En el Cuadro \ref{tab:experiment1_t1} los tres mejores resultados de cada método fueron marcados en negrita. La Covarianza Morfológica con los ordenamientos HLEX y DLAB tienen rendimientos superiores de $\approx 1\%$ con respecto a SMOW4 que presenta el mejor rendimiento en el espacio RGB. Los resultados son consistentes con los experimentos realizados en \cite{hanbury2005illumination} donde se obtienen mejores resultados en el espacio L*a*b en comparación al espacio RGB utilizando elementos estructurantes de longitud variante. Esto se debe a que en esos espacios de color la información cromática está separada de la luminosidad o intensidad. En experimentos mencionados en \cite{bianconi2011theoretical} sobre la percepción de la textura indican que la textura y el color se perciben de manera independiente. 
-Con la granulometría el espacio RGB presenta mejores resultados con los ordenamientos SMOW4 y SMOB, ambos superiores al ordenamiento ED en ($\approx 1,33 \% $). Por otra parte el ordenamiento ED provee resultados muy superiores a los ordenamientos BM, LEX, ALEX y AMLEX.
+In the Table \ref{tab:experiment1_t1} the three best results of each method were marked in bold. Covariance Morphological with HLEX y DLAB orderings have higher performances of $\approx 1\%$ with respect to SMOW4 that presented the best performance in RGB space. The results are consistent with experiments in \cite{hanbury2005illumination} where best results are obtained in the L*a*b space compared to RGB space using structuring elements of variant length. This is because in those color spaces the chromatic information is separated of the brightness or intensity. 
+In experiments mentioned in \cite{bianconi2011theoretical} about the perception of texture they indicate that the texture and color are perceived independently. 
+With the granulometry, the RGB space has better results with SMOW4 and SMOB orderings, both higher than the ED ordering at ($\approx 1,33 \% $). Moreover, the ED ordering provides far superior results to the BM, LEX, ALEX and AMLEX orderings.
 
-Los ordenamientos SMOW4 y SMOB (85,44\%, 84,71\%) muestran los mejores resultados de clasificación (con granulometría) con respecto a los métodos de ordenamiento del estado del arte implementados. La división en $2\times2$ sub-regiones (W4) conducen a mejores resultados que usando B.  
+The SMOW4 y SMOB orderings (85,44\%, 84,71\%) show the best results of classification (with granulometry) with respect to the ordering methods implemented of the state of the art. The division in $2\times2$ sub-regions (W4) leads to better results than using B.  
 
-\section{Conclusiones y Trabajo Futuro}
+\section{Conclusions and Future Work}
 
-En este trabajo se presenta una nueva estrategia de ordenamiento de colores RGB que es dependiente de la imagen. El ordenamiento se realiza por medio de extraer información del histograma de cada componente de color en cierto dominio de la imagen. Se presentaron dos estrategias de descomposición de dominios para extraer dicha información, una es extrayendo información de la misma ventana del filtro, y otra consiste en dividir la imagen en sub-regiones de mismo tamaño, tomando la unión de ellos para cuando la ventana del filtro toma más de una sub-región.
-Fueron realizadas pruebas para 3 aplicaciones de procesamiento de imágenes: Eliminación de ruido, estiramiento de contraste y caracterización texturas para su posterior clasificación.  Para estas dos últimas aplicaciones se utiliza matemática morfológica. Los operadores morfologicos en este caso son pseudo-operadores, ya que se no puede garantizar ciertas propiedades teóricas, como la idempotencia. 
-El filtro mediana fue utilizado para la eliminación de ruido, consiguiendo mejores resultados con algunos pesos extraidos a diferentes métodos del estado del arte, tanto para ruido gaussiano, como speckle. Para el ruido sal y pimienta la distancia euclidiana al origen en el espacio de color RGB en la métrica MAE  dió mejores resultados al método propuesto con las diferentes informaciones extraidas de cada componente.  Esto se debe a que el ruido sal está expresada por el valor mínimo en cada componente de color, y el ruido pimienta está expresado como el valor máximo en cada componente. De esta manera, si los colores de los pixeles se ordena por la distancia euclidiana, es bastante improbable que el filtro mediana seleccione un pixel que sea ruido. 
-Para la aplicación de mejora de contraste el método propuesto se mostró más eficiente según la métrica CEF con diferentes pesos extraidos a partir de información de la imagen. Para la caracterización de texturas utilizando la Covarianza Morfológica con el ordenamiento lexicográfico  I→H→S \cite{ortiz2004gaussian} y la distancia euclidiana al color $(0,0,0)$ en el espacio de color L*a*b* \cite{ortiz2002procesamiento} tienen mejores rendimientos a la propuesta, demostrado en su mejor clasificación. El método propuesto utilizando la suavidad como peso para cada componente  consigue mejores resultados  utilizando la granulometría como caracterización de texturas.
-Como trabajo futuro se propone hacer un análisis de la importancia de descomposición de dominios para extraer información de cada componente de color. Se podrían hacer más experimentos en diferentes aplicaciones como segmentación o fusión de imágenes a color. Se podrían extraer otro tipo de información por cada componente como la Entropía o la Energía.
+In this work a new strategy of RGB color ordering that is dependent on the image we are presented. The ordering is performed by extracting histogram information of each color component in a certain domain image. Two strategies of domain decomposition are presented to extract this information, one is extracting information from the same window filter, and another consists in dividing the image into sub-regions of same size, taking the union of them when the filter window takes more than one sub-region.
+Tests were performed for three image processing applications: Noise Removal, contrast stretching and textures characterization for further classification. Is used morphologythis mathematical for this two latest applications. Morphological operators in this case are pseudo-operators as it can not be guaranteed certain theoretical properties, such as idempotency. 
+The median filter was used to eliminate noise, achieving better results with some extracted weights of different methods of the state of the art, both gaussian noise such as speckle. For salt and pepper noise the euclidean distance to the origin in the RGB color space in the MAE metric gave better results than the proposed method  with the different extracted information for each component. This is because the salt noise is expressed by the minimum value in each color component, and pepper noise is expressed as the maximum value in each component. Thus, if the colors of the pixels are sorted by the euclidean distance, it is quite unlikely that the median filter select a pixel to be noise. 
+For the application of contrast improvement the proposed method was more efficient according to the CEF metric with different weights extracted from image information. For the characterization of textures using Covariance Morphological with lexicographic ordering I→H→S \cite{ortiz2004gaussian} and the euclidean distance to the color $(0,0,0)$ in the L*a*b* color space \cite{ortiz2002procesamiento} has better performance to the proposal, demonstrated in its best ranking. The proposed method using the softness as weight for each component achieves better results using the granulometry as characterization of textures.
+Is proposed as future work analyze the importance of domain decomposition to extract information from each color component. More experiments could be done in different applications such as fusion or segmentation of color image. Could be extract other information for each component as Entropy and Energy.
  
 
 
