@@ -47,7 +47,7 @@ grestore
 \usepackage{textcomp}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[english, spanish]{babel}
+\usepackage[spanish, english]{babel}
 \usepackage{csquotes}
 \usepackage{enumerate}
 \usepackage{enumitem}
@@ -91,7 +91,7 @@ grestore
 \begin{document}
 
 %\title{Ordenamiento de colores RGB basado en m\'etricas asociadas a la imagen}
-\title{RBG ordering based on image metrics}
+\title{Novel ordering scheme for the RGB color space based on image information}
 \author{
   Jos\'e Luis V\'azquez Noguera \and
   Christian E. Schaerer \and
@@ -114,94 +114,73 @@ grestore
 \maketitle
 
 \begin{abstract}
-  In color ordering literature, the lexicographical ordering and its variants are the most used methods and an usual problem is the ``a priori'' definition of the most important color component \textbf{(NE...)}
-  This paper proposes a new ordering criteria, which assign a weight to every component in accordance with the metrics applied to it, with this criteria we pursue to avoid arbitrary definitions and build the ordering based on image-based information. \textbf{... Obtener los terminos correctos de fuentes oficiales (filtrado de imagenes, mejora de constraste...)}
-  Applications used for validation of the proposal are: image filtering, contrast improvement and textures characterization for later classification. The results using the proposed ordering in different applications are better in most cases compared to different ordering methods of the state of the art.
+  In color ordering, the lexicographical ordering and its variants are the most used methods and an usual problem is the ``a priori'' definition of the most important color component and this arbitrary decision results on most comparations been decided by the first components.
+  This paper proposes a new ordering criteria, which assign a weight to every component in accordance with the metrics applied to it, with this we pursue to avoid arbitrary definitions and build the ordering based on image-based information.
+  Applications used for validation of the proposal are: image filtering, contrast enhacement and textures characterization for later classification. The results using the proposed ordering in different applications are better in most cases compared to different ordering methods of the state of the art.
 \end{abstract}
 
-%\section{Introducci\'on}
 \section{Introduction}
-\label{intro}
-
+\label{intro} %TODO
 Digital image processing on color images resemble human vision \cite{roerdink2000watershed}, which is \textbf{NE...}, on the other hand grayscale images and binary images contribute less information because of their use of single dimentional intensities and binary values, white and black. At its inception, digital image processing algorithms where only develop for grayscale and binary images because of the limited computing power available at the time and their high cost, these conditions demands to reduce the visual information into a single plane.
 \textbf{ver citas en inglés...}
 
-
-Valuable information can be obtain from grayscale images, for example an object boundaries could been detected from sudden changes in intensities. By calculating the gradient \textbf{on every pixel (Added)} we could extract every object from the image, however unexpected reflections could produce errors on the boundaries detections. Reflections, lighting effects and the lack of chromatic information limit the efficiency of many grayscale algorithms \cite{ortiz2002procesamiento}. Considering these ideas and the new improvements on computational resources, as image processing specialized processors \textbf{review}, a lot of grayscale images are been generalized into color images \cite{ortiz2002procesamiento}.
+Valuable information can be obtain from grayscale images, for example an object boundaries could been detected from sudden changes in intensities. By calculating the gradient  we could extract every object from the image, however unexpected reflections could produce errors on the boundaries detections. Reflections, lighting effects and the lack of chromatic information limit the efficiency of many grayscale algorithms \cite{ortiz2002procesamiento}. Considering these ideas and the new improvements on computational resources, as image processing specialized processors, a lot of grayscale images are been generalized into color images \cite{ortiz2002procesamiento}.
   
+Color spaces are formalisms that allow the definition of ``color'' and their properties for proper manipulation \cite{joblove1978colo,meyer1980perceptual}.
 
-Color spaces are formalisms \textbf{(alternative)} that allow the definition of color and their properties for proper manipulation \cite{joblove1978colo,meyer1980perceptual}.
+The most used color space on screens is the RGB color space, which it is based on the tristimulus model and aditive syntesis of color. In the RBG color space a color, where the colors used are red, green and blue, is defined as 3-tuples where the scalar value on every component measures its influence on the mix \cite{tkalcic2003colour}. In the CMY color space, cyan, magenta and yellow also known as secondary colors, represents the substractive syntesis of color \cite{rolleston1996color}. The CMYK color space, used in printers\cite{rolleston1996color}, extends the previous color space adding the K component which represents the maximum value between the 3 secondary values\cite{tkalcic2003colour}.
 
+The XYZ color space has been introduced because there are some colors that can only be represented by a negative value of stimuli and it is a linear transformation over the RGB color space\cite{ortiz2002procesamiento}. This color space is used when the color representation is independent of the hardware.
 
-The most used color space on screens is the RGB color space, which it is based on the tristimulus model and aditive syntesis of color \textbf{review from cite}. In the RBG color space a color, where the colors used are red, green and blue, is defined as 3-tuples where the scalar value on every component measures its influence on the mix \cite{tkalcic2003colour}. In the CMY color space, cyan, magenta and yellow also known as secondary colors, represents the substractive syntesis of color \cite{rolleston1996color}. The CMYK color space, used in printers\cite{rolleston1996color}, extends the previous color space adding the K component which represents the maximum value between the 3 secondary values\cite{tkalcic2003colour} \textbf{NE}.
-
-
-The XYZ color space has been introduced because there are some colors that can only be represented by a negative value of stimuli \textbf{review} and it is a linear transformation over the RGB color space\cite{ortiz2002procesamiento}. This color space is used when the color representation is independent of the hardware.
-
-
-The L*a*b* is a 3 component color space where the L* represents the luminosity from black to white, the a* measures from red to green and the b* from yellow to blue\cite{leon2006color} \textbf{review from cites}.
-
+The L*a*b* is a 3 component color space where the L* represents the luminosity from black to white, the a* measures from red to green and the b* from yellow to blue\cite{leon2006color}.
 
 The color spaces HSI, HLS, HSV and their variants are the color spaces that resembles the human vision the most because they are based on luminosity, saturation and hue perseptions\cite{zamora2001comparativos}.
 
+A lot of aplications needs color ordering, as noise reduction, contrast enhancement, borders detection and segmentation of color images\cite{ortiz2002procesamiento}. Because of \textit{multi} dimentional nature of color representation their is no natural order and therefore color ordering generalizations are not trivial.
 
-A lot of aplications needs color ordering, as noise reduction, contrast enhancement, borders detection and segmentation of color images\textbf{review terminos}\cite{ortiz2002procesamiento}. Because of \textit{multi}-dimentional nature of color representation their is no natural order and \textbf{NE}.
+This work presents a new ordering for the RBG color space based on the metrics associated to each component. The proposed ordering is compared with the state of art orderings on noise reduction, contrast enhancement and texture characterization.
 
+The paper is organized as follows. The second section presents the current state of the art on the matter. The third section presents the fundamentas of color image filtering as main conceps of image filtering, ordering and mathematics morphology. The fourth section presents the proposed ordering. The fifth section presents the experimental results of the comparisons with the current state of the art on aplications as noise reduction, contrast enhancement and texture characterization. Finally, the sixth and last section presents our conclutions for future works.
 
-This work presents a new ordering for the RBG color space based on the metrics associated to each component. The proposed ordering is compared with the state of art orderings on noise reduction, contrast enhancement and texture characterization. \textbf{IMP REVIEW}
-
-
-The paper is organized as follows. The second section presents the current state of the art on the matter. The third section presents the fundamentas of color image filtering as main conceps of image filtering, ordering and mathematics morphology. The fourth section presents the proposed ordering. The fifth section presents the experimental results of the comparisons with the current state of the art on aplications as noise reduction, contrast enhancement and texture characterization. Finally, the sixth and last section presents our conclutions for future works.\textbf{review}.
-
-\section{State of the art \textbf{methods.??}}
+\section{State of the art methods}
 \label{Relacionados}
 
-The extension of the filter order to color images requires on the one hand select the color space in which the image is processed and in the other establish an order in this color space. To establish an arrangement they have worked in different color spaces, among which we can mention, L*a*b* color spaces \cite{hanbury2001mathematical}, HLS \cite{hanbury2001mathematical2},  CIELAB \cite{hanbury2002mathematical3}, HSI \cite{tobar2007mathematical}, HSV \cite{lei2013vector} and the RGB color space  \cite{zaharescu2003color, gao2013adaptive, wang2012edge}.
+The generalization of the filter order to color images requires on the one hand select the color space in which the image is processed and in the other establish an order in this color space. To establish an ordering they have worked in different color spaces, among which we can mention, L*a*b* color spaces \cite{hanbury2001mathematical}, HLS \cite{hanbury2001mathematical2},  CIELAB \cite{hanbury2002mathematical3}, HSI \cite{tobar2007mathematical}, HSV \cite{lei2013vector} and the RGB color space  \cite{zaharescu2003color, gao2013adaptive, wang2012edge}.
 
-\textbf{....}
+\textbf{....} %TODO
 
+Mathematical morphology borns in 1964 from the colaboration of Georges Matheron and Jean Serra at École de Mines, Paris \cite{serra1982image} and currently it is as broad as image processing itself. A few examples of aplications are image segmentation, restoration, border detections, contrast enhacement, texture analysis, compression, etc. \cite{ortiz2002procesamiento}. %TODO
+Erosion and dilation are the most basic operations where \textbf{NE reticulo?}\cite{heijmans1990algebraic}. Erosion is the minimum and dilation is the maximum of a subset of the image called structural element and from this two all other operations are builded. To generalize the mathematical morphology to color images is required an ordering between colors to be able to determine a minimum and a maximum inside the structural element.
 
-Mathematical morphology borns in 1964 from the colaboration of Georges Matheron and Jean Serra at École de Mines, Paris \cite{serra1982image} and currently ir reach is as broad as image processing itself. A few examples of aplications are image segmentation, restoration, border detections, contrast enhacement, texture analysis, compression, etc. \cite{ortiz2002procesamiento}.
-Erosion and dilation are the most basic operations where \textbf{NE reticulo?}\cite{heijmans1990algebraic}. Erosion is the minimum and dilation is the maximum of a window \textbf{review for better terminology} called structural element and from this two all other operations are builded. To generalize the mathematical morphology to color images is required an ordering between colors to be able to determine a minimum and a maximum inside the structural element.
-
-
-Recent publications presented generalizations of mathematical morphology \cite{ledoux2012limits, van2013group, velasco2012random, lezoray2009learning, velasco2010morphological, burgeth2013morphology, velasco2011supervised, hanbury2001morphological, angulo2010pseudo, aptoula2008alpha, kleefeld2015processing, vazquez2014color}. In RGB the interlace bit ordering \textbf{review...!!} has been proved to be efficient on color image filtering \cite{chanussot1997bit}. For a more in depth analysis on mathematical morphology methods, we suggest Aptoula and Lefevre \cite{apatoula2007comparative}.
+Recent publications presented generalizations of mathematical morphology \cite{ledoux2012limits, van2013group, velasco2012random, lezoray2009learning, velasco2010morphological, burgeth2013morphology, velasco2011supervised, hanbury2001morphological, angulo2010pseudo, aptoula2008alpha, kleefeld2015processing, vazquez2014color}. In RGB the interlace bit ordering \textbf{review...!!} has been proved to be efficient on color image filtering \cite{chanussot1997bit}. For a more in depth analysis on mathematical morphology methods, we suggest Aptoula and Lefevre \cite{apatoula2007comparative}. %TODO
 
 %El art\'iculo \cite{aptoula2007comparative} incluye m\'as de 70 referencias distintas de m\'etodos de morfolog\'ia matem\'atica a color, mostrando as\'i, aparte de una revisi\'on del estado del arte, que el \'area es reciente. Se han propuesto una gran cantidad de m\'etodos para realizar la extensi\'on de morfolog\'ia matem\'atica a color; entre los art\'iculos recientes podemos citar \cite{ledoux2012limits, van2013group, velasco2012random, lezoray2009learning, velasco2010morphological, burgeth2013morphology, velasco2011supervised, hanbury2001morphological, angulo2010pseudo, aptoula2008alpha, kleefeld2015processing, vazquez2014color}. 
 
-
-Generally, that is for many color spaces, the lexicographical arrangement is one of the most used in the literature \cite{aptoula2007comparative, aptoula2008lexicographical}, since it has desired theoretical properties and can easily customize the way you are going to compare the components of the image. 
-
+Generally, that is for many color spaces, the lexicographical ordering is one of the most used in the literature \cite{aptoula2007comparative, aptoula2008lexicographical}, since it has desired theoretical properties and can easily customize the way you are going to compare the components of the image. 
 
 Louverdis et. al. \cite{louverdis2002new} and Vardavoulia et. al. \cite{vardavoulia2002vector} presents a lexicographic ordering in HSV, while Louverdis et. al. \cite{louverdis2002morphological} uses the same ordering and color space to develop a novel morphologic method for shape and size analisys on granular images. Angulo and Serra \cite{angulo2003morphological} discuss over lexicographic ordering on RGB and HLS for JPEG image compression. Ortiz et. al. \cite{ortiz2004morphological} uses the I→H→S $(Href=0º)$ lexicographical ordering for gaussian noise elimination.
 
 %Un ejemplo de ordenamiento lexicogr\'afico en el espacio de color HSV se puede encontrar en \cite{louverdis2002new}, mientras que \cite{louverdis2002morphological} y } utilizan el mismo orden, respectivamente, para el filtro de la mediana y el c\'alculo de granulometr\'ia en im\'agenes a color. Por supuesto, tambi\'en puede haber situaciones espec\'ificas donde la informaci\'on crom\'atica es m\'as significativa, por ejemplo, en \cite{ortiz2002colour} la matiz se compara por primera vez en la cascada lexicogr\'afica.  En \cite{ortiz2004gaussian} la eliminaci\'on de ruido se consigue por medio del ordenamiento lexicogr\'afico en el espacio HSI, utilizando la intensidad en la primera posici\'on en la cascada lexicogr\'afica. El espacio L*a*b* \cite{hanbury2002mathematical3} ha sido tambi\'en utilizado con un ordenamiento lexicogr\'afico. Por otra parte, un estudio a fondo del potencial de este orden en el espacio HLS se proporciona en \cite{hanbury2001mathematical2}, mientras que en \cite{angulo2003mathematical} el uso del ordenamiento lexicogr\'afico en el espacio HLS mejorado (IHLS) ha sido explorado.
 
-
-The lexicographical ordering suffers from a serious inconvinient. More precisely, the final result of most lexicographical ordering are highly biased towards the first components where the last components are virtually ignored \cite{hanbury2002mathematical3} \textbf{over reaction?}.
+The lexicographical ordering suffers from a serious inconvinient. More precisely, the final result of most lexicographical ordering are highly biased towards the first components where the last components are virtually ignored \cite{hanbury2002mathematical3}.
  
 In order to improve the tuning degree of influence of each component of the vector in the comparison result they were proposed variations lexicographic ordering. A group of variants is based on the use of an additional component for comparison.
 
+Angulo \cite{angulo2005morphological} and  Sartor et. al. \cite{sartor2001morphological} located in the first position of the lexicographical cascade a distance measurement to a reference vector. Comer et. al. \cite{comer1999morphological} used a Euclidean norm as a method of sorting pixels, i.e. the reference pixel color is the black (0,0,0) in RGB. Two RGB colors can be visually identical but differ in norm, or distance to a reference color, as well two different colors can have the same norm so it is not recommended to use this strategy. In the L*a*b space there is a defined distance measure, about the origin $L=0$, $a=0$ and $b=0$ which it is widely used for the evaluation of the quality of reproduction in color, or in techniques of understanding of color images. \cite{tremeau1998analyse}.   
 
-Angulo \cite{angulo2005morphological} and  Sartor et. al. \cite{sartor2001morphological} located in the first position of the lexicographical cascade a distance measurement to a reference vector. Comer et. al. \cite{comer1999morphological} used a Euclidean norm as a method of sorting pixels, i.e. the reference pixel color is the black (0,0,0) in RGB.Two RGB colors can be visually practically identical but differ in value standard, or distance to a reference color, as well as two different colors have the same norm so it is not recommended to use this strategy. In the L*a*b space there is a defined distance measure, about the origin $L=0$, $a=0$ and $b=0$ which it is widely used for the evaluation of the quality of reproduction in color, or in techniques of understanding of color images. \cite{tremeau1998analyse}.   
-
-Other types of arrangement seeking the extension of lexicographic ordering is to use a parameter $\alpha$  defined by the user so as to modify the degree of influence of the first componente \cite{ortiz2002procesamiento,angulo2005unified}. Even with the changes in the lexicographic ordering, the criteria for choosing which component will have higher priority in the comparison, and the value $\alpha$ are usually arbitrary. Gao et. al. \cite{gao2013adaptive} tries to solve this problem by presenting an approach of adaptive lexicographic ordering. 
+Other types of ordering seeking the generalization of lexicographic ordering is to use a parameter $\alpha$  defined by the user so as to modify the degree of influence of the first components \cite{ortiz2002procesamiento,angulo2005unified}. Even with the changes in the lexicographic ordering, the criteria for choosing which component will have higher priority in the comparison, and the value $\alpha$ are usually arbitrary. Gao et. al. \cite{gao2013adaptive} tries to solve this problem by presenting an approach of adaptive lexicographic ordering. 
 In order to avoid the most subjective user intervention, it would be of great importance that the arbitrary criteria of lexicographic order and its variants can be eliminated or reduced.
 
-
-Bouchet et. to the. \cite{bouchet2016fuzzy} uses fuzzy logic so that the three color components have the same weighting in the sorting, although it is desirable that the priority of the components of the vector representing the image are audited self-image information, not being exactly the same in all cases. Benavent et. al. \cite{benavent2012mathematical} presents a sorting method that is dependent of the image and ordering the colors according to the probability density of the appearance of colors in the image.
+Bouchet et. to the. \cite{bouchet2016fuzzy} uses fuzzy logic so that the three color components have the same weighting in the ordering, although it is desirable that the priority of the components of the vector are based on information from the image itself, not being exactly the same in all cases. Benavent et. al. \cite{benavent2012mathematical} presents a ordering method that is dependent of the image and ordering the colors according to the probability density of the appearance of colors in the image.
 
 The main difference of this proposal, with those presented in the state of art, is the extraction of information for each component of RGB color in a specific domain image. This information is extracted by a vector of weights which are previously calculated by a function applied to each of the RGB components of the color.
-
-
 
 \section{Fundamentals of color image filtering}
 \label{Teo}
 
-This section presents the formal formulations of the theoretical concepts behind ordering filters and their extenssions for color images, vector arrangement and morphological mathematics.
+This section presents the formal formulations of the theoretical concepts behind ordering filters and their generalizations for color images, vector ordering and morphological mathematics.
 
 \subsection{RGB images}
-
 In general, an image is a function $f:\mathbb{Z}^2 \rightarrow \mathbb{Z}^n$. Each pair $(u,v) \in \mathbb{Z}^2$ is a pixel, and $f(u,v) \in \mathbb Z^n $ is the color image in the pixel $(u,v)$. In particular, a RGB image (red, green and blue) with a color depth of k bits is, $f(u,v) = (R,G,B)$, where $R,G,B \in \{0,1,...,2^k-1\}$ is the intensity of each component and $f(u,v)$ is the color resulting from mixing these components in the pixel $(u,v)$. %Si el vector $\mathbb Z^3$ es una tripleta correspondiente a los componenetes rojo, verde y azul, la imagen $f$ es llamada imagen  RGB.
 The image $f$ can be digitally presented as an array $M \times N \times 3$ , where each pixel $(u,v)$ has as its value a triplet $(R,G,B)$ \cite{gonzales2004digital}. An RGB image can be seen as a ``stack'' of three images in grayscale (see Figure \ref{fig:ImagenRGB}) that, when fed to the red, green and blue entries of the color monitor, produces a color image on the screen \cite{gonzales2004digital}.
 
@@ -1472,7 +1451,7 @@ This is because a color can be greater, or smaller, than other color in a domain
 
 Top-hat transform is widely used in different applications \cite{soille2013morphological,mukhopadhyay2000multiscale,soille1997note,bai2010analysis,bai2010infrared,bai2010analysis1}. As we mentioned earlier white top-hat transform extracts the bright  regions of the image and  top-hat transform the dark areas of the image.
 
-\subsection{Application 2: Contrast improving}
+\subsection{Application 2: Contrast enhacement}
  A basic idea of improving contrast of image $f$ is to add the bright regions of the image $f$  and subtract the dark regions of the image $f$  as follows \cite{soille2013morphological}:
 \begin{equation}
 \label{contraste}
@@ -1480,10 +1459,10 @@ Contrast(f) = f + WTH(f) - BTH(f)
 \end{equation}
 
 
-The effectiveness of the application of contrast improvement it is determined using the method called Color Enhancement Factor (CEF) which quantifies the level of contrast enhancement of an image as mentioned in \cite{susstrunk2003color}. This method applied to the image $f$ is based on the average and standard deviation of two axes of a simple contrary color representation with $\gamma = f_1 - f_2$ y $\beta = \frac{1}{2}(f_1 + f_2) - f_3$.
+The effectiveness of the application of contrast improvement it is determined using the method called Color Enhancement Factor (CEF) which quantifies the level of contrast enhancement of an image, as mentioned in \cite{susstrunk2003color}. This method applied to the image $f$ is based on the average and standard deviation of two axes of a simple contrary color representation with $\gamma = f_1 - f_2$ y $\beta = \frac{1}{2}(f_1 + f_2) - f_3$.
 The equation \ref{eq:cef} represents the level of contrast enhancement of the image $f$ as follows:
 
-\begin{equation}
+\begin{equation} %TODO Significado de ``CM''
 CM(f)=\sqrt{\sigma_{\gamma}^{2} + \sigma_{\beta}^{2}} + \sqrt{\mu_{\gamma}^{2} + \mu_{\beta}^{2}}
 \label{eq:cef}
 \end{equation} Where $\sigma_{\gamma}$ and $\sigma_{\beta}$ correspond to the standard deviation of $\gamma$ and $\beta$ respectively. Similarly, $\mu_{\gamma}$ and $\mu_{\beta}$ corresponds to the respectively mean.
@@ -1501,15 +1480,15 @@ Where $CM(f^{'})$ is the value obtained from the contrasted image $f'$ product o
 
 \subsubsection{Results}
 The tests were made with 100 test images of \cite{arbelaez2007berkeley} and were used the same abbreviations as in the previous experiment to differentiate the sorting methods with different domain decomposition. 
-In the \ref{tab:EXP_N1}  can see the results of the various iterations (iter) of contrast enhancement algorithm (applied several times the equation \ref{contraste} to the same image).  
+In the Table \ref{tab:EXP_N1} we can see the results of the various iterations (iter) of contrast enhancement algorithm (applied several times the equation \ref{contraste} to the same image).  
 Is observed that SMOB has better results in all the iterations, followed by the variance VARB and then follow the other methods. The improvement using SMOB as it grows the amount  of iterations is approximately 3\% and the difference with the second and third is of 0.30\% and 2.25\% on average in each of the iterations.
-It can be seen that as the number of iterations increases also improves the contrast according to the mentioned metric , being also important the domain and sorting method used.
+It can be seen that as the number of iterations increases also improves the contrast according to the mentioned metric, being also important the domain and sorting method used.
 
 \begin{table}
 \caption{Contrast improvement}
 \label{tab:EXP_N1}
 \begin{tabular}{ccccccccc}
-\hline METODO& iter1&iter2&iter3&iter4\\
+\hline Method&iter1&iter2&iter3&iter4\\
 \hline  \textbf{SMOB}& \textbf{1,03482}& \textbf{1,03482}& \textbf{1,06084}& \textbf{1,08889}\\
 \hline  \textbf{VARB}& \textbf{1,0329}& \textbf{1,0329}& \textbf{1,05798}& \textbf{1,0852}\\
 \hline MO2W9&1,02047&1,02047&1,03668&1,05426\\
@@ -1569,7 +1548,7 @@ In the Figure \ref{fig:mejora} can see an example of improving contrast of an im
 \end{figure}
 
 
-\subsection{Application 3: Classification of textures}
+\subsection{Application 3: Texture classification}
 
  The problem of texture characterization and classification consists of two steps. In the first instance, image characteristics that allow numerically describe their textural properties using a feature vector or descriptor are calculated. Later it is assigned a class of texture according criteria of similarity between descriptors \cite{hanbury2005illumination}.
 
@@ -1595,15 +1574,15 @@ In practice $K $ is calculated by applying $\varepsilon$ erosion  to the origina
 \begin{equation}
 K^{n}_{j}(f,P_{2,\vec{v}})  = \mathrm{Vol}([\varepsilon(f,P_{2,\vec{v}})]_{j}) / \mathrm{Vol}(f_{j})
 \end{equation}
-Allows to obtain a distribution of orientation and distance from a texture image \cite{aptoula2007morphological}.
+This allows to obtain a distribution of orientation and distance from a texture image \cite{aptoula2007morphological}.
 
-The sorting method used to support the morphological characterization tools of texture, affects the percentages of classification. This is because the intensity distributions used as texture descriptors, vary according to the intermediate images. These intermediate images are the result of applying a morphological filter.
+The ordering method used to support the morphological characterization tools of texture, affects the percentages of classification. This is because the intensity distributions used as texture descriptors, vary according to the intermediate images. These intermediate images are the result of applying a morphological filter.
 
 %--------------------------------------------------------
 \subsubsection{Results}
 \label{sec:resultadosexperi}
-The tests were made with OutexTC13 data base consisting of 1360 images of size  128 $\times $ 128 pixels, with 68 kinds of surface textures (Figura \ref{fig:outex13} with 20 samples of each class, where the 50\% of each class is the training set. Totaling 680 training and test images respectively \cite{ojala2002outex}.  
-The classifier used was k-nn (k-nearest neighbors) using Euclidean distance with k = 1. 
+The tests were made with OutexTC13 database consisting of 1360 images of size 128 $\times$ 128 pixels, with 68 kinds of surface textures (Figure \ref{fig:outex13} with 20 samples of each class, where the 50\% of each class is the training set. Totaling 680 training and test images respectively \cite{ojala2002outex}.  
+The classifier used was k-NN (k-Nearest Neighbors) using Euclidean distance with k = 1. 
 
 \begin{figure}
 	\centering
@@ -1614,12 +1593,13 @@ The classifier used was k-nn (k-nearest neighbors) using Euclidean distance with
 
 The purpose of the experiment was the classification percentages obtained using the sorting methods exposed.
 Several statistical parameters were evaluated in the order strategy proposed in this work.
+
 %---configuracion de la granulometria
 In granulometry tests they have been used structural elements of square shape of size  $\lambda$ and $2\lambda+1$ side pixels, varying $\lambda$ from 1 to 15. For each element of the series, 15 values for each channel are calculated which are then concatenated. The choice of simple increase of $\lambda$, is based on the smallest increases provide better classification results \cite{de2006selecting}. 
 With respect to the configuration of the parameters of the proposal, each texture sample was divided in $2\times2$  subregions and  denoted by the suffix W4. This division allows each texture sample is divided equally and perceptually similar. Is denoted by the suffix B when the image domain is the structuring element itself. 
 
 %---configuracion de la covarianza morfologica
-Morphological covariance requires varying the direction and distance between the pair of points that composing the structural elemen. The addresses used were $0^{\circ}$, $45^{\circ}$, $90^{\circ}$,  $135^{\circ}$, in practice only these addresses are important and significantly recognizable \cite{hanbury2005illumination}. The separation distances were used for each direction were from 1 a 20 píxeles. Using these 4 directions and 20 distances have generated 80 values for each channel, finally these values are concatenated to obtain the feature vector of the texture sample. 
+Morphological covariance requires varying the direction and distance between the pair of points that composing the structural element. The addresses used were $0^{\circ}$, $45^{\circ}$, $90^{\circ}$,  $135^{\circ}$, in practice only these addresses are important and significantly recognizable \cite{hanbury2005illumination}. The separation distances were used for each direction were from 1 to 20 pixels. Using these 4 directions and 20 distances have generated 80 values for each channel, finally these values are concatenated to obtain the feature vector of the texture sample. 
  
 \begin{table}
 \caption{Classification results by Ordering Methods}
@@ -1630,7 +1610,7 @@ Morphological covariance requires varying the direction and distance between the
 &\multicolumn{2}{c}{ \% 
 Correctly classified }\\
 \cline{2-3}
-\textbf{Sort } & \textbf{Covariance} &\textbf{Granulometry } \\ 
+\textbf{Ordering} & \textbf{Covariance} &\textbf{Granulometry} \\ 
 \cmidrule{1-3}
 %Marginal  & 85,78 & 88,68 \\ \hline
 BM & 79,56 & 77,79 \\ \hline
@@ -1681,22 +1661,25 @@ VARB & 83,09 &  82,21  \\ \hline
 \label{exper_ordenaciones}
 \end{table}
 %-  - - - - - - - - - - - - - -
-In the Table \ref{tab:experiment1_t1} the three best results of each method were marked in bold. Covariance Morphological with HLEX y DLAB orderings have higher performances of $\approx 1\%$ with respect to SMOW4 that presented the best performance in RGB space. The results are consistent with experiments in \cite{hanbury2005illumination} where best results are obtained in the L*a*b space compared to RGB space using structuring elements of variant length. This is because in those color spaces the chromatic information is separated of the brightness or intensity. 
+In the Table \ref{tab:experiment1_t1} the three best results of each method were marked in bold. Covariance Morphological with HLEX y DLAB orderings have higher performances of $\approx 1\%$ with respect to SMOW4 that presented the best performance in RGB space. The results are consistent with experiments in \cite{hanbury2005illumination} where best results are obtained in the L*a*b space compared to RGB space using structuring elements of dynamic lengths. This is because in those color spaces the chromatic information is separated of the brightness or intensity. 
 In experiments mentioned in \cite{bianconi2011theoretical} about the perception of texture they indicate that the texture and color are perceived independently. 
-With the granulometry, the RGB space has better results with SMOW4 and SMOB orderings, both higher than the ED ordering at ($\approx 1,33 \% $). Moreover, the ED ordering provides far superior results to the BM, LEX, ALEX and AMLEX orderings.
+With granulometry, the RGB space has better results with SMOW4 and SMOB orderings, both higher than the ED ordering at ($\approx 1,33 \% $). Moreover, the ED ordering provides far superior results to the BM, LEX, ALEX and AMLEX orderings.
 
 The SMOW4 y SMOB orderings (85,44\%, 84,71\%) show the best results of classification (with granulometry) with respect to the ordering methods implemented of the state of the art. The division in $2\times2$ sub-regions (W4) leads to better results than using B.  
 
 \section{Conclusions and Future Work}
 
-In this work a new strategy of RGB color ordering that is dependent on the image we are presented. The ordering is performed by extracting histogram information of each color component in a certain domain image. Two strategies of domain decomposition are presented to extract this information, one is extracting information from the same window filter, and another consists in dividing the image into sub-regions of same size, taking the union of them when the filter window takes more than one sub-region.
-Tests were performed for three image processing applications: Noise Removal, contrast stretching and textures characterization for further classification. Is used morphologythis mathematical for this two latest applications. Morphological operators in this case are pseudo-operators as it can not be guaranteed certain theoretical properties, such as idempotency. 
-The median filter was used to eliminate noise, achieving better results with some extracted weights of different methods of the state of the art, both gaussian noise such as speckle. For salt and pepper noise the euclidean distance to the origin in the RGB color space in the MAE metric gave better results than the proposed method  with the different extracted information for each component. This is because the salt noise is expressed by the minimum value in each color component, and pepper noise is expressed as the maximum value in each component. Thus, if the colors of the pixels are sorted by the euclidean distance, it is quite unlikely that the median filter select a pixel to be noise. 
-For the application of contrast improvement the proposed method was more efficient according to the CEF metric with different weights extracted from image information. For the characterization of textures using Covariance Morphological with lexicographic ordering I→H→S \cite{ortiz2004gaussian} and the euclidean distance to the color $(0,0,0)$ in the L*a*b* color space \cite{ortiz2002procesamiento} has better performance to the proposal, demonstrated in its best ranking. The proposed method using the softness as weight for each component achieves better results using the granulometry as characterization of textures.
+In this work a new strategy of RGB color ordering that is dependent on the image is presented. The ordering is performed by extracting histogram information of each color component in a certain domain image. Two strategies of domain decomposition are presented to extract this information, one is extracting information from the same window filter, and another consists in dividing the image into sub-regions of same size, taking the union of them when the filter window intersects more than one sub-region.
+
+Tests were performed for three image processing applications: Noise Removal, contrast stretching and textures characterization for further classification. Is used mathematical morphology for this two latest applications. Morphological operators in this case are pseudo-operators as it can not be guaranteed certain theoretical properties, such as idempotency.
+
+The median filter was used to eliminate noise, achieving better results with the calculated weights with our strategies than with different methods of the state of the art, both gaussian noise such as speckle. For salt and pepper noise the euclidean distance to the origin in the RGB color space in the MAE metric gave better results than the proposed method with the different extracted information for each component. This is because the salt noise is expressed by the minimum value in each color component, and pepper noise is expressed as the maximum value in each component. Thus, if the colors of the pixels are sorted by the euclidean distance, it is quite unlikely that the median filter select a pixel to be noise. 
+For the application of contrast enhacement the proposed method was more efficient according to the CEF metric with different weights extracted from image information.
+
+For the characterization of textures using morphological covariance with lexicographic ordering I→H→S \cite{ortiz2004gaussian} and the euclidean distance to the color $(0,0,0)$ in the L*a*b* color space \cite{ortiz2002procesamiento} has better performance than the proposal, demonstrated in its best ranking. The proposed method using the softness as weight for each component achieves better results using the granulometry as characterization of textures.
+
 Is proposed as future work analyze the importance of domain decomposition to extract information from each color component. More experiments could be done in different applications such as fusion or segmentation of color image. Could be extract other information for each component as Entropy and Energy.
  
-
-
 %Por lo tanto en $K^{TH}$, el contraste  entre las \'areas brillantes y oscuras de la imagen $f$ es mayor.
 
 %En la actualidad existen varios operadores de contraste compuestos y multiescala a partir de la transformada top-hat \cite{bai2012toggle}. Como el objetivo de este trabajo no es crear un nuevo operador de contraste sino validar la estrategia de ordenamiento de color  usaremos la ecuaci\'on \ref{contraste} en la aplicaci\'on de mejoramiento de contraste. Con la misma se podr\'a comparar los diferentes trabajos del estado de arte y la propuesta en la secci\'on de experimentos.

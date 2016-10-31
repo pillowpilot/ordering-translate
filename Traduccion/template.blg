@@ -1,0 +1,61 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: template.aux
+The style file: spbasic.bst
+Database file #1: sample.bib
+Repeated entry---line 1269 of file sample.bib
+ : @article{gao2013adaptive
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1637 of file sample.bib
+ : @article{roerdink2000watershed
+ :                               ,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "joblove1978colo"
+Warning--I didn't find a database entry for "zamora2001comparativos"
+Warning--I didn't find a database entry for "apatoula2007comparative"
+Warning--I didn't find a database entry for "ortiz2004morphological"
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Warning--missing publisher in ortiz2002procesamiento
+You've used 73 entries,
+            3270 wiz_defined-function locations,
+            1065 strings with 17017 characters,
+and the built_in function-call counts, 101477 in all, are:
+= -- 11947
+> -- 1646
+< -- 80
++ -- 959
+- -- 507
+* -- 6624
+:= -- 10853
+add.period$ -- 72
+call.type$ -- 73
+change.case$ -- 578
+chr.to.int$ -- 67
+cite$ -- 74
+duplicate$ -- 10769
+empty$ -- 7492
+format.name$ -- 754
+if$ -- 21309
+int.to.chr$ -- 7
+int.to.str$ -- 1
+missing$ -- 708
+newline$ -- 229
+num.names$ -- 292
+pop$ -- 2992
+preamble$ -- 1
+purify$ -- 459
+quote$ -- 0
+skip$ -- 4794
+stack$ -- 0
+substring$ -- 9636
+swap$ -- 6436
+text.length$ -- 32
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 636
+warning$ -- 1
+while$ -- 624
+width$ -- 0
+write$ -- 825
+(There were 2 error messages)
