@@ -1,4 +1,4 @@
-\begin{thebibliography}{73}
+\begin{thebibliography}{74}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -163,6 +163,10 @@ Hanbury AG, Serra J (2001{\natexlab{b}}) Morphological operators on the unit
 Heijmans HJ, Ronse C (1990) The algebraic basis of mathematical morphology i.
   dilations and erosions. Computer Vision, Graphics, and Image Processing
   50(3):245--295
+
+\bibitem[{Joblove and Greenberg(1978)}]{joblove1978color}
+Joblove GH, Greenberg D (1978) Color spaces for computer graphics. In: ACM
+  siggraph computer graphics, ACM, vol~12, pp 20--25
 
 \bibitem[{Kleefeld and Burgeth(2015)}]{kleefeld2015processing}
 Kleefeld A, Burgeth B (2015) Processing multispectral images via mathematical

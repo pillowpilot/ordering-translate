@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.5.28)  31 OCT 2016 17:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.5.28)  31 OCT 2016 19:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1492,36 +1492,19 @@ LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <8.5> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.25> not available
 (Font)              size <5> substituted on input line 114.
 
-
-Package natbib Warning: Citation `joblove1978colo' on page 1 undefined on input
- line 129.
-
 [1{/home/blackarrow/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-
-Package natbib Warning: Citation `zamora2001comparativos' on page 2 undefined o
-n input line 137.
-
-
 Overfull \hbox (6.53033pt too wide) in paragraph at lines 148--149
 \T1/cmr/m/n/10 can men-tion, L*a*b* color spaces [[]], HLS [[]], CIELAB
  []
-
-
-Package natbib Warning: Citation `apatoula2007comparative' on page 2 undefined 
-on input line 155.
 
 
 Overfull \hbox (9.95093pt too wide) in paragraph at lines 155--156
 []\T1/cmr/m/n/10 Recent pub-li-ca-tions pre-sented gen-er-al-iza-tions of math-
 
  []
-
-
-Package natbib Warning: Citation `ortiz2004morphological' on page 2 undefined o
-n input line 161.
 
 
 LaTeX Warning: Command \textordmasculine invalid in math mode on input line 161
@@ -1886,17 +1869,17 @@ Underfull \hbox (badness 3428) in paragraph at lines 108--111
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [16]
-Underfull \hbox (badness 4673) in paragraph at lines 178--180
+Underfull \hbox (badness 4673) in paragraph at lines 182--184
 []\T1/cmr/m/n/10 Lefèvre S (2009) Be-yond mor-pho-log-i-cal size
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--180
+Underfull \hbox (badness 10000) in paragraph at lines 182--184
 \T1/cmr/m/n/10 dis-tri-bu-tion. Jour-nal of Elec-tronic Imag-ing
  []
 
 
-Underfull \hbox (badness 1194) in paragraph at lines 197--200
+Underfull \hbox (badness 1194) in paragraph at lines 201--204
 \T1/cmr/m/n/10 pho-log-i-cal gran-u-lome-tries for color im-ages. In:
  []
 
@@ -1904,17 +1887,17 @@ Underfull \hbox (badness 1194) in paragraph at lines 197--200
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Underfull \hbox (badness 1939) in paragraph at lines 235--237
+Underfull \hbox (badness 1939) in paragraph at lines 239--241
 []\T1/cmr/m/n/10 Ortiz Zamora FG (2002) Proce-samiento mor-
  []
 
 
-Underfull \hbox (badness 1509) in paragraph at lines 243--245
+Underfull \hbox (badness 1509) in paragraph at lines 247--249
 \T1/cmr/m/n/10 tion strate-gies. Fun-da-menta in-for-mat-i-cae 41(1,
  []
 
 
-Underfull \hbox (badness 4441) in paragraph at lines 281--283
+Underfull \hbox (badness 4441) in paragraph at lines 285--287
 \T1/cmr/m/n/10 per-cep-tual, his-tor-i-cal and ap-pli-ca-tional back-
  []
 
@@ -1922,18 +1905,15 @@ Underfull \hbox (badness 4441) in paragraph at lines 281--283
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [17]
-Underfull \hbox (badness 1231) in paragraph at lines 336--337
+Underfull \hbox (badness 1231) in paragraph at lines 340--341
 []\T1/cmr/m/n/10 Vincent L (2000) Gran-u-lome-tries and open-ing
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-)
-
-Package natbib Warning: There were undefined citations.
-
-[18] (./template.aux)
+) [18]
+(./template.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.28pt have occurred.
@@ -1943,10 +1923,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 30611 strings out of 494951
- 731488 string characters out of 6180429
- 1177578 words of memory out of 5000000
- 33325 multiletter control sequences out of 15000+600000
+ 30610 strings out of 494951
+ 731470 string characters out of 6180429
+ 1177576 words of memory out of 5000000
+ 33324 multiletter control sequences out of 15000+600000
  19282 words of font info for 57 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  62i,20n,107p,1306b,2349s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1976,7 +1956,7 @@ c/amsfonts/cm/cmsy5.pfb></home/blackarrow/texlive/2016/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmsy7.pfb></home/blackarrow/texlive/2016/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmsy8.pfb></home/blackarrow/texlive/2016/texmf-dist/fonts
 /type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on template.pdf (18 pages, 2730730 bytes).
+Output written on template.pdf (18 pages, 2730763 bytes).
 PDF statistics:
  487 PDF objects out of 1000 (max. 8388607)
  124 compressed objects within 2 object streams
