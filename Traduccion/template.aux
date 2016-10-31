@@ -78,7 +78,7 @@
 \citation{ortiz2004gaussian}
 \citation{ortiz2002procesamiento}
 \citation{chanussot1997bit}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Proposed Sorting}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Proposed Ordering}{5}}
 \newlabel{histograma}{{8}{5}}
 \newlabel{probabilidad}{{9}{5}}
 \newlabel{Transformacion}{{10}{5}}
@@ -91,7 +91,7 @@
 \newlabel{ModaMinimo}{{16}{6}}
 \newlabel{varianza}{{17}{6}}
 \newlabel{Suavidad}{{18}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces $B$ Neighborhood of size 3 $\times $ 3 centered in the pixel $(u,v)$ \relax }}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces $B$ Neighborhood of size 3 $\times $ 3 centered at the pixel $(u,v)$ \relax }}{6}}
 \newlabel{fig:Ventana B}{{3}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Neighborhood as Domain}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Division of the image into subregions}{6}}
@@ -103,7 +103,7 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Domain when the window touches more than one subregion.\relax }}{7}}
 \newlabel{fig:Sub-regiones}{{5}{7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Application 1: Noise Removal}{7}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.1}Used noises}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.1}Used models}{7}}
 \newlabel{eq:gaussian_noise}{{19}{7}}
 \newlabel{eq:speckle}{{20}{7}}
 \newlabel{eq:salt_and_pepper}{{21}{7}}
@@ -127,7 +127,7 @@
 \citation{arbelaez2007berkeley}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Gaussian noise ($\mu = 0; \sigma ^2 = 0.105$)\relax }}{9}}
 \newlabel{fig:imagen_ejemplo_ruido_gaussiano}{{7}{9}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Ruido gaussiano. Sumatoria de MAE por $\sigma ^2$\relax }}{9}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Gaussian noise. MAE sorted by $\sigma ^2$\relax }}{9}}
 \newlabel{tabla:gaussian_mae}{{1}{9}}
 \citation{hanbury2001morphological,aptoula2007pseudo,aptoula2008alpha,angulo2010pseudo,chen2002pseudo}
 \newlabel{fig:alex}{{8a}{10}}
@@ -162,13 +162,12 @@
 \newlabel{fig:imagenes_resultado}{{8}{10}}
 \citation{soille2013morphological,mukhopadhyay2000multiscale,soille1997note,bai2010analysis,bai2010infrared,bai2010analysis1}
 \citation{soille2013morphological}
-\citation{susstrunk2003color}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Ruido gaussiano. MAE por $\sigma ^2$\relax }}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Gaussian noise. MAE by $\sigma ^2$\relax }}{11}}
 \newlabel{fig:gaussian_mae}{{9}{11}}
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Salt and pepper noise. MAE by $p$\relax }}{11}}
 \newlabel{fig:salt_and_pepper_mae}{{10}{11}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Application 2: Contrast improving}{11}}
-\newlabel{contraste}{{24}{11}}
+\citation{susstrunk2003color}
 \citation{arbelaez2007berkeley}
 \@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Speckle noise. MAE by $\sigma ^2$\relax }}{12}}
 \newlabel{fig:speckle_mae}{{11}{12}}
@@ -182,6 +181,7 @@
 \newlabel{sub@fig:Apert1}{{d}{12}}
 \@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces A counter-example shows that openness is not idempotent with the ordering proposed.\relax }}{12}}
 \newlabel{fig:ContraEjemplo}{{12}{12}}
+\newlabel{contraste}{{24}{12}}
 \newlabel{eq:cef}{{25}{12}}
 \newlabel{cef}{{26}{12}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.1}Results}{12}}
@@ -190,9 +190,9 @@
 \citation{palm2004color,van2005parallel}
 \citation{matheron1975random}
 \citation{vincent2000granulometries,soille2013morphological}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Salt and pepper noise. Summation of MAE by $p$\relax }}{13}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Salt and pepper noise. MAE by $p$\relax }}{13}}
 \newlabel{tabla:salt_and_pepper_mae}{{2}{13}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Ruido speckle. Sumatoria de MAE por $\sigma ^2$\relax }}{13}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Speckle noise. MAE by $\sigma ^2$\relax }}{13}}
 \newlabel{tabla:speckle_mae}{{3}{13}}
 \@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Contrast improvement\relax }}{13}}
 \newlabel{tab:EXP_N1}{{4}{13}}
@@ -202,8 +202,6 @@
 \citation{ojala2002outex}
 \citation{de2006selecting}
 \citation{hanbury2005illumination}
-\citation{hanbury2005illumination}
-\citation{bianconi2011theoretical}
 \newlabel{fig:imagen_original_3}{{13a}{14}}
 \newlabel{sub@fig:imagen_original_3}{{a}{14}}
 \newlabel{fig:imagen_mejorada_3}{{13b}{14}}
@@ -214,6 +212,8 @@
 \newlabel{fig:outex13}{{14}{14}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.5.1}Results}{14}}
 \newlabel{sec:resultadosexperi}{{5.5.1}{14}}
+\citation{hanbury2005illumination}
+\citation{bianconi2011theoretical}
 \citation{ortiz2004gaussian}
 \citation{ortiz2002procesamiento}
 \bibstyle{spbasic}

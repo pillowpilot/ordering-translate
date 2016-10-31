@@ -339,9 +339,9 @@ The total order relation has two main advantages. First, all colors are comparab
 
 \subsection{Morphological mathematics}
 
-Mathematical morphological operations are based on two basic operators: dilatation and erosion. Both operators are filters that can be defined from the minimum and maximum within a window called structuring element \cite{serra1986introduction}. From erosion and dilation can extend all the morphological mathematics. Morphological operators must comply certain theoretically properties, such as anti-extensive or extensive, idempotent, homotopic and growing \cite{serra1986introduction}.
+Morphological operations are based on two basic operators: dilatation and erosion. Both operators are filters that can be defined from the minimum and maximum within a window called structuring element \cite{serra1986introduction}. On erosion and dilation we can build all morphological mathematics. Morphological operators must satisfy certain theoretically properties, such as anti-extensive or extensive, idempotent, homotopic and growing \cite{serra1986introduction}. \textbf{Review terms} %TODO
 
-Given a digital image $f$ and $B$ window, called structuring element. The erosion ($\varepsilon$) and the dilation ($\delta$) of the image $f$ by $B$ can be expressed as:
+Given a digital image $f$ and window $B$, called structuring element. The erosion ($\varepsilon$) and the dilation ($\delta$) of the image $f$ by $B$ can be expressed as:
 
 \begin{equation}
 \varepsilon(f,B)(u,v)  = \min_{(s,t) \in B} \{f(u-s,v-t) + B(s,t) \}
@@ -351,7 +351,7 @@ Given a digital image $f$ and $B$ window, called structuring element. The erosio
 \delta(f,B)(u,v)  =  \max_{(s,t) \in B} \{f(u+s,v+t) - B(s,t) \}
 \end{equation}
 
-We called $\delta(f,B)$ and $\varepsilon(f,B)$ as dilation and erosion respectively for all pixels $(u,v)$ of the image $f$. The combination of erosion and dilation produces other operators such as opening and closing. The opening softens the bright regions of the image. The closure softens the dark areas of the image. The opening $\circ$ and the closing $\bullet$ of $f$ by $B$ are defined based on dilation and erosion as follows:
+We call $\delta(f,B)$ and $\varepsilon(f,B)$ as dilation and erosion respectively for all pixels $(u,v)$ of the image $f$. The combination of erosion and dilation produces other operators such as opening and closing. The opening softens the bright regions of the image. The closure softens the dark areas of the image. The opening $\circ$ and the closing $\bullet$ of $f$ by $B$ are defined based on dilation and erosion as follows:
 
 \begin{equation}
 f\circ B = \delta(\varepsilon(f,B),B),
@@ -361,8 +361,7 @@ f\circ B = \delta(\varepsilon(f,B),B),
 f\bullet B = \varepsilon(\delta(f,B),B).
 \end{equation}
 
-Based on the opening and closing is defined the top-hat transform. The clear top-hat transform ($WTH$) could extract bright regions of the image and the dark top-hat transform ( $BTH$ )
-could extract dark areas . The transformed $WTH$ and $BTH$ are defined for an image $f$ as follows:
+Based on the opening and closing is defined the top-hat transform. The white top-hat transform ($WTH$) could extract bright regions of the image and the dark top-hat transform ($BTH$) could extract dark areas. The transformed $WTH$ and $BTH$ are defined for an image $f$ as follows:
 
 \begin{equation}
 WTH(f) = f - f\circ B,
@@ -372,40 +371,36 @@ WTH(f) = f - f\circ B,
 BTH(f) = f\bullet B - f. 
 \end{equation}
 
-The extent of the mathematical morphological color images is still an open problem \cite{aptoula2007pseudo}, mainly by the drawback that not exist a natural order between vectors, and that colors can be represented in different ways (forming different color spaces). In the absence of a natural order between colors it is not easy to define the basic operators of erosion and dilation.  
+The extent of the mathematical morphological color images is still an open problem \cite{aptoula2007pseudo}, mainly because there is no natural order between vectors, and that colors can be represented in different ways. In the absence of a natural order between colors it is not trivial to define the basic operators of erosion and dilation.  
 
 The following section presented  an ordering strategy of RGB colors, given metric extracted from each color component, so as to establish weights to components from own image information.
 
-
-
- \section{Proposed Sorting}
-
+\section{Proposed Ordering}
 A histogram function is defined from the RGB image, which corresponds to the frequency distribution of the values that can take a picture $f$, either in a plane or in three dimensions (R, G, B). The histogram of the j-th component of the color image $f$ (R, G o B) is a discrete function $h_{f_j}^{D}$ defined as:% $h:\{0,1,\dots,t_{max}\}\times \{C_1,C_2,\dots,C_n\}\rightarrow \mathbb N$ definida como:
 
 \begin{equation}
 \label{histograma}
    h_{f_j}^{D}(i) = n_i,
 \end{equation} 
-where ${i}$ represents the $i-esimo$ intensity level in the range $\{0,1,...,2^k-1\}$ 
-of the component $j$, and $n_i$ is the number of pixels in the image $f$ whose intensity level is $i$ in the component $j$ 
+where ${i}$ represents the $i$-th intensity level in the range $\{0,1,...,2^k-1\}$ 
+of the $j$-th component, and $n_i$ is the number of pixels in the image $f$ whose intensity level is $i$ in the component $j$ 
 within the domain $D$ (subset of pixels $(u,v)$ inside the image $f$).
 
 The probability of occurrence $p_{f_j}^{D}(i)$ of each level of intensity $i$ in the component $j$ of the image $f$ in the domain $D$ is defined as:
 \begin{equation}
 \label{probabilidad}
    p_{f_j}^{D}(i) = \frac{h_{f_j}^{D}(i)}{n},
-\end{equation} Donde $n = n_0 + n_1 + ... + n_{255}$, es decir la cantidad total de pixeles de la imagen $f$ dentro del dominio $D$. 
+\end{equation} Where $n = n_0 + n_1 + ... + n_{2^k-1}$, in other words is the total amount of pixels of the image in the domain $D$.
 
-So to avoid giving the highest priority to a component of the vector representing the color, a new value $(R,G,B)$ in the first position of the corresponding lexicographical cascade transformation obtained from metric associated to each component is placed.
-RGB colors are reduced to a scalar value. For this purpose, is first defined a transformation $T:\mathbb{Z}^3 \rightarrow \mathbb{R}$ and then ordered te colors with respect to the order of his scalar projection in $\mathbb{Z}^3$ by $T$.
-A $
-C=(C_1,C_2,C_3)$ color reduction is achieved through of the color inner product $C$ with a $w=(w_1,w_2,w_3) $ weights vector, that is to say:
+So to avoid giving the highest priority to a component of the vector representing the color, a new value $(R,G,B)$ in the first position of the corresponding lexicographical cascade transformation obtained from metric associated to each component is placed. 
+RGB colors are reduced to a scalar value. For this purpose, is first defined a transformation $T:\mathbb{Z}^3 \rightarrow \mathbb{R}$ and then ordered te colors with respect to the order of his scalar projection in $\mathbb{Z}^3$ by $T$. \textbf{NE} %TODO
+The reduction of color $C=(C_1,C_2,C_3)$ is achieved through of the inner product of $C$ with a weights vector $w=(w_1,w_2,w_3) $, that is to say:
 
 \begin{equation}
 \label{Transformacion}
 T(C)= \sum_{l=1}^3(w_l \times C_l)
 \end{equation}  
-wheree $l$ is the color component index $C$ and $w_l \in \mathbb{R}$. 
+where $l$ is the color component index $C$ and $w_l \in \mathbb{R}$. 
 
 Two colors, $C=(C_1,C_2,C_3)$ and $C'=(C_1^{'},C_2^{'},C_3^{'})$, with $C\neq C'$, may have the same transformation, that is to say $T(C) = T(C')$.  Therefore, the transformation is used as the first component of the lexicographical order:
 
@@ -414,46 +409,47 @@ Two colors, $C=(C_1,C_2,C_3)$ and $C'=(C_1^{'},C_2^{'},C_3^{'})$, with $C\neq C'
  C\leq C'\Leftrightarrow [T(C),C_1,C_2,C_3] \leq_L [T(C'),C_1^{'},C_2^{'},C_3^{'}]
 \end{equation} wheree $\leq_L$ shows the relationship $\leq$ according to the lexicographical order.	
 
-Opportunely, could vary the order of priority of the color components after the transformation.
-Vector values of $w$ are obtained by applying a function $\phi \in \mathbb{R}$ on the histogram of each component in a domain $D$ of the image $f$, that is to say $w_1 = \phi(h_{f_1}^D)$, $w_2 = \phi(h_{f_2}^D)$, $w_3 = \phi(h_{f_3}^D)$, with $f_1$ = component $R$, $f_2$ = component $G$ y $f_3$ =  component $B$.
+We could vary the order of priority of the color components, after the transformation.
+Vector values of $w$ are obtained by applying a function $\phi \in \mathbb{R}$ on the histogram of each component in a domain $D$ of the image $f$, that is to say $w_1 = \phi(h_{f_1}^D)$, $w_2 = \phi(h_{f_2}^D)$, $w_3 = \phi(h_{f_3}^D)$, with $f_1$ = $R$ component, $f_2$ = $G$ component y $f_3$ =  $B$ component.
 
-The function $\phi$ can be obtained from applying any metric (statistical, for example) to the histogram of each component $(R,G,B)$, so as to give greater weight to that component whose metric has greater value in a specific domain $D$ (can be the entire image or part of it). 
+The function $\phi$ can be obtained from applying any metric (statistical, for example) to the histogram of each component $(R,G,B)$, so as to give greater weight to that component whose metric has greater value in a specific domain $D$ (it can be the entire image or part of it). 
 
- \section{Experimental results}
-
-This section will hold a series of comparative tests, in order to measure the relative performance of different ordering methods of the state of the art together with the proposed ordering, in three image processing applications. The selected applications were noise removal, contrast stretching and characterization textures for subsequent classification.
+\section{Experimental results}
+This section will hold a series of comparative tests, in order to measure the relative performance of different ordering methods of the state of the art together with the proposed ordering, in three image processing applications. The selected applications were noise removal, contrast stretching and textures characterization for subsequent classification.
 More precisely, the ordering methods involving in the tests were:
-the classic lexicographical ordering, the ordering $\alpha$-lexicographical \cite{zamora2001comparative}, the ordering $\alpha$-module lexicographical \cite{angulo2003morphological}, I→H→S lexicographical ordering, $(Href=0º)$ \cite{ortiz2004gaussian}, the euclidean distance to color $(0,0,0)$ in the color space L*a*b* and RGB \cite{ortiz2002procesamiento}, 
-and the bit interlaced \cite{chanussot1997bit}. 
-All images used on different tests were of $8$ bits. 
+the classic lexicographical ordering, the $\alpha$-lexicographical ordering \cite{zamora2001comparative}, the $\alpha$-module lexicographical ordering \cite{angulo2003morphological}, I→H→S lexicographical ordering, $(Href=0º)$ \cite{ortiz2004gaussian}, the euclidean distance to color $(0,0,0)$ in the color space L*a*b* and RGB \cite{ortiz2002procesamiento}, and the bit interlaced \cite{chanussot1997bit}. \textbf{Check terms with cites}.
+All images used were $8$ bits images. 
 
 The function $\phi$ applied to the histogram of each component $j$ of the image $f$ in all tests are:
 
 \begin{itemize}
-    \item Average ($Me$): Is the sum of all intensity levels $i$ listed in the domain $D$ divided the total amount $n$ of pixels that are in $D$:
+    \item Average ($Avg$): Is the sum of all intensity levels $i$ listed in the domain $D$ divided the total amount $n$ of pixels that are in $D$:
 		
 \begin{equation}
 \label{promedio}
-   Me(h_{f_j}^D) = \sum_{i=0}^{255}\frac{i\times h_{f_j}^D(i)}{n},
+Avg(h_{f_j}^D) = \sum_{i=0}^{2^k-1}\frac{i\times h_{f_j}^D(i)}{n},
 \end{equation}		
-Where $n = n_0 + n_1 + ... + n_{255}$.
+Where $n = n_0 + n_1 + ... + n_{2^k-1}$.
 
     \item Minimum ($Min$): is the lowest level of intensity $i$ in the domain $D$:
 \begin{equation}
 \label{minimo}
 	Min(h_{f_j}^D) = \min\{i|h_{f_j}^D(i)>0\}
-\end{equation}		
-		\item Maximum($Max$): is the highest level of intensity $i$ in the domain $D$:
+\end{equation}
+
+\item Maximum($Max$): is the highest level of intensity $i$ in the domain $D$:
 \begin{equation}
 \label{maximo}
    Max(h_{f_j}^D) = \max\{i|h_{f_j}^D(i)>0\}
-\end{equation}		
- 		\item Moda Minimum ($minM_o$): is the lowest level of intensity $i$ that appears more times in the domain $D$, that is the lowest level of intensity $i$ which has greater $p_{f_j}^{D}(i)$:
+\end{equation}
+
+\item Minimum Mode ($minM_o$): is the lowest level of intensity $i$ which number of occurences is equals the mode of $D$, that is the lowest level of intensity $i$ which has the greater $p_{f_j}^{D}(i)$:
 \begin{equation}
 \label{ModaMinimo}
    minM_o(h_{f_j}^D) = \min\{i|h_{f_j}^D(i) \geq h_{f_j}^D(i'), \forall i\neq i'\}
-\end{equation}		
-\item Moda Maximum ($maxM_o$): is the highest level of intensity $i$ that appears more times in the domain $D$, that is the highest level of intensity $i$ which has greater $p_{f_j}^{D}(i)$:
+\end{equation}
+
+\item Maximum Mode ($maxM_o$): is the highest level of intensity $i$ which number of occurences is  equals the mode of $D$, that is the highest level of intensity $i$ which has greater $p_{f_j}^{D}(i)$:
 \begin{equation}
 \label{ModaMinimo}
    maxM_o(h_{f_j}^D) = \max\{i|h_{f_j}^D(i) \geq h_{f_j}^D(i'), \forall i\neq i'\}
@@ -478,28 +474,25 @@ Where $n = n_0 + n_1 + ... + n_{255}$.
 A parameter to be defined is the domain to be considered for the calculation of the weights $w_l$. Domain distributions were used for different applications are discussed below.
 
 \subsection{Neighborhood as Domain}
-
-
-The domain $D$ where the function $\phi$  is applied  (applied to the histogram of each component $h_{f_j}^D$) is the window itself $B$ (called structuring element for morphological mathematics) where the operation of the nonlinear filter is applied. In the figure \ref{fig:Ventana B} can see a domain $D$ corresponding to a neighborhood $B$ of 3 $\times$ 3 size centered in the $(u,v)$ pixel .
+The domain $D$ where the function $\phi$  is applied  (applied to the histogram of each component $h_{f_j}^D$) is the window itself $B$ (structuring element in morphological mathematics) where the operation of the nonlinear filter is applied. In the figure \ref{fig:Ventana B} can see a domain $D$ corresponding to a  3 $\times$ 3 neighborhood $B$ centered at the $(u,v)$ pixel .
 
 \begin{figure}
 	\centering
 		\includegraphics[width=0.3\textwidth]{fig/VentanaB.jpg}
-	\caption{$B$ Neighborhood of size 3 $\times$ 3 centered in the pixel $(u,v)$ }
+	\caption{$B$ Neighborhood of size 3 $\times$ 3 centered at the pixel $(u,v)$ }
 	\label{fig:Ventana B}
 \end{figure}
 
 \subsection{Division of the image into subregions}
 
-The image $f$ is divided into subregions $W_1,W_2,\dots W_{x}$, so as to obtain local information from the image.
-Let $B$ a window or structuring element, the domain $D$ corresponding to the window $B$ centered on $(u,v)$ is the set of subregions $W_{\{1,2,...,x\}}$,that touch some pixel of $B$.
+The image $f$ is divided into subregions $W_1,W_2,\dots, W_{x}$, to obtain local information from the image.
+Let $B$ a window or structuring element, the domain $D$ corresponding to the window $B$ centered on $(u,v)$ is the union set of subregions that intersects some pixel of $B$.
 %\begin{equation}
 %\label{ventana}
 %  \forall i, W_i \subseteq D_{(u,v)}\rightarrow \exists  \in D_{(u,v)}:x \in W_i
 %\end{equation}   
 
-In the figure \ref{fig:Sub-region} the image is divided into 4 subregions: $W_1$, $W_2$, $W_3$, $W_4$.  The region delimited by the window $B$ is shaded. As you can see, the domain
-$D$ on which $w_l$ weights are calculated for $B$ will be the area corresponding to the $W_1$ sub-region .
+In the figure \ref{fig:Sub-region} the image is divided into 4 subregions: $W_1$, $W_2$, $W_3$, $W_4$.  The region delimited by the window $B$ is shaded. As we can see, the domain $D$ on which $w_l$ weights are calculated for $B$ will be the area corresponding to the $W_1$ sub-region. Note that the filter window does not have to to be of equal size of sub-regions, as in this case. 
  
 %\begin{figure}
 %	\centering
@@ -509,8 +502,7 @@ $D$ on which $w_l$ weights are calculated for $B$ will be the area corresponding
 %\end{figure}
 
 
-Note that the filter window does not have to to be of equalsized to sub-regions, as in this case. In the Figure \ref{fig:Sub-regiones} can be seen as the domain $D$ of which shall be calculated weights belong to the union of the sub-regions $W_1$ and $W_2$, as the window $B$ touches both. This is done to avoid that when comparing two identical colors may have different values, affected by the weights that come from two different subregions.  
-
+In the Figure \ref{fig:Sub-regiones}, we can see the domain $D$, from which we shall calculate the weights, belong to the union of the sub-regions $W_1$ and $W_2$ because the window $B$ intersects both. This is done to avoid that when comparing two identical colors may have different values, because of the weights that are calculated from two different subregions.  
 
 \begin{figure}
 	\centering
@@ -519,20 +511,16 @@ Note that the filter window does not have to to be of equalsized to sub-regions,
 	\label{fig:Sub-region}
 \end{figure}
 
-
-
-
 \begin{figure}
 	\centering
 		\includegraphics[width=0.3\textwidth]{fig/Sub-regiones.jpg}
 	\caption{Domain when the window touches more than one subregion.}
 	\label{fig:Sub-regiones}
-\end{figure} In the case the user choose to have only one sub-region , that is not divide the image $f$, the weights will be calculated considering the whole picture $f$ as domain $D$.
+\end{figure}
 
+In the case the user choose to have only one sub-region, that is not divide the image $f$, the weights will be calculated considering the whole picture $f$ as domain $D$.
 
 In our tests, the input images of size $M \times N$ pixels, are divided into  $W_{\{1,2,...,x\}}$ subregions of $\left\lfloor\frac{M}{M'}\right\rfloor$ rows and $\left\lfloor\frac{N}{N'}\right\rfloor$ columns, where $\left\lfloor.\right\rfloor$ denotes the floor function. Thus, we have a new matrix of $M'$ rows y $N'$ columns, whose element is a subregion $W_l$.
-
-
 
 \subsection{Application 1: Noise Removal}
 Noise is a term used to refer to unwanted changes that may suffer a signal of any kind of nature during his capture, storage, transmission, processing or conversion \cite{tuzlukov2002signal}.
@@ -540,32 +528,26 @@ Noise is a term used to refer to unwanted changes that may suffer a signal of an
 Noise in images is an undesirable product that adds misinformation. Noise occurs in digital images in the form of random variations in brightness or color information. 
 Several mathematical models have been developed to simulate the generation of different types of existing noise. 
 
-\subsubsection{Used noises} 
+\subsubsection{Used models} 
+Given an input image $f$, the image $f'$ resulting from contaminating $f$ with some kind of noise and a vector $z = (z_1, z_2, z_3)$ where each element $z_l$ corresponds to a random variable. We define the main noise models as follows:
 
-Given an input image $f$, the image $f'$ resulting from contaminating $f$ with some kind of noise and a vector $z = (z_1, z_2, z_3)$ in each element $z_l$  
-corresponds to random variable; is defined the main noise models as follows:
-
-\begin{itemize}
+\begin{description}
 	
-\item{Gaussian noise:}
-It is an additive  statistical noise with a gaussian density function probability  \cite{davenport1958random}. Gaussian noise is expressed as follows:
+\item[Gaussian noise] It is an additive statistical noise with a gaussian density function \cite{davenport1958random}. Gaussian noise is expressed as follows:
 \begin{equation}
 \label{eq:gaussian_noise}
 f'(x, y) = f(x, y) + z
 \end{equation}
 where each component $z_l$ is a random variable with normal distribution, $\mu$ average, $\sigma^2$ variance and it represents the value of noise added.
 
-\item{Speckle noise:}
-is a multiplicative noise with a uniform density function of probability, defined as follows: 
-
+\item[Speckle noise] Is a multiplicative noise with a uniform density function of probability, defined as follows: 
 \begin{equation}
 \label{eq:speckle}
 f'(x, y) = f(x, y) + z \ast f(x, y)  
 \end{equation}
-where the operator $\ast$ symbolizes the Hadamard product or element by element. Each item $z_l$ is a random variable uniformly distributed with average $\mu$ and variance $\sigma^2$.
+where the operator $\ast$ symbolizes the Hadamard product or element-wise product. Each item $z_l$ is a random variable uniformly distributed with average $\mu$ and variance $\sigma^2$.
 
-\item{Salt and pepper noise:}
-this noise, unlike the Gaussian and Speckle noise, is not additive and multiplicative respect to the values of the original image. In the images affected with salt and pepper noise original values are replaced by bright values (salt) or dark values (pepper), that correspond to pulses inside to the signal. 
+\item[Salt and pepper noise] This noise model, unlike the Gaussian and Speckle noise, is not additive or multiplicative respect to the values of the original image. In the images affected with salt and pepper noise original values are replaced by bright values (salt) or dark values (pepper), that correspond to pulses inside to the signal. 
 
 The salt pixels have the minimum possible value (zero)  and the pixel values pepper the maximum value possible ($2^k - 1$, where $k$ is the number of bits used to represent the intensity of each color component). The salt and pepper noise does not affect all pixels within an image, as with Gaussian and Speckle noises. The number of pixels in an image that are affected by salt and pepper noise parameter depends on the probability of noise $p$, which it is in the range $[0, 1]$.
 
@@ -580,12 +562,10 @@ f(x, y) & \text{, with a probability } 1 - p \\
 \end{equation}
 where:\\ $s = (0, 0, 0)$ represents the salt noise,\\ $r = (2^k - 1, 2^k - 1, 2^k - 1 )$ represents the pepper noise.
 
-
-\end{itemize}
-
+\end{description}
 
 
-In the Figure \ref{fig:ruido}(a) can see an image that is contaminated with Gaussian noise ( \ref{fig:ruido}(b)), speckle noise (\ref{fig:ruido}(c)), with salt and pepper noise (\ref{fig:ruido}(d)). 
+In the Figure \ref{fig:ruido}(a) we can see an image that is contaminated with Gaussian noise (\ref{fig:ruido}(b)), speckle noise (\ref{fig:ruido}(c)), with salt and pepper noise (\ref{fig:ruido}(d)). 
 
 %\begin{figure}[htbp]
 %\centering
@@ -602,7 +582,7 @@ In the Figure \ref{fig:ruido}(a) can see an image that is contaminated with Gaus
 		\begin{subfigure}[b]{0.4\textwidth}
 			\centering
 			\includegraphics[width=0.95\textwidth]{fig/Original_SinRuido.jpg}
-			\caption{Imagen original}
+			\caption{Original image.}
 			\label{fig:original_sin_ruido}
 		\end{subfigure}
 		\begin{subfigure}[b]{0.4\textwidth}
@@ -629,10 +609,6 @@ In the Figure \ref{fig:ruido}(a) can see an image that is contaminated with Gaus
 	\caption{Image with different kinds of noises.} \label{fig:ruido}
 \end{figure*}
 
-
-
-
-
 %Los par\'ametros utilizados en la generaci\'on de cada ruido fueron:
 
 %\begin{itemize}
@@ -643,9 +619,9 @@ In the Figure \ref{fig:ruido}(a) can see an image that is contaminated with Gaus
 
 %El valor de la varianza $\sigma^2$ para los ruidos gaussiano y speckle, as\'i como el valor de probabilidad $p$ de ocurriencia de un ruido sal o pimienta fue variando  de manera a observar como se comporta el filtro a medida que se va aumentando la cantidad de ruido.
 
-So to evaluate the filter with the different types of ordering, is proposed to use a statistical metric used to measure how close they are forecasts or predictions of real results \cite{willmott2005advantages}.
+So to evaluate the filter with the different types of ordering, is proposed to use a statistical metric used to measure how close are predictions to real results\cite{willmott2005advantages}.
 
-Given an image $f$ and $g$ filtered image of $M \times N$ dimensions, the average absolute error of the filtered image is given by:
+Given an $M \times N$ image $f$ and filtered image $g$, the average absolute error of the filtered image is given by:
 \begin{equation}
 \label{MAE}
 MAE(f,g) = \frac{1}{3\times M\times N}\sum_{j=1}^3 d_j
@@ -665,39 +641,36 @@ d_j = \sum_{\substack{u\in \{1, ..., M\}\\ v \in \{1, ..., N\}}} |[f(u,v)]_{j} -
 
 %\include{anexos/graficos}
 \subsubsection{Results}
-
 Below are listed the codes used to abbreviate the names of the sorting methods that were the subject of experimentation:
 
 
-\begin{itemize}
-	\item ED: RGB Euclidean distance is used as a method of sorting colors \cite{ortiz2002procesamiento}.
-	\item BM: RGB bit interleaving method is used as a ordering of colors \cite{chanussot1997bit}.
-	\item LEX: RGB lexicographical ordering is used to sort the colors .
-	\item ALEX: The RGB  $\alpha$ -lexicographic ordering is used 
-	\cite{zamora2001comparative} for ordering colors.
-	\item AMLEX: The RGB lexicographical $\alpha$-Module is used \cite{angulo2003morphological} for ordering colors.
-	\item HLEX,  I→H→S lexicographical ordering is used to sort colors.
-	\item DLAB, distance in L* a*b* is used as sorting method \cite{ortiz2002procesamiento}.
-	\item MIN: the \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade , where:\\ 
+\begin{description}
+	\item [ED] RGB Euclidean distance is used as a method of sorting colors \cite{ortiz2002procesamiento}.
+	\item [BM] RGB bit interleaving method is used as a ordering of colors \cite{chanussot1997bit}.
+	\item [LEX] RGB lexicographical ordering is used to sort the colors .
+	\item [ALEX] The RGB  $\alpha$-lexicographic ordering is used 	\cite{zamora2001comparative} for ordering colors.
+	\item [AMLEX] The RGB lexicographical $\alpha$-Module is used \cite{angulo2003morphological} for ordering colors.
+	\item [HLEX]  I→H→S lexicographical ordering is used to sort colors.
+	\item [DLAB] Distance in L*a*b* is used as sorting method \cite{ortiz2002procesamiento}.
+	\item [MIN] The \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade, where:\\ 
 $w = (Min(h_{f_1}^D), Min(h_{f_2}^D),Min(h_{f_3}^D))$.
-	\item MAX: the \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade, where:\\ 
+	\item [MAX] The \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade, where:\\ 
 $w = (Max(h_{f_1}^D), Max(h_{f_2}^D),Max(h_{f_3}^D))$.
-	\item MO1: the \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade, where:\\ 
+	\item [MO1] The \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade, where:\\ 
 $w = (minM_o(h_{f_1}^D), minM_o(h_{f_2}^D), minM_o(h_{f_3}^D))$.
-	\item MO2: the \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade, where:\\ 
+	\item [MO2] The \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade, where:\\ 
 $w = (maxM_o(h_{f_1}^D), maxM_o(h_{f_2}^D), maxM_o(h_{f_3}^D))$.
-	\item SMO: the \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade, where:\\ 
+	\item [SMO] The \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade, where:\\ 
 $w = (R(h_{f_1}^D), R(h_{f_2}^D), R(h_{f_3}^D))$.
-	\item MEAN: the \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade, where:\\ 
+	\item [MEAN] The \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade, where:\\ 
 $w = (Me(h_{f_1}^D), Me(h_{f_2}^D), Me(h_{f_3}^D))$.
-	\item VAR: the \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade, where:\\ 
+	\item [VAR] The \ref{Transformacion} equation is used to add this transformation as the first component of the RGB lexicographical cascade, where:\\ 
 $w = (Var(h_{f_1}^D), Var(h_{f_2}^D), Var(h_{f_3}^D))$.
-\end{itemize}
+\end{description}
 
-The filter used to eliminate different types of noise was the median. This filter consists to sort the colors within the filter window, and selecting the middle value to replace in the output image. So to avoid having a false color, the size of the filter window is usually odd ($3\times 3$ in our tests). The tests were made with 100 different images ( \cite{arbelaez2007berkeley} test images), polluted with noise: gaussiano, speckle, salt and pepper. In the case of Gaussian and Speckle noise, the parameter $\mu$ is set to $0$ and the $\sigma^2$ parameter was varied between $0.005$ and $0.165$, with $0.02$ increases. In the case of salt and pepper noise, the probability parameter $p$ was varied with the same values of the parameter $\sigma^2$ of Gaussian and  Speckle noise.
+The filter used to eliminate different types of noise was the median. This filter consists to sort the colors within the filter window, and selecting the middle value to replace in the output image. So to avoid having a false color, the size of the filter window is usually odd ($3\times 3$ in our tests). The tests were made with 100 different images (\cite{arbelaez2007berkeley} test images), polluted with noise: gaussian, speckle, salt and pepper. In the case of Gaussian and Speckle noise, the parameter $\mu$ is set to $0$ and the $\sigma^2$ parameter was varied between $0.005$ and $0.165$, with increases of $0.02$. In the case of salt and pepper noise, the probability parameter $p$ was varied with the same values of the parameter $\sigma^2$ of Gaussian and Speckle noise.
 
-The Figure \ref{fig:imagen_ejemplo_ruido_gaussiano} corresponds to the original image of Figure \ref{fig:ruido} with $\sigma^2 = 0.105$ and $\mu = 0$. The result of applying the proposed order filters and other filters  evaluated on the contaminated image shown in the Figure \ref{fig:imagenes_resultado}.
-
+The Figure \ref{fig:imagen_ejemplo_ruido_gaussiano} corresponds to the original image of Figure \ref{fig:ruido} with $\sigma^2 = 0.105$ and $\mu = 0$. The result of applying the proposed order filters and other filters evaluated on the contaminated image shown in the Figure \ref{fig:imagenes_resultado}.
 
 \begin{figure}
 	\centering
@@ -706,8 +679,7 @@ The Figure \ref{fig:imagen_ejemplo_ruido_gaussiano} corresponds to the original 
 	\label{fig:imagen_ejemplo_ruido_gaussiano}
 \end{figure}
 
-
-Should be noted that filtered images with the proposed order and with different weights are better visually to the state of the art, but they are perceptually very similar to each other, the difference between them is evident in the numerical results presented later in this section.
+Should be noted that filtered images with the proposed order and with different weights are visually better than the state of the art, however they are perceptually very similar to each other, the difference between them is evident in the numerical results presented later in this section.
 
 \begin{figure*}
 	\makebox[\linewidth][c]{%
@@ -815,9 +787,9 @@ Should be noted that filtered images with the proposed order and with different 
 	\label{fig:imagenes_resultado}
 \end{figure*}
 
-For every noise and measuring a results table and graph trend curve of each filter with respect to the variation of noise parameter ($\sigma^2$ to Gaussian and speckle noise, and $p$ for salt and pepper noise). Each point represents the average of metric obtained by the filter to a noise parameter value $(\sigma^2\, MAE)$ or $(p,\,MAE)$. The corresponding curve of a filter is obtained by joining each pair of successive points of the filter with the line  (straight) passing through both points. This is done so as to be able to view the trend as a continuous function. The results tables order the filters as the total sum of all points on the graph curves. The filters shown in the top of the tables are those with the lowest values of the total sum of MAE obtained by each filter. In some cases, the state of the art filters perform better for less noise parameter values but are overcome by the filters proposed for higher noise parameter values. 
+For every noise model and measuring, we present a results table and a graph of trend curve of each filter with respect to the variation of noise parameter ($\sigma^2$ to Gaussian and speckle noise, and $p$ for salt and pepper noise). Each point represents the average of metric obtained by the filter to a noise parameter value $(\sigma^2, \, MAE)$ or $(p,\,MAE)$. The corresponding curve of a filter is obtained by joining each pair of successive points of the filter with a line (straight) passing through both points. This is done to be able to view the trend as a continuous function. The results tables sort the filters by the total sum of all points on the graph curves. The filters shown in the top of the tables are those with the lowest values of the total sum of MAE obtained by each filter. In some cases, the state of the art filters perform better for less noise parameter values but they are overcomed by the filters proposed for higher noise parameter values. 
 
- The results of this section differ the order filters of each weight according to his domain settings. For reference, are added the suffix "WX" to the proposed filters codes, where X is a number representing the number of sub-regions in which the image was divided, with M'= $\sqrt{X}$ and N'= $\sqrt{X}$. When the neighborhood (marked by the filter window) is the domain, suffix "B" is used.
+ The results of this section differ the order filters of each weight according to his domain settings. For reference, are added the suffix "WX" to the proposed filters codes, where X is a number representing the number of sub-regions in which the image was divided, with M'= $\sqrt{X}$ and N'= $\sqrt{X}$. When the neighborhood (marked by the filter window) is the domain, suffix ``B'' is used. \textbf{NE} %TODO
 
 %Para poder seleccionar varias columnas de una vez
 \pgfplotstableset{
@@ -857,14 +829,14 @@ input colnames to=p
 
 \begin{table}[!h]
 	\centering
-	\caption{Ruido gaussiano. Sumatoria de MAE por $\sigma^2$}
+	\caption{Gaussian noise. MAE sorted by $\sigma^2$}
 	\pgfkeys{/pgf/number format/precision=4}
 	\pgfplotstabletypeset[
 	col sep=tab,
 	%header=has colnames,
 	columns = {[index]0, [index]10},
-	columns/P/.style = {column name = Suma},
-	columns/p/.style = {column name = Filtro},
+	columns/P/.style = {column name = Sum},
+	columns/p/.style = {column name = Filter},
 	%skip rows between index={6}{25},
 	every first column/.style={
 		string type,
@@ -898,14 +870,14 @@ input colnames to=p
 
 \begin{table}[htbp]
 	\centering
-	\caption{Salt and pepper noise. Summation of MAE by $p$}
+	\caption{Salt and pepper noise. MAE by $p$}
 	\pgfkeys{/pgf/number format/precision=4}
 	\pgfplotstabletypeset[
 	col sep=tab,
 	%header=has colnames,
 	columns = {[index]0, [index]10},
-	columns/P/.style = {column name = Suma},
-	columns/p/.style = {column name = Filtro},
+	columns/P/.style = {column name = Sum},
+	columns/p/.style = {column name = Filter},
 	%skip rows between index={6}{25},
 	every first column/.style={
 		string type,
@@ -939,14 +911,14 @@ input colnames to=p
 
 \begin{table}[htbp]
 	\centering
-	\caption{Ruido speckle. Sumatoria de MAE por $\sigma^2$}
+	\caption{Speckle noise. MAE by $\sigma^2$}
 	\pgfkeys{/pgf/number format/precision=4}
 	\pgfplotstabletypeset[
 	col sep=tab,
 	%header=has colnames,
 	columns = {[index]0, [index]10},
-	columns/P/.style = {column name = Suma},
-	columns/p/.style = {column name = Filtro},
+	columns/P/.style = {column name = Sum},
+	columns/p/.style = {column name = Filter},
 	%skip rows between index={6}{25},
 	every first column/.style={
 		string type,
@@ -1000,7 +972,7 @@ input colnames to=p
 	\spy on (spypoint) in node [fill=white] at (spyviewer);
 	\end{axis}
 	\end{tikzpicture}
-	\caption{Ruido gaussiano. MAE por $\sigma^2$}
+	\caption{Gaussian noise. MAE by $\sigma^2$}
 	\label{fig:gaussian_mae}
 \end{figure*}
 
@@ -1450,11 +1422,11 @@ input colnames to=p
 %\end{table*}
 \normalsize
 
-In the Figure \ref{fig:gaussian_mae} the trend curves of the filters applied to images contaminated with gaussian noise are observed . As can be seen, for gaussian noise, the best filter was the proposed using SMO, MAX, VAR and MEAN for calculating weight vector. Table \ref{tabla:gaussian_mae}  contains the total sum of the points on the trend curve  by sorting method.
+In the Figure \ref{fig:gaussian_mae} the trend curves of the filters applied to images contaminated with gaussian noise are observed. As can be seen, for gaussian noise, the best filter was the proposed using SMO, MAX, VAR and MEAN for calculating weight vector. Table \ref{tabla:gaussian_mae}  contains the total sum of the points on the trend curve  by sorting method.
 
-Figure \ref{fig:salt_and_pepper_mae} shows the trend curves of the filters applied to images contaminated with salt and pepper noise. In this case the filter to obtained the lowest overall average and whose curve is placed below all others was ED. The MAX, SMO, VAR and MEAN filters showed better performances after ED. Table \ref{tabla:salt_and_pepper_mae} contains the total sum of the points on the curve trend by sorting method.
+Figure \ref{fig:salt_and_pepper_mae} shows the trend curves of the filters applied to images contaminated with salt and pepper noise. In this case the filter that obtained the lowest overall average and whose curve is placed below all others was ED. The MAX, SMO, VAR and MEAN filters showed better performances after ED. Table \ref{tabla:salt_and_pepper_mae} contains the total sum of the points on the curve trend by sorting method.
 
-In the Figure \ref{fig:speckle_mae} there are the trend curves of the filters applied to images contaminated with speckle noise .The SMO, MAX and VAR filters obtained the best results. The filter SW9 obtained the best results for all points of the curve. The ED filter resulted the best of the state of the art. Table \ref{tabla:speckle_mae} contains the total sum of the points in the trend curve by sorting method in ascending sort.
+In the Figure \ref{fig:speckle_mae} there are the trend curves of the filters applied to images contaminated with speckle noise .The SMO, MAX and VAR filters obtained the best results. The filter SW9 obtained the best results for all points of the curve. The ED filter resulted the best of the state of the art. Table \ref{tabla:speckle_mae} contains the total sum of the points in the trend curve by ordering method in ascending order.
 
 %Desde la Figura \ref{fig:gaussian_cds} en adelante se ilustran los resultados para la métrica CDS. La Figura \ref{fig:gaussian_cds} muestra los resultados para el ruido gaussiano en la mencionada métrica. Los mejores filtros resultaron ser nuevamente los propuestos (SMO, MAX, VAR, MEAN) excepto MO1, MO2 y MIN que fueron superados por el mejor filtro del estado del arte, ED. En el zoom se hace visible la diferencia entre los filtros propuestos y el filtro ED. El Cuadro \ref{tabla:gaussian_cds} proporciona los valores numéricos a partir de los cuales se formaron las gráficas mencionadas; en el mismo puede observarse que el filtro SMOW9 obtuvo los mejores resultados hasta el punto $0.105$, desde el punto $0.125$ en adelante MAXW9 obtuvo los mejores resultados.
 %
@@ -1462,7 +1434,7 @@ In the Figure \ref{fig:speckle_mae} there are the trend curves of the filters ap
 %
 %Por último, la Figura \ref{fig:speckle_cds} posee los valores de la métrica CDS para filtros aplicados sobre imágenes contaminadas con el ruido speckle. El Cuadro \ref{tabla:speckle_cds} posee los resultados numéricos de dichos gráficos de curvas. En este caso se puede observar nuevamente un solapamiento de las curvas correspondientes a los filtros propuestos (MAX, SMO, VAR, MEAN), pero a una distancia evidente de las curvas correspondientes al estado del arte, de entre las cuales el mejor fue ED. El filtro SMOW9 obtuvo los mejores resultados en todos los puntos de $\sigma^2$.
 
-The following two applications use morphological mathematical. Operators are not purely morphological, since it can not guarantee its theoretical properties, as idempotency for opening and closing. In the Figure \ref{fig:ContraEjemplo} you can see a counter-example, where the opening operator is not  idempotent ($f\circ B \neq (f\circ B) \circ B$). To the synthetic image of the Figure \ref{fig:ContraEjemplo}(a) is applied an opening with 3 x 3 structural element, where the domain $D$ of the image is the neighborhood of the structuring element itself, and the function applied to each color component is the average inside $D$, resulting image of the Figure \ref{fig:ContraEjemplo}(b). To image of the Figure  \ref{fig:ContraEjemplo}(b) is applied again the operator of opening with the same structuring element and where the domain $D$ is also the neighborhood of the structuring element itself, resulting the image of the Figure \ref{fig:ContraEjemplo}(c). The resulting image is not equal to the previous one, this can be visualized on the image \ref{fig:ContraEjemplo}(c), which is the result of performing the difference between the two images. Thus it is demonstrated that the opening operator is not idempotent , the same occurs for the closing operator.
+The following two applications use morphological mathematics. Operators are not purely morphological, since it can not guarantee its theoretical properties, as idempotency for opening and closing. In the Figure \ref{fig:ContraEjemplo} we can see a counter-example, where the opening operator is not  idempotent ($f\circ B \neq (f\circ B) \circ B$). To the synthetic image of the Figure \ref{fig:ContraEjemplo}(a) is applied an opening with a 3 $\times$ 3 structural element, where the domain $D$ of the image is the neighborhood of the structural element itself, and the function applied to each color component is the average inside $D$, resulting image of the Figure \ref{fig:ContraEjemplo}(b). To the image of the Figure  \ref{fig:ContraEjemplo}(b) is applied again the operator of opening with the same structuring element and where the domain $D$ is also the neighborhood of the structuring element itself, resulting the image of the Figure \ref{fig:ContraEjemplo}(c). The resulting image is not equal to the previous one, this can be visualized on the image \ref{fig:ContraEjemplo}(d), which is the result of performing the difference between the two images. Thus it is demonstrated that the opening operator is not idempotent, the same occurs for the closing operator.
 
 
 \begin{figure*}
@@ -1496,7 +1468,7 @@ The following two applications use morphological mathematical. Operators are not
 	\label{fig:ContraEjemplo}
 \end{figure*}
 
-This is because a color can be more or less than other color in a domain $D$, but not in another domain, because the extracted information in the form of weights (result of applying a function) may be different. Even in the same domain but in the next iteration (product of reapplying the same operator) they can vary the weights, since the extracted information also varies from one iteration to another. In the literature these operators are called pseudo-operators \cite{hanbury2001morphological,aptoula2007pseudo,aptoula2008alpha,angulo2010pseudo,chen2002pseudo}. 
+This is because a color can be greater, or smaller, than other color in a domain $D$, but not in another domain, because the extracted information in the form of weights (result of applying a function) may be different. Even in the same domain but in the next iteration (result of applying the same operator again) the weights can be different, since the extracted information also varies from one iteration to another. In the literature these operators are called pseudo-operators \cite{hanbury2001morphological,aptoula2007pseudo,aptoula2008alpha,angulo2010pseudo,chen2002pseudo}. 
 
 Top-hat transform is widely used in different applications \cite{soille2013morphological,mukhopadhyay2000multiscale,soille1997note,bai2010analysis,bai2010infrared,bai2010analysis1}. As we mentioned earlier white top-hat transform extracts the bright  regions of the image and  top-hat transform the dark areas of the image.
 
